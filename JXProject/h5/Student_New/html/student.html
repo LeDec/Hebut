@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>匠心训练营</title>
+    <script type="text/javascript" src="../assets/js/jquery-3.2.1.js"></script>
+<!--    兼容浏览器、整体布局-->
+    <link rel="stylesheet" href="../assets/css/content.css">
+<!--    右侧图片居中-->
+    <link rel="stylesheet" href="../assets/css/welcome.css">
+
+</head>
+<body>
+
+<div class="content">
+    <!--右侧内容区-->
+    <div class="content-right">
+
+        <div class="juzhong">
+            <img src="../../Headmaster_New/html/图片/student.png" alt="欢迎使用匠心训练系统" id="sousuo" style="width:180px;height:150px;position:relative;top:155px;"/>
+            <p  style="position:relative;left:0px;top:205px;font-size:26px;">欢迎使用匠心训练系统！</p>
+            </br></br></br></br></br></br>
+            <a id="tixing" style="position:relative;left:0px;top:205px;font-size:24px;color:blue;display:none" href="myNews.html">您有未读消息，请查看</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+</html>
+<script>
+    $.ajax({
+        url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/batch/nowBatch',
+        data: JSON.stringify({
+            "commonRequest": {
+                "token": localStorage.getItem('token'),
+                "userId": localStorage.getItem('userId')
+            }
+        }),
+        contentType: 'application/json',
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            localStorage.setItem("batchId",data.data.batchId)
+        }
+    })
+    // $(function () {
+    //         $.ajax({
+    //             url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/inform/checkInform',
+    //             data: JSON.stringify({
+    //              "commonRequest": {
+    //                             token: localStorage.getItem('token'),
+    //                             userId: localStorage.getItem('userId'),
+    //                               },
+    //                "pageRequest": {
+    //                             "currentPage": 1,
+    //                             "pageSize": 5
+    //                                },
+    //             }),
+    //             contentType: 'application/json',
+    //             type: 'post',
+    //             dataType: 'json',
+    //             success: function (data) {
+    //             if(data.data.records[0].isRead==0){
+    //             document.getElementById("tixing").style.display="block";
+    //             }
+    //             }
+    //         })
+    //     })
+</script>

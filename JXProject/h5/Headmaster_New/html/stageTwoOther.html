@@ -1,0 +1,133 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>::My-Task::Holidays</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<!-- Favicon--><!-- plugin css file -->
+<link rel="stylesheet" href="../assets/plugin/datatables/responsive.dataTables.min.css">
+<link rel="stylesheet" href="../assets/plugin/datatables/dataTables.bootstrap5.min.css">
+<!-- project css file -->
+<link rel="stylesheet" href="../assets/css/my-task.style.css">
+
+  <script type="text/javascript" src="../assets/js/jquery-3.2.1.js"></script>
+</head>
+<body>
+<div id="mytask-layout" class="theme-indigo"><!-- sidebar -->
+
+  <!-- main body area -->
+
+    <!-- Body:Body -->
+    <div class="body d-flex py-lg-3 py-md-2" style="width: 100%">
+      <div class="container-xxl">
+        <div class="row align-items-center">
+          <div class="border-0 mb-4">
+            <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+              <h3 class="fw-bold mb-0" id="title">答辩阶段</h3>
+<!--              <div class="col-auto d-flex w-sm-100">-->
+<!--                <button onclick="activity()" type="button" class="btn btn-dark btn-set-task w-sm-100">活动管理</button>-->
+<!--              </div>-->
+            </div>
+          </div>
+        </div>
+        <!-- Row end -->
+        <div class="row clearfix g-3">
+          <div class="col-sm-12">
+            <div class="card mb-4">
+              <div class="card-body">
+                <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th width="400">项目编号</th>
+                      <th width="1600">项目名称</th>
+                      <th width="600">指导老师</th>
+                      <th width="600">项目来源</th>
+                      <th width="300">报告</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Row End --></div>
+    </div>
+  </div>
+</div>
+<!-- Jquery Core Js -->
+<script src="../assets/bundles/libscripts.bundle.js"></script>
+<!-- Plugin Js-->
+<script src="../assets/bundles/dataTables.bundle.js"></script>
+<!-- Jquery Page Js --><script src="../assets/js/template.js"></script>
+
+
+<script>
+  $(document).ready(function(){$('#myProjectTable') .addClass('nowrap') .dataTable({responsive:true,columnDefs:[{targets:[-1,-3],className:'dt-body-right'}]});$('.deleterow').on('click',function(){var tablename = $(this).closest('table').DataTable();tablename .row($(this) .parents('tr')) .remove() .draw()})});
+</script>
+<script>
+
+  $(document).ready(
+          // $("body").mLoading({
+          //   html:false,//设置加载内容是否是html格式，默认值是false
+          //   content:"",//忽略icon和text的值，直接在加载框中显示此值
+          //   mask:true//是否显示遮罩效果，默认显示
+          // }),
+          $('#title').append('（'+localStorage.getItem('batchNameOther')+'）'),
+              $(function () {
+                $.ajax({
+                  url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project/showAllProject',
+                  async:true,
+                  data: JSON.stringify({
+                    "batchId": localStorage.getItem('batchIdOther'),
+                      "commonRequest": {
+                        token: localStorage.getItem('token'),
+                        userId: localStorage.getItem('userId'),
+                      },
+                      "pageRequest": {
+                        "currentPage": 1,
+                        "pageSize": 999
+                      },
+                      "projectType": "1",
+                    }),
+                  contentType: 'application/json',
+                  type: 'post',
+                  dataType: 'json',
+                  beforeSend:function(){
+                    parent.$("body").trigger('showLoading');
+
+                  },
+                  complete:function () {
+                    parent.$("body").trigger('hideLoading');
+                  },
+                  success: function (data) {
+                    var tableData = [];
+                    var num=1;
+
+                    $.each(data.data.showProjectResponsePage.records, function(idx, obj) {
+                      lookcontent= '<div class="btn-group" role="group" aria-label="Basic outlined example"><button onclick="lookContent(this)" type="button" class="btn bg-lightgreen text-end" value="'+obj.projectId+'">查看</button></div>',
+                        tableData.push([num++,obj.projectSymbol,obj.projectName,obj.projectTeacher,obj.projectOrigin,lookcontent]);
+                    });
+                    //所有数据添加到表格中
+                    $("#myProjectTable").dataTable().fnClearTable(false);
+                    if(data.data.showProjectResponsePage.records.length!=0)
+                      $("#myProjectTable").dataTable().fnAddData(tableData);
+                  }
+                })
+              })
+  )
+  //下载项目内容
+  function lookContent(btn) {
+    var projectIdOther=$(btn).parents(".btn-group").find(".btn").val();
+    localStorage.setItem('projectIdOther', projectIdOther);
+    window.location.href="checkMaterialTwoOther.html"
+  }
+
+</script>
+</body>
+</html>

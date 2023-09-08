@@ -1,0 +1,106 @@
+server:
+  port: 8081
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+  datasource:
+    ## 连接池类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 数据源基本配置
+      # 数据源基本配置
+      #username: root
+      #password: 12345678
+      #url: jdbc:mysql://127.0.0.1:3306/sys?useUnicode=true&characterEncoding=utf-8&SSL=true&serverTimezone=Asia/Shanghai
+      username: jiangxin
+      password: hebutb2!
+      url: jdbc:mysql://rm-bp19151526nnqa844zo.mysql.rds.aliyuncs.com:3306/b2?useUnicode=true&characterEncoding=utf-8&SSL=true&serverTimezone=Asia/Shanghai
+      driverClassName: com.mysql.cj.jdbc.Driver
+      # druid连接池其他配置
+      ## 初始化连接数
+      initialSize: 35
+      ## 最小连接数
+      minIdle: 1
+      ## 最大会话数
+      maxActive: 5000
+      ## 连接超时，ms。超时则认为无可用连接
+      maxWait: 2000
+      ## 检查空闲连接的频率，ms
+      timeBetweenEvictionRunsMillis: 60000
+      ## 空闲连接最小生存周期，ms。超时则下次检查时被回收
+      minEvictableIdleTimeMillis: 300000
+      ## 检查连接是否可用的语句
+      validationQuery: SELECT 1 FROM DUAL
+      ## 请求连接时分配连接前先检查该连接是否有效
+      testWhileIdle: true
+      ## 请求连接时，进行有效性检查（影响性能）
+      testOnBorrow: false
+      ## 返还连接时，进行有效性检查（影响性能）
+      testOnReturn: false
+      ## 缓存preparedStatement发起的sql
+      poolPreparedStatements: true
+      ## 每个连接最多缓存多少个SQL
+      maxPoolPreparedStatementPerConnectionSize: 20
+
+      ## 配置监控内容
+      filter:
+        stat:
+          enabled: true
+          dbType: mysql
+          logSlowSql: true
+          slowSqlMillis: 2000
+      ## 配置监控web服务
+      webStatFilter:
+        enabled: true
+        urlPattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      statViewServlet:
+        enabled: true
+        ### 监控服务路径
+        urlPattern: /druid/*
+        ### 是否允许重置数据
+        resetEnable: true
+        ### 登录信息
+        allow: 106.47.147.81
+        loginUsername: jiangxin
+        loginPassword: hebutb2!
+  mail:
+    host: smtp.163.com
+    username: lidong001213@163.com
+    password: WFJEJZKSXEKYWSSB
+    port:
+    default-encoding: UTF-8
+    protocol: smtp
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.socketFactory.port: 465
+      mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+      mail.smtp.socketFactory.fallback: false
+
+
+
+kaptcha:
+  height: 50
+  width: 200
+  content:
+    length: 4
+    source: 0123456789abcdefghijklmnopqrstuvwxyz
+    space: 2
+  font:
+    color: blue
+    name: 宋体,楷体,微软雅黑
+    size: 40
+  background-color:
+    from: lightGray
+    to: white
+  border:
+    enabled: true
+    color: black
+    thickness: 1
+
+

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pineFlowerYellow"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dip"
+            android:background="@drawable/radius_drawable_bg"
+            android:orientation="vertical"
+            android:padding="10dip">
+
+
+            <LinearLayout
+                android:id="@+id/questname_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:src="@drawable/questname" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pixel"
+                    android:text="@string/questname"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/questname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dip"
+                    android:layout_weight="9"
+                    android:background="@color/white"
+                    android:padding="5dip"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="5dip"
+                android:layout_marginBottom="5dip"
+                android:background="#eeeeee" />
+
+            <LinearLayout
+                android:id="@+id/input_layout_psw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/type" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pixel"
+                    android:text="@string/questtype"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/btndaily"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:background="@drawable/button_daily"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:paddingLeft="5dip"
+                        android:paddingTop="2dip"
+                        android:paddingRight="4dip"
+                        android:paddingBottom="2dip"
+                        android:state_pressed="true"
+                        android:text="@string/daily"
+                        android:textColor="@color/cheese"
+                        android:textSize="12dip" />
+
+
+                    <CheckBox
+                        android:id="@+id/btnweekly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:background="@drawable/button_weekly"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:paddingLeft="4dip"
+                        android:paddingTop="2dip"
+                        android:paddingRight="4dip"
+                        android:paddingBottom="2dip"
+                        android:state_pressed="true"
+                        android:text="@string/weekly"
+                        android:textColor="@color/cheese"
+                        android:textSize="12dip" />
+
+                    <CheckBox
+                        android:id="@+id/btnsuccess"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:background="@drawable/button_success"
+                        android:button="@null"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:paddingLeft="4dip"
+                        android:paddingTop="2dip"
+                        android:paddingRight="5dip"
+                        android:paddingBottom="2dip"
+                        android:state_pressed="true"
+                        android:text="@string/success"
+                        android:textColor="@color/cheese"
+                        android:textSize="12dip" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="5dip"
+                android:layout_marginBottom="5dip"
+                android:background="#eeeeee" />
+
+            <LinearLayout
+                android:id="@+id/award_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:src="@drawable/coin_pixel" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pixel"
+                    android:text="@string/award"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/coin_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dip"
+                    android:layout_weight="9"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:hint="请输入1~100内的金币奖励"
+                    android:inputType="number"
+                    android:padding="5dip"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="5dip"
+                android:layout_marginBottom="5dip"
+                android:background="#eeeeee" />
+
+
+            <LinearLayout
+                android:id="@+id/input_layout_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:src="@drawable/selfaward" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pixel"
+                    android:text="@string/selfaward"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/selfaward"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dip"
+                    android:layout_weight="9"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:hint="来一次专属奖励"
+                    android:padding="5dip"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/pineFlowerYellow">
+
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/text_bg"
+            android:clickable="true"
+            android:fontFamily="@font/pixel"
+            android:gravity="center"
+            android:paddingLeft="15dip"
+            android:paddingTop="2dip"
+            android:paddingRight="15dip"
+            android:paddingBottom="2dip"
+            android:text="@string/add"
+            android:textColor="@color/cheese"
+            android:textSize="20sp" />
+    </RelativeLayout>
+</LinearLayout>

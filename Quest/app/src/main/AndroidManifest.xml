@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/quest_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.QuestApplication"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name="com.example.questApplication.introductionActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.questApplication.AchievementList"
+            android:exported="false" />
+        <activity
+            android:name=".HeroRecordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PersonInformationDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.VillageFragment"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VoiceRecorderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.KnapsackFragment"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.DailyFragment"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.DungeonFragment"
+            android:exported="false" />
+        <activity
+            android:name=".VerifyLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DevelopQuest"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

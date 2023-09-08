@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>查看教评</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<!--    兼容浏览器、整体布局-->
+    <link rel="stylesheet" href="./css/content.css">
+<!--    头部导航栏-->
+    <link rel="stylesheet" href="./css/headNav.css">
+<!--    左侧导航栏样式-->
+    <link rel="stylesheet" href="./css/leftNav.css">
+    <!--    右侧导航栏-->
+    <link rel="stylesheet" href="./css/rightNav.css">
+    <!--    右侧表格-->
+    <link rel="stylesheet" href="./css/rightForm.css">
+    <!--    按钮样式-->
+    <link rel="stylesheet" href="./css/button.css">
+    <!--    分页样式-->
+    <link rel="stylesheet" href="./css/page.css">
+<!--    左侧导航栏js-->
+    <script type="text/javascript" src="js/leftNav.js"></script>
+<!--    消息提醒红点-->
+    <script type="text/javascript" src="js/news.js"></script>
+    <!--    放缩格式-->
+    <script type="text/javascript" src="js/scale.js"></script>
+    <!--    分页加载-->
+    <script type="text/javascript" src="js/page.js"></script>
+</head>
+<body>
+<ul>
+    <li><a class="active" href="student.html">匠心训练营</a></li>
+    <li style="float:right"><a class="active" href="myInformation.html"><img src="图片/我的头像.png" height="33px" width="33px"></a></li>
+    <li style="float:right"><a class="active" href="myNews.html"><img src="图片/消息.png" id="XiaoXi" width="33px" height="33px"></a></li>
+</ul>
+
+<div class="content">
+    <div class="content-left">
+        <!--菜单栏导航-->
+        <div class="nav">
+            <!--每一个菜单项-->
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="teacher.html"> <img src="图片/主页.png" width="17px" height="17px" style="position:relative;left:-40px;top:3px">主页</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a><img src="./图片/项目申报.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">项目申报</a></div>
+                <div class="nav-content">
+                    <a href="declareJx.html">申报匠心项目</a>
+                    <a href="declareOther.html">申报其他项目</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">报名审核</div>
+                <div class="nav-content">
+                    <a href="retextJx.html">匠心复试</a>
+                    <a href="otherProject.html">其他项目</a>
+                </div>
+            </div>
+
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="stageManage.html"><img src="图片/过程管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">过程管理</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/成绩管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">成绩评定</div>
+                <div class="nav-content">
+                    <a href="scoreEvaluation.html">评定平时成绩</a>
+                    <a href="lookScore.html" style="background:#87CEFA">查看成绩</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-titlet"><a href="teachingEvaluation.html"><img src="./图片/教评管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">查看教评</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="batch.html"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">往届匠心班</a></div>
+            </div>
+
+        </div>
+    </div>
+    <!--右侧导航栏-->
+    <div id="firstpaneDiv" class="menu_list">
+        <h3 class="menu_head current">查看教评</h3>
+    </div>
+    <!--右侧内容区-->
+    <div class="content-right">
+        <!--右侧列表-->
+        <table id="yustb2">
+            <tr>
+                <th width="120">序号</th>
+                <th width="600">批次名称</th>
+                <th width="600">征集开始时间</th>
+                <th width="600">结束时间</th>
+                <th width="300">教评信息</th>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<div id="pagination" style="position:relative;left:771px;bottom:50px;"></div>
+</body>
+
+</html>
+<script>
+var flag=0;
+    $.ajax({
+        url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/batch/checkBatch',
+        data: JSON.stringify({
+            "batchId": "1",
+            "commonRequest": {
+                "token": localStorage.getItem('token'),
+                "userId": localStorage.getItem('userId')
+            },
+            "pageRequest": {
+                "currentPage": 1,
+                "pageSize": 5
+            }
+        }),
+        contentType: 'application/json',
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+        //总页数设置
+    Pagination.Init(document.getElementById('pagination'), {
+        size: data.data.pages, // pages size
+        page: 1,  // selected page
+        step: 3   // pages before and after current
+    });
+            var num=1;
+            for (i in data.data.records) {
+                var tk;
+                lookevaluation= '<button onclick="lookEvaluation(this)" class="btn" value="'+data.data.records[i].batchId+'">查看</button>'
+                if(data.data.records[i].selectBeginning==null)
+                    selectBeginning="";
+                else{
+                    selectBeginning=data.data.records[i].selectBeginning.replace("T"," ");
+                }
+                if(data.data.records[i].endBeginning==null)
+                    endBeginning="";
+                else{
+                    endBeginning=data.data.records[i].endBeginning.replace("T"," ");
+                }
+                tk = '<td>' + num + '</td>'+'<td>' + data.data.records[i].batchName + '</td>' + '<td>' + selectBeginning + '</td>'+'<td>' + endBeginning + '</td>' +'<td>' + lookevaluation + '</td>'
+                $("#yustb2").append('<tr>' + tk + '</tr>')
+                num++
+            }
+        }
+    })
+//分页条功能
+  function Func(){
+   $("#yustb2 tr:not(:first)").remove();//清空
+    $.ajax({
+        url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/batch/checkBatch',
+        data: JSON.stringify({
+            "batchId": "1",
+            "commonRequest": {
+                "token": localStorage.getItem('token'),
+                "userId": localStorage.getItem('userId')
+            },
+            "pageRequest": {
+                "currentPage": Pagination.page,
+                "pageSize": 5
+            }
+        }),
+        contentType: 'application/json',
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+        //总页数设置
+    Pagination.Init(document.getElementById('pagination'), {
+        size: data.data.pages, // pages size
+        page:Pagination.page,  // selected page
+        step: 3   // pages before and after current
+    });
+            var num=1;
+            for (i in data.data.records) {
+                var tk;
+                lookevaluation= '<button onclick="lookEvaluation(this)" class="btn" value="'+data.data.records[i].batchId+'">查看</button>'
+                if(data.data.records[i].selectBeginning==null)
+                selectBeginning="";
+                else{
+                    selectBeginning=data.data.records[i].selectBeginning.replace("T"," ");
+                }
+                if(data.data.records[i].endBeginning==null)
+                endBeginning="";
+                else{
+                    endBeginning=data.data.records[i].endBeginning.replace("T"," ");
+                }
+                tk = '<td>' + num + '</td>'+'<td>' + data.data.records[i].batchName + '</td>' + '<td>' + selectBeginning + '</td>'+'<td>' + endBeginning + '</td>' +'<td>' + lookevaluation + '</td>'
+                $("#yustb2").append('<tr>' + tk + '</tr>')
+                num++
+            }
+        }
+    })
+  }
+    function lookEvaluation(btn){
+        localStorage.setItem("batchId",$(btn).parents("tr").find(".btn").val())
+        window.location.href="teachingEvaluation.html"
+    }
+</script>

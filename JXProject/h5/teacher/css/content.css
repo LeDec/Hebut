@@ -1,0 +1,25 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+}
+
+
+.content-right {
+    width: 80%;
+    height:520px;
+    background-color: white;
+    margin-right: 30px;
+    margin-top: 15px;
+    /*右浮动*/
+    float: right;
+}

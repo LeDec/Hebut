@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>中期阶段</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<!--    头部导航栏-->
+    <link rel="stylesheet" href="./css/headNav.css">
+<!--    左侧导航栏样式-->
+    <link rel="stylesheet" href="./css/leftNav.css">
+<!--    右侧导航栏样式-->
+    <link rel="stylesheet" href="./css/rightNav.css">
+<!--    右侧列表样式-->
+    <link rel="stylesheet" href="./css/rightForm.css">
+<!--    按钮样式-->
+    <link rel="stylesheet" href="./css/button.css">
+<!--    左侧导航栏js-->
+    <script type="text/javascript" src="js/leftNav.js"></script>
+    <!--    放缩格式-->
+    <script type="text/javascript" src="js/scale.js"></script>
+    <!--    消息提醒红点-->
+    <script type="text/javascript" src="js/news.js"></script>
+    <style>
+
+        /*右侧列表*/
+        #yustb1 {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .content-right {
+            width: 80%;
+            background-color: white;
+            margin-right: 30px;
+            margin-top: 15px;
+            /*右浮动*/
+            float: right;
+        }
+
+        #yustb1 td,
+        #yustb1 th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #yustb1 tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #yustb1 tr:hover {
+            background-color: #ddd;
+        }
+
+        #yustb1 th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #ADD8E6;
+            color: white;
+        }
+        #moreActivity{
+            color: blue;
+            text-decoration: underline;
+            float: right;
+        }
+         #moreProject{
+            color: blue;
+            text-decoration: underline;
+            float: right;
+        }
+        .activityTitle{
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a class="active" href="headmaster.html">匠心训练营</a></li>
+    <li style="float:right"><a class="active" href="myInformation.html"><img src="图片/我的头像.png" height="33px" width="33px"></a></li>
+    <li style="float:right"><a class="active" href="myNews.html"><img src="图片/消息.png" id="XiaoXi" width="33px" height="33px"></a></li>
+</ul>
+
+
+<div class="content">
+    <div class="content-left">
+        <!--菜单栏导航-->
+        <div class="nav">
+            <!--每一个菜单项-->
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="headmaster.html"> <img src="图片/主页.png" width="17px" height="17px" style="position:relative;left:-40px;top:3px">主页</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="studentRegistrationReview.html"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">报名审核</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/学生管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">学生管理</div>
+                <div class="nav-content">
+                    <a href="studentPersonalInformation.html">学生信息</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/过程管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">过程管理</a></div>
+                <div class="nav-contentt">
+                    <a href="stageOne.html" style="background:#87CEFA">中期阶段</a>
+                    <a href="stageTwo.html">答辩阶段</a>
+                    <a href="stageThree.html">后期成果</a>
+                </div>
+            </div>
+
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/成绩管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">成绩管理</div>
+                <div class="nav-content">
+                    <a href="scoreEvaluation.html">成绩评定</a>
+                    <a href="lookScore.html">查看成绩</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="./图片/报销审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">报销管理</div>
+                <div class="nav-content">
+                    <a href="reimBursementReview_Project.html">查看报销</a>
+                    <a href="reimBursementReviewLook.html">审核报销</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="teachingEvaluation.html"><img src="./图片/教评管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">教评管理</a></div>
+            </div>
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="./图片/通知管理图标.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">通知管理</div>
+                <div class="nav-content">
+                    <a href="publishNews.html">发布通知</a>
+                    <a href="manageNews.html">查看通知</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="batch.html"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">往届匠心班</a></div>
+            </div>
+        </div>
+    </div>
+    <!--    右侧导航栏-->
+    <div id="firstpaneDiv" class="menu_list">
+        <h3 class="menu_head current">中期阶段—活动管理
+            <button id="add" onclick="addActivity()" style="float:right;width:63px;height:36px">增加活动</button>
+        </h3>
+    </div>
+    <!--右侧内容区-->
+    <div class="content-right">
+        <table id="yustb2">
+            <tr>
+                <th width="2">序号</th>
+                <th width="40" id="activityTitle">活动标题</th>
+                <th width="10" id="beginning">开始时间</th>
+                <th width="10" id="deadline">结束时间</th>
+                <th width="10" id="">管理</th>
+            </tr>
+        </table>
+        <a id="moreActivity" href="moreActivity.html">更多...</a>
+    </div>
+    <div id="secondpaneDiv" class="menu_list">
+        <h3 class="menu_head current">中期阶段—中期报告</h3>
+    </div>
+    <div class="content-right">
+        <table id="yustb1">
+            <tr>
+                <th width="200">序号</th>
+                <th width="400">项目编号</th>
+                <th width="1600">项目名称</th>
+                <th width="600">指导老师</th>
+                <th width="600">项目来源</th>
+                <th width="300">报告</th>
+            </tr>
+        </table>
+        <a id="moreProject" href="moreProject.html">更多...</a>
+    </div>
+</div>
+</body>
+
+</html>
+<script>
+<!--    添加活动-->
+    function addActivity(){
+        window.location.href = "addActivity.html";
+    }
+//活动列表
+$.ajax({
+    url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port') + '/project/activity/checkActivity',
+    data: JSON.stringify({
+        "batchId": localStorage.getItem('batchId'),
+        "checkRequest": {
+            "commonRequest": {
+                token: localStorage.getItem('token'),
+                userId: localStorage.getItem('userId'),
+            },
+            "pageRequest": {
+                "currentPage": 1,
+                "pageSize": 4
+            },
+        }
+    }),
+    contentType: 'application/json',
+    type: 'post',
+    dataType: 'json',
+    success: function (data) {
+        var num=1;
+        var vals = [];
+        for (i in data.data.records) {
+            beginning=data.data.records[i].beginning.replace(/T/g," ");
+            deadline=data.data.records[i].deadline.replace(/T/g," ");
+            var tk;
+                // tk = '<td>'+num +'</td>'+ '<td>'+ '<a href="javascript:checkActivity(this)" class="activityTitle" >'+ data.data.records[i].activityTitle +'</a>'+ '</td>' + '<td>' + beginning + '<td>' + deadline + '</td>'
+            tk = '<td>'+num +'</td>'+ '<td>'+ data.data.records[i].activityTitle + '</td>' + '<td>' + beginning + '<td>' + deadline + '</td>'+'<td>' + '<button class="check" onclick="checkActivity(this)" value="'+data.data.records[i].activityId+'">'+ '签到</button>'+'<button class="delet" style="margin-left: 20px" onclick="deletActivity(this)" value="'+data.data.records[i].activityId+'">'+ '删除</button>' + '</td>'
+
+            $("#yustb2").append('<tr>' + tk + '</tr>')
+            vals.push(data.data.records[i].activityId);
+                num++;
+        }
+    }
+})
+function checkActivity(btn){
+    var activityId=$(btn).parents("tr").find(".check").val();
+    console.log(activityId)
+    localStorage.setItem("activityId",activityId)
+    window.location.href = "checkActivity.html"
+}
+function deletActivity(btn){
+    var delet=confirm("确认删除该活动吗？");
+    if(delet==true){
+        $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/activity/deleteActivity',
+            data: JSON.stringify({
+                "activityId": $(btn).parents("tr").find(".delet").val(),
+                "commonRequest": {
+                    "token": localStorage.getItem('token'),
+                    "userId": localStorage.getItem('userId')
+                },
+            }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                window.location.reload()
+            }
+        })
+    }else{}
+}
+//
+$(function () {
+    $.ajax({
+        url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project/showAllProject',
+        data: JSON.stringify({
+            "batchId": localStorage.getItem('batchId'),
+            "commonRequest": {
+                "token": localStorage.getItem('token'),
+                "userId": localStorage.getItem('userId')
+            },
+            "pageRequest": {
+                "currentPage": 1,
+                "pageSize": 5
+            },
+            "projectType": "1",
+            projectStage: ""
+        }),
+        contentType: 'application/json',
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            var num=1;
+            if(data.code==0) {
+                for (i in data.data.showProjectResponsePage.records) {
+                    var tk;
+                    lookcontent = '<button onclick="lookContent(this)" class="projectId" value="'+data.data.showProjectResponsePage.records[i].projectId+'">详情</button>',
+                        tk ='<td>' + num + '</td>'+ '<td>' + data.data.showProjectResponsePage.records[i].projectSymbol + '</td>' + '<td>' + data.data.showProjectResponsePage.records[i].projectName + '</td>' + '<td>' + data.data.showProjectResponsePage.records[i].projectTeacher + '</td>' + '<td>' + data.data.showProjectResponsePage.records[i].projectOrigin + '</td>' + '<td>' + lookcontent + '</td>'
+                    $("#yustb1").append('<tr>' + tk + '</tr>')
+                    num++
+                }
+            }
+
+        }
+    })
+})
+
+function lookContent(btn){
+    var content = $(btn).parents("tr").find(".projectId").val()
+    localStorage.setItem('projectId', content);
+    window.location.href="checkMaterialOne.html"
+}
+
+</script>

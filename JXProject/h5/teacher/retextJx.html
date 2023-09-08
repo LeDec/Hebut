@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>匠心训练营</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <!--    兼容浏览器、整体布局-->
+    <link rel="stylesheet" href="./css/content.css">
+    <!--    头部导航栏-->
+    <link rel="stylesheet" href="./css/headNav.css">
+    <!--    左侧导航栏样式-->
+    <link rel="stylesheet" href="./css/leftNav.css">
+    <!--    右侧导航栏-->
+    <link rel="stylesheet" href="./css/rightNav.css">
+    <!--    右侧表格-->
+    <link rel="stylesheet" href="./css/rightForm.css">
+    <!--    按钮样式-->
+    <link rel="stylesheet" href="./css/button.css">
+    <!--    分页样式-->
+    <link rel="stylesheet" href="./css/page.css">
+    <!--    左侧导航栏js-->
+    <script type="text/javascript" src="js/leftNav.js"></script>
+    <!--    消息提醒红点-->
+   <script type="text/javascript" src="js/news.js"></script>
+    <!--    放缩格式-->
+    <script type="text/javascript" src="js/scale.js"></script>
+    <!--    分页加载-->
+    <script type="text/javascript" src="js/page.js"></script>
+</head>
+<body>
+<ul>
+    <li><a class="active" href="student.html">匠心训练营</a></li>
+    <li style="float:right"><a class="active" href="myInformation.html"><img src="图片/我的头像.png" height="33px" width="33px"></a></li>
+    <li style="float:right"><a class="active" href="myNews.html"><img src="图片/消息.png" id="XiaoXi" width="33px" height="33px"></a></li>
+</ul>
+
+<div class="content">
+    <div class="content-left">
+        <!--菜单栏导航-->
+        <div class="nav">
+            <!--每一个菜单项-->
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="teacher.html"> <img src="图片/主页.png" width="17px" height="17px" style="position:relative;left:-40px;top:3px">主页</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a><img src="./图片/项目申报.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">项目申报</a></div>
+                <div class="nav-content">
+                    <a href="declareJx.html">申报匠心项目</a>
+                    <a href="declareOther.html">申报其他项目</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">报名审核</div>
+                <div class="nav-contentt">
+                    <a href="retextJx.html" style="background:#87CEFA">匠心复试</a>
+                    <a href="otherProject.html">其他项目</a>
+                </div>
+            </div>
+
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="stageManage.html"><img src="图片/过程管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">过程管理</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/成绩管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">成绩评定</div>
+                <div class="nav-content">
+                    <a href="scoreEvaluation.html">评定平时成绩</a>
+                    <a href="lookScore.html">查看成绩</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="teachingEvaluation.html"><img src="./图片/教评管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">查看教评</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="batch.html"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">往届匠心班</a></div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <!--右侧导航栏-->
+    <div id="firstpaneDiv" class="menu_list">
+        <h3 class="menu_head current">报名审核</h3>
+    </div>
+
+    <!--查找-->
+    <form method="post">
+        </br></br></br></br>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        项目编号：<input type="text" id="projectSymbol" style="width:150px"/>
+        &nbsp&nbsp
+        项目名称：<input type="text" id="projectName" style="width:150px"/>
+        &nbsp&nbsp
+        姓名：<input type="text" id="name" style="width:50px"/>
+        &nbsp&nbsp
+        学号：<input type="text" id="userId" style="width:150px"/>
+        &nbsp&nbsp
+        <a><img src="图片/sousuo.png" id="search" style="width:25px;height:25px;position:relative;top:5px;"/></a>
+    </form>
+    <!--右侧内容区-->
+    <div class="content-right">
+
+        <!--右侧列表-->
+        <table id="yustb2">
+            <tr>
+                <th width="400">序号</th>
+                <th width="400">编号</th>
+                <th width="2400">申请项目名称</th>
+                <th width="700">申请人姓名</th>
+                <th width="900">申请人学号</th>
+                <th width="400">报名表</th>
+                <th width="1700">学院</th>
+                <th width="1000">操作</th>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+<div id="pagination" style="position:relative;left:771px;bottom:50px;"></div>
+</html>
+<script>
+var flag=0;
+    //显示报名列表
+    $(function () {
+        $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/application/checkAuditRetest',
+            data: JSON.stringify({
+                batchId: localStorage.getItem('batchId'),
+                checkRequest: {
+                    "commonRequest": {
+                        "token": localStorage.getItem('token'),
+                        "userId": localStorage.getItem('userId')
+                    },
+                    "pageRequest": {
+                        "currentPage": 1,
+                        "pageSize": 9
+                    },
+                }
+                }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+            var num=0;
+             //总页数设置
+    Pagination.Init(document.getElementById('pagination'), {
+        size: data.data.pages, // pages size
+        page: 1,  // selected page
+        step: 3   // pages before and after current
+    });
+                for (i in data.data.records) {
+                    var tk;
+                    num++;
+                    lookcontent = '<button onclick="lookContent(this)" class="loookContent" value="'+data.data.records[i].enrollId+'">查看</button>',
+                        isPassStr='<button onclick="isPass(this)" class="isPass" value="'+data.data.records[i].enrollId+'">√</button>'
+                    nbs='<a>&nbsp&nbsp&nbsp&nbsp</a>';
+                    noPassStr='<button onclick="noPass(this)" class="isPass" value="'+data.data.records[i].enrollId+'">×</button>'
+                        if (data.data.records[i].enrollStage=="复试已通过"){
+                            tk = '<td>' + num + '</td>' +'<td>' + data.data.records[i].projectSymbol + '</td>' + '<td>' + data.data.records[i].projectName + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].userId + '</td>' +'<td>' + lookcontent + '</td>' + '</td>' + '<td>'+ data.data.records[i].institute +'</td>'+'<td>'+ "已通过" +'</td>'
+                        }else if(data.data.records[i].enrollStage=="复试未通过"){
+                            tk =  '<td>' + num + '</td>' +'<td>' + data.data.records[i].projectSymbol + '</td>' +'<td>' + data.data.records[i].projectName + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].userId + '</td>' +'<td>' + lookcontent + '</td>' + '</td>' + '<td>'+ data.data.records[i].institute +'</td>'+'<td>'+ "未通过" +'</td>'
+                        }else
+                        tk =  '<td>' + num + '</td>' +'<td>' + data.data.records[i].projectSymbol + '</td>' +'<td>' + data.data.records[i].projectName + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].userId + '</td>' +'<td>' + lookcontent + '</td>' + '</td>' + '<td>'+ data.data.records[i].institute +'</td>'+'<td>'+ isPassStr +nbs+ noPassStr +'</td>'
+                    $("#yustb2").append('<tr>' + tk + '</tr>')
+
+                }
+            }
+        })
+    })
+    //分页条功能
+  function Func(){
+        console.log("1")
+   $("#yustb2 tr:not(:first)").remove();//清空
+   $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/application/checkAuditRetest',
+            data: JSON.stringify({
+                batchId: localStorage.getItem('batchId'),
+                checkRequest: {
+                    "commonRequest": {
+                        "token": localStorage.getItem('token'),
+                        "userId": localStorage.getItem('userId')
+                    },
+                    "pageRequest": {
+                        "currentPage": Pagination.page,
+                        "pageSize": 9
+                    },
+                }
+                }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+            var num=0;
+             //总页数设置
+    Pagination.Init(document.getElementById('pagination'), {
+        size: data.data.pages, // pages size
+        page:Pagination.page,  // selected page
+        step: 3   // pages before and after current
+    });
+                $("#yustb2 tr:not(:first)").remove();//清空
+
+                for (i in data.data.records) {
+                    var tk;
+                    num++;
+                    lookcontent = '<button onclick="lookContent(this)" class="loookContent" value="'+data.data.records[i].enrollId+'">查看</button>',
+                        isPassStr='<button onclick="isPass(this)" class="isPass" value="'+data.data.records[i].enrollId+'">√</button>'
+                    nbs='<a>&nbsp&nbsp&nbsp&nbsp</a>';
+                    noPassStr='<button onclick="noPass(this)" class="isPass" value="'+data.data.records[i].enrollId+'">×</button>'
+                        if (data.data.records[i].enrollStage=="复试已通过"){
+                            tk = '<td>' + num + '</td>' +'<td>' + data.data.records[i].projectSymbol + '</td>' + '<td>' + data.data.records[i].projectName + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].userId + '</td>' +'<td>' + lookcontent + '</td>' + '</td>' + '<td>'+ data.data.records[i].institute +'</td>'+'<td>'+ "已通过" +'</td>'
+                        }else if(data.data.records[i].enrollStage=="复试未通过"){
+                            tk =  '<td>' + num + '</td>' +'<td>' + data.data.records[i].projectSymbol + '</td>' +'<td>' + data.data.records[i].projectName + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].userId + '</td>' +'<td>' + lookcontent + '</td>' + '</td>' + '<td>'+ data.data.records[i].institute +'</td>'+'<td>'+ "未通过" +'</td>'
+                        }else
+                        tk =  '<td>' + num + '</td>' +'<td>' + data.data.records[i].projectSymbol + '</td>' +'<td>' + data.data.records[i].projectName + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].userId + '</td>' +'<td>' + lookcontent + '</td>' + '</td>' + '<td>'+ data.data.records[i].institute +'</td>'+'<td>'+ isPassStr +nbs+ noPassStr +'</td>'
+                    $("#yustb2").append('<tr>' + tk + '</tr>')
+
+                }
+            }
+        })
+  }
+    //查看报名表
+    function lookContent(btn){
+        console.log($(btn).parents("tr").find(".loookContent").val())
+        $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/application/downloadApplication',
+            data: JSON.stringify({
+                "applicationId": $(btn).parents("tr").find(".loookContent").val(),
+                "commonRequest": {
+                    "token": localStorage.getItem('token'),
+                    "userId": localStorage.getItem('userId')
+                }
+            }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                localStorage.setItem('name', data.data.fileName);
+                window.location.href = "../picture_appliwcation.html";
+                // $.dynamicSubmit('http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/file/download',{fileName:data.data.fileName,filePath:data.data.filePath});
+            }
+        })
+    }
+    $.dynamicSubmit = function (url, datas) {
+
+        var form = $('#dynamicForm');
+
+        if (form.length <= 0) {
+            form = $("<form>");
+            form.attr('id', 'dynamicForm');
+            form.attr('style', 'display:none');
+            form.attr('target', '');
+            form.attr('method', 'post');
+
+            $('body').append(form);
+        }
+
+        form = $('#dynamicForm');
+        form.attr('action', url);
+        form.empty();
+
+        if (datas && typeof (datas) == 'object') {
+            for (var item in datas) {
+                var $_input = $('<input>');
+                $_input.attr('type', 'hidden');
+                $_input.attr('name', item);
+                $_input.val(datas[item]);
+
+                $_input.appendTo(form);
+            }
+        }
+
+        form.submit();
+    }
+
+    //通过/不通过方法
+    function  isPass(btn){
+        var vals = [];
+        vals.push($(btn).val());
+        $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/application/auditRetest',
+            data: JSON.stringify({
+                "applicantId": vals,
+                "commonRequest": {
+                    "token": localStorage.getItem('token'),
+                    "userId": localStorage.getItem('userId')
+                },
+                "isPass":1
+            }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                if(data.code==0){
+                    alert("操作成功"),
+                        //刷新
+                        location.reload([true])
+                }else{
+                    alert(data.msg)
+                }
+            }
+        })
+
+    }
+    function  noPass(btn){
+        var vals = [];
+        vals.push($(btn).val());
+        $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/application/auditApplication',
+            data: JSON.stringify({
+                "applicantId": vals,
+                "commonRequest": {
+                    "token": localStorage.getItem('token'),
+                    "userId": localStorage.getItem('userId')
+                },
+                "isPass":0
+            }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                if(data.code==0){
+                    alert("操作成功"),
+                        //刷新
+                        location.reload([true])
+                }else{
+                    alert(data.msg)
+                }
+            }
+        })
+
+    }
+    //搜索
+    $(document).ready(function(){
+        $("#yustb2 tr:not(:first)").remove();//清空
+        $('#search').bind('click',function(){
+            flag=1;
+            $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/application/searchAuditRetest',
+                data: JSON.stringify({
+                    "applicantName": $("#name").val(),
+                    "applicantUserId":$("#userId").val() ,
+                    "batchId":localStorage.getItem("batchId"),
+                    "checkRequest": {
+                        "commonRequest": {
+                            "token": localStorage.getItem('token'),
+                            "userId": localStorage.getItem('userId')
+                        },
+                        "pageRequest": {
+                            "currentPage": 1,
+                            "pageSize": 9
+                        }
+                    },
+                    "projectSymbol":$("#projectSymbol").val() ,
+                    "projectName": $("#projectName").val(),
+                    "projectId": ""
+                }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+                    $("#yustb2 tr:not(:first)").remove();//清空
+                    var num=0
+                    for (i in data.data.records) {
+                        var tk;
+                        num++;
+                        lookcontent = '<button onclick="lookContent(this)" class="loookContent" value="'+data.data.records[i].enrollId+'">查看</button>',
+                            isPassStr='<button onclick="isPass(this)" class="isPass" value="'+data.data.records[i].enrollId+'">√</button>'
+                        nbs='<a>&nbsp&nbsp&nbsp&nbsp</a>';
+                        noPassStr='<button onclick="noPass(this)" class="isPass" value="'+data.data.records[i].enrollId+'">×</button>'
+                        if (data.data.records[i].enrollStage=="复试已通过"){
+                            tk = '<td>' + num + '</td>' +'<td>' + data.data.records[i].projectSymbol + '</td>' + '<td>' + data.data.records[i].projectName + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].userId + '</td>' +'<td>' + lookcontent + '</td>' + '</td>' + '<td>'+ data.data.records[i].institute +'</td>'+'<td>'+ "已通过" +'</td>'
+                        }else if(data.data.records[i].enrollStage=="复试未通过"){
+                            tk =  '<td>' + num + '</td>' +'<td>' + data.data.records[i].projectSymbol + '</td>' +'<td>' + data.data.records[i].projectName + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].userId + '</td>' +'<td>' + lookcontent + '</td>' + '</td>' + '<td>'+ data.data.records[i].institute +'</td>'+'<td>'+ "未通过" +'</td>'
+                        }else
+                            tk =  '<td>' + num + '</td>' +'<td>' + data.data.records[i].projectSymbol + '</td>' +'<td>' + data.data.records[i].projectName + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].userId + '</td>' +'<td>' + lookcontent + '</td>' + '</td>' + '<td>'+ data.data.records[i].institute +'</td>'+'<td>'+ isPassStr +nbs+ noPassStr +'</td>'
+                        $("#yustb2").append('<tr>' + tk + '</tr>')
+
+                    }
+                }
+            })
+        });
+    });
+function Search(){
+    $("#yustb2 tr:not(:first)").remove();//清空
+    $.ajax({
+        url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/application/searchAuditRetest',
+        data: JSON.stringify({
+            "applicantName": $("#name").val(),
+            "applicantUserId":$("#userId").val() ,
+            "batchId":localStorage.getItem("batchId"),
+            "checkRequest": {
+                "commonRequest": {
+                    "token": localStorage.getItem('token'),
+                    "userId": localStorage.getItem('userId')
+                },
+                "pageRequest": {
+                    "currentPage": 1,
+                    "pageSize": 9
+                }
+            },
+            "projectSymbol":$("#projectSymbol").val() ,
+            "projectName": $("#projectName").val(),
+            "projectId": ""
+        }),
+        contentType: 'application/json',
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            var num=0;
+            //总页数设置
+            Pagination.Init(document.getElementById('pagination'), {
+                size: data.data.pages, // pages size
+                page:Pagination.page,  // selected page
+                step: 3   // pages before and after current
+            });
+            for (i in data.data.records) {
+                var tk;
+                num++;
+                lookcontent = '<button onclick="lookContent(this)" class="loookContent" value="'+data.data.records[i].enrollId+'">查看</button>',
+                    isPassStr='<button onclick="isPass(this)" class="isPass" value="'+data.data.records[i].enrollId+'">√</button>'
+                nbs='<a>&nbsp&nbsp&nbsp&nbsp</a>';
+                noPassStr='<button onclick="noPass(this)" class="isPass" value="'+data.data.records[i].enrollId+'">×</button>'
+                if (data.data.records[i].enrollStage=="复试已通过"){
+                    tk = '<td>' + num + '</td>' +'<td>' + data.data.records[i].projectSymbol + '</td>' + '<td>' + data.data.records[i].projectName + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].userId + '</td>' +'<td>' + lookcontent + '</td>' + '</td>' + '<td>'+ data.data.records[i].institute +'</td>'+'<td>'+ "已通过" +'</td>'
+                }else if(data.data.records[i].enrollStage=="复试未通过"){
+                    tk =  '<td>' + num + '</td>' +'<td>' + data.data.records[i].projectSymbol + '</td>' +'<td>' + data.data.records[i].projectName + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].userId + '</td>' +'<td>' + lookcontent + '</td>' + '</td>' + '<td>'+ data.data.records[i].institute +'</td>'+'<td>'+ "未通过" +'</td>'
+                }else
+                    tk =  '<td>' + num + '</td>' +'<td>' + data.data.records[i].projectSymbol + '</td>' +'<td>' + data.data.records[i].projectName + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].userId + '</td>' +'<td>' + lookcontent + '</td>' + '</td>' + '<td>'+ data.data.records[i].institute +'</td>'+'<td>'+ isPassStr +nbs+ noPassStr +'</td>'
+                $("#yustb2").append('<tr>' + tk + '</tr>')
+
+            }
+        }
+    })
+}
+</script>

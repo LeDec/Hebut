@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>匠心训练项目</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <link href="css/page.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+/*已分配*/
+    input[type="checkbox"]:disabled{
+    cursor: not-allowed;
+    color: #999;
+  }
+          /*按钮样式*/
+         button {
+	                width: 58px;
+	                height: 25px;
+	                color: #fff;
+	                background-color: #6495ED;
+	                border: none;
+	                border-radius: 10px;
+	                box-shadow: 0 2px #27496d;
+                 }
+         button:hover{
+            cursor: pointer;
+         }
+
+
+        /*兼容浏览器*/
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+        }
+
+          .content-left {
+              width: 15%;
+              height: 888px;
+              background-color: #F0F8FF;
+              /*左浮动*/
+              float: left;
+              box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+          }
+
+          .content-right {
+              width: 80%;
+              height: 755px;
+              background-color: white;
+              margin-right: 30px;
+              margin-top: 15px;
+              box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+              /*右浮动*/
+              float: right;
+          }
+
+        .left-title {
+            height: 100px;
+        }
+
+        /*a标签变成块状元素并居中*/
+        .left-title>a {
+            display: block;
+            width: 100%;
+            height: 50px;
+            font-size: 20px;
+            /*垂直居中*/
+            line-height: 100px;
+            /*内联元素及块状元素，水平居中*/
+            text-align: center;
+            /*字体颜色*/
+            color: black;
+            /*去掉a标签默认下划线*/
+            text-decoration: none;
+        }
+
+        /*分割线*/
+        .seg {
+            height: 2px;
+            width: 100%;
+            background-color: white;
+        }
+
+        .nav {
+            margin: 2px 0;
+        }
+
+        /*菜单项主标题*/
+        .nav-title {
+            height: 40px;
+            width: 100%;
+            color: black;
+            /*水平居中*/
+            text-align: center;
+            /*垂直居中*/
+            line-height: 40px;
+            /*鼠标移到该处变小手*/
+            cursor: pointer;
+        }
+
+        .nav-title>a {
+            display: block;
+            height: 30px;
+            width: 100%;
+            color: black;
+
+            text-decoration: none;
+            text-align: center;
+
+        }
+
+
+        /*子标题内容区*/
+        .nav-content {
+            width: 100%;
+            height: 100%;
+            background-color: #6495ED;
+        }
+
+        .nav-content>a {
+            display: block;
+            height: 30px;
+            width: 100%;
+            color: #F0F8FF;
+            background-color: #ADD8E6;
+            text-decoration: none;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+        }
+
+        /*设置鼠标划过特效*/
+        .nav-content>a:hover {
+            display: block;
+            height: 30px;
+            width: 100%;
+            color: #F0F8FF;
+            text-decoration: none;
+            text-align: center;
+            line-height: 30px;
+            background-color: #87CEFA;
+        }
+         .nav-contentt {
+            width: 100%;
+            height: 100%;
+            background-color: #6495ED;
+        }
+
+        .nav-contentt>a {
+            display: block;
+            height: 30px;
+            width: 100%;
+            color: #F0F8FF;
+            background-color: #ADD8E6;
+            text-decoration: none;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+        }
+
+        /*设置鼠标划过特效*/
+        .nav-contentt>a:hover {
+            display: block;
+            height: 30px;
+            width: 100%;
+            color: #F0F8FF;
+            text-decoration: none;
+            text-align: center;
+            line-height: 30px;
+            background-color: #87CEFA;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid #e7e7e7;
+            background-color: #6495ED;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: #666;
+            text-align: center;
+            padding: 4px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #6495ED;
+        }
+
+        li a.active {
+            color: white;
+            background-color: #6495ED;
+            font-size: 18px;
+        }
+
+
+        /*右侧列表*/
+        #yustb2 {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #yustb2 td,
+        #yustb2 th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #yustb2 tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #yustb2 tr:hover {
+            background-color: #ddd;
+        }
+
+        #yustb2 th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #ADD8E6;
+            color: white;
+        }
+
+    .menu_list {
+        width: 85%;
+        margin: 0;
+        float: right;
+    }
+
+    .menu_head {
+      height: 47px;
+      line-height: 47px;
+      padding-left: 38px;
+      font-size: 14px;
+      color: #525252;
+      cursor: pointer;
+      border: 1px solid #f1f1f1;
+      position: relative;
+      margin: 0px;
+      font-weight: bold;
+      background: #51a9f18c;
+    }
+
+    .menu_list .current {
+      background: #51a9f18c;
+    }
+
+    .menu_nva2{
+        width: 35%;
+        line-height: 38px;
+        border-left: 1px solid #51a9f18c;
+        backguound: #fff;
+        border-top: 2px solid #51a9f18c;
+        border-bottom: 1px solid #51a9f18c;
+        margin: 10px 0 10px 10px;
+        float: right;
+    }
+    .menu_nva1{
+        width: 62.9%;
+        line-height: 38px;
+        backguound: #fff;
+        border-right: 1px solid #51a9f18c;
+        border-top: 2px solid #51a9f18c;
+        border-bottom: 1px solid #51a9f18c;
+        margin: 10px 10px 10px 0;
+        float: right;
+    }
+
+    .menu_nva1 a,
+    .menu_nva2 a{
+      display: block;
+      height: 38px;
+      line-height: 38px;
+      padding-left: 38px;
+      color: #777777;
+      background: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid #51a9f18c;
+    }
+    .menu_nva2 a>span{
+        display: inline-block;
+        width: 100px;
+    }
+    .menu_nva1 a>span:nth-child(2){
+        position: relative;
+        left:60px ;
+    }
+    .menu_nva1 a>span:nth-child(3){
+        position: relative;
+        left:120px ;
+    }
+    .menu_nva2 a>span:nth-child(2){
+         position: relative;
+         left:160px ;
+     }
+    .menu_nva2 a>span:nth-child(1){
+        position: relative;
+        left:50px ;
+    }
+    .menu_nva1 a:hover,
+    .menu_nva2 a:hover{
+      text-decoration: none;
+    }
+
+    .menu_nva2 a:nth-child(1),
+    .menu_nva2 a:nth-child(10){
+        padding-left: 20px;
+        font-weight: bold;
+    }
+
+    </style>
+
+    <!--表格的script-->
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#firstpaneDiv .menu_nva:eq(0)").show();
+            $("#firstpaneDiv h3.menu_head").click(function () {
+                $(this).addClass("current").next("div.menu_nva").slideToggle(200).siblings("div.menu_nva").slideUp("slow");
+                $(this).siblings().removeClass("current");
+            });
+            $("#secondpane .menu_nva:eq(0)").show();
+            $("#secondpane h3.menu_head").mouseover(function () {
+                $(this).addClass("current").next("div.menu_nva").slideDown(400).siblings("div.menu_nva").slideUp("slow");
+                $(this).siblings().removeClass("current");
+            });
+        });
+    </script>
+
+    <!--垂直导航栏的script-->
+    <script type="text/javascript">
+        /*当整个html文档加载完成之后再执行此函数*/
+        $(function () {
+            /*隐藏所有子标题*/
+            $(".nav-menu").each(function () {
+                $(this).children(".nav-content").hide();
+            });
+            /*给所有的菜单项主标题绑定事件*/
+            $(".nav-title").each(function () {
+                $(this).click(function () {
+                    //当我点击主标题时，其子标题区展示出来
+                    //获取当前点击主标题下的子标题内容区
+
+                    var conEle = $(this).parents(".nav-menu").children(".nav-content");
+                    //判断conEle对象的display属性值是否为none
+                    if (conEle.css("display") != "none") {
+                        //隐藏
+                        conEle.hide(500);//延时隐藏500毫秒
+                    }
+                    else {
+                        //当要展开某一个子标题列表时需要其他所有子标题列表关闭
+                        var navEle = conEle.parents(".nav-menu");
+                        //找到除自己之外的其他所有兄弟节点
+                        var menuEle = navEle.siblings();
+                        menuEle.each(function () {
+                            $(this).children(".nav-content").hide(500);
+                        });
+
+                        //展示
+                        conEle.show(500);//延时展示500毫秒
+                    }
+                });
+            });
+        });
+         $(function () {
+            /*隐藏所有子标题*/
+            $(".nav-menu").each(function () {
+                $(this).children(".nav-content").hide();
+            });
+            /*给所有的菜单项主标题绑定事件*/
+            $(".nav-title").each(function () {
+                $(this).click(function () {
+                    //当我点击主标题时，其子标题区展示出来
+                    //获取当前点击主标题下的子标题内容区
+
+                    var conEle = $(this).parents(".nav-menu").children(".nav-contentt");
+                    //判断conEle对象的display属性值是否为none
+                    if (conEle.css("display") != "none") {
+                        //隐藏
+                        conEle.hide(500);//延时隐藏500毫秒
+                    }
+                    else {
+                        //当要展开某一个子标题列表时需要其他所有子标题列表关闭
+                        var navEle = conEle.parents(".nav-menu");
+                        //找到除自己之外的其他所有兄弟节点
+                        var menuEle = navEle.siblings();
+                        menuEle.each(function () {
+                            $(this).children(".nav-contentt").hide(500);
+                        });
+
+                        //展示
+                        conEle.show(500);//延时展示500毫秒
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+<ul>
+    <li><a class="active" href="Administrator.html">匠心训练营</a></li>
+    <li style="float:right"><a class="active" href="M_MyInformation.html"><img src="图片/我的头像.png" height="33px" width="33px"></a></li>
+    <li style="float:right"><a class="active" href="M_MyNews.html"><img src="图片/消息.png" id="XiaoXi" width="33px" height="33px"></a></li>
+</ul>
+
+
+
+
+<div class="content">
+    <div class="content-left">
+        <!--菜单栏导航-->
+        <div class="nav">
+            <!--每一个菜单项-->
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="Administrator.html"> <img src="图片/主页图标.png" width="17px" height="17px" style="position:relative;left:-40px;top:3px">主页</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/项目管理图标.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">项目管理</div>
+                <div class="nav-contentt">
+                    <a href="javascript:void(0)" onclick="nowJx()" style="background-color:#87CEFA">当下匠心项目</a>
+                    <a  href="J_PerJxProject.html">往届匠心项目</a>
+                    <a href="J_OtherProject.html">其他项目</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/教师管理图标.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">教师管理</div>
+                <div class="nav-content">
+                    <a href="T_Account.html">账号管理</a>
+                    <a href="T_Jurisdiction.html">权限管理</a>
+                </div>
+            </div>
+
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="S_Student.html"><img src="图片/学生管理图标.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">学生管理</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/成绩管理图标.png" width="16px" height="16px" style="position:relative;left:-26px;top:3px">成绩管理</div>
+                <div class="nav-content">
+                    <a href="G_Manage.html">成绩管理</a>
+                    <a href="G_Set.html">成绩设置</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/评教管理图标.png" width="16px" height="16px" style="position:relative;left:-26px;top:3px">教评管理</div>
+                <div class="nav-content">
+                    <a href="E_EvaluationSet.html">评教设置</a>
+                    <a href="E_LookRank.html">查看教评</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/报销管理图标.png" width="17px" height="17px" style="position:relative;left:-28px;top:3px">报销管理</div>
+                <div class="nav-content">
+                    <a href="R_Audit.html">审核报销</a>
+                    <a href="R_Look.html">查看报销</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/通知管理图标.png" width="17px" height="17px" style="position:relative;left:-28px;top:3px">通知管理</div>
+                <div class="nav-content">
+                    <a href="N_PublishNews.html">发布通知</a>
+                    <a href="N_ManageNews.html">管理通知</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+        </div>
+    </div>
+    <!--        右侧导航栏-->
+    <div id="firstpaneDiv" class="menu_list">
+        <h3 class="menu_head current">征集阶段-专家选择</h3>
+    </div>
+    <!--右侧内容区-->
+    <div class="content-right">
+        <div style="display:block" class="menu_nva1">
+            <a></a>
+            <a></a>
+        </div>
+        <div style="display:block" class="menu_nva2">
+            <a id="qi" style="padding-left: 20px;font-size:20px;font-weight: bold;"></a>
+            <a id="theme" style="padding-left: 18px;font-size:18px;font-weight: bold;">主题:</a>
+        </div>
+        </br></br></br></br></br></br>
+        <table id="yustb2">
+            <tr>
+                <th width="300"></th>
+                <th width="300">编号</th>
+                <th width="300">工号</th>
+                <th width="1000">姓名</th>
+                <th width="2000">学院</th>
+                <th width="600">邮箱</th>
+                <th width="500">分配状态</th>
+            </tr>
+        </table>
+        </br></br>
+        <button onclick="isPass(this)" class="pass" value="1">分配</button>
+    </div>
+    <div id="pagination" style="position:relative;left:771px;bottom:50px;"></div>
+</div>
+<script type="text/javascript">
+var flag=0;
+$(function () {
+            $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/batch/nowBatch',
+                data: JSON.stringify({
+                 "commonRequest": {
+                                token: localStorage.getItem('token'),
+                                userId: localStorage.getItem('userId'),
+                                  }
+                }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+               localStorage.setItem('batchId',data.data.batchId);
+               document.getElementById("qi").innerText=data.data.batchName+"匠心班";
+               document.getElementById("theme").innerText="主题："+data.data.batchTheme;
+                }
+            })
+        })
+
+$(function () {
+            $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/inform/checkInform',
+                data: JSON.stringify({
+                 "commonRequest": {
+                                token: localStorage.getItem('token'),
+                                userId: localStorage.getItem('userId'),
+                                  },
+                   "pageRequest": {
+                                "currentPage": 1,
+                                "pageSize": 5
+                                   },
+                }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+                if(data.data.records[0].isRead==0){
+                var element = document.getElementById('XiaoXi');
+                element.src = "图片/消息2.png";
+                }
+                }
+            })
+        })
+
+ $(function () {
+           $("#Stage").append(localStorage.getItem('batchName'));
+           $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/user/searchTeacher',
+                data: JSON.stringify({
+                checkRequest:{
+                        "commonRequest": {
+                            "token": localStorage.getItem('token'),
+                            "userId": localStorage.getItem('userId')
+                        },
+                        "pageRequest": {
+                            "currentPage": 1,
+                            "pageSize": 9
+                        }},
+                        "institute": "",
+                         "teacherId": "",
+                         "teacherName": "",
+                         "userType": "4"
+                        }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+          //总页数设置
+    Pagination.Init(document.getElementById('pagination'), {
+        size: data.data.pages, // pages size
+        page:  1,  // selected page
+        step: 3   // pages before and after current
+    });
+                    for (i in data.data.records) {
+                            var tk;
+                            var state="";
+                             var num=parseInt(i)+1;
+                            if(data.data.records[i].isPromote==1)
+                            {
+                             state="已分配";
+                             input='<input type="checkbox" disabled name="ck" value="'+data.data.records[i].userId+'">',
+                            tk = '<td>' + input + '</td>' +'<td>' + num + '</td>' + '<td>' + data.data.records[i].userId + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].institute + '</td>'   + '<td>' + data.data.records[i].email+ '</td>' + '<td>' + state+ '</td>'
+                            }
+
+                            else
+                            {
+                             state="未分配";
+                             input='<input type="checkbox" name="ck" value="'+data.data.records[i].userId+'">',
+                            tk = '<td>' + input + '</td>' +'<td>' + num + '</td>' + '<td>' + data.data.records[i].userId + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].institute + '</td>'   + '<td>' + data.data.records[i].email+ '</td>' + '<td>' + state+ '</td>'
+                            }
+
+                            $("#yustb2").append('<tr>' + tk + '</tr>')
+
+                    }
+                }
+            })
+        })
+
+   function  isPass(btn){
+    var isPass=$(btn).val()
+    //获取多个复选框勾选对应的enrollId
+    var vals = [];
+    $('input:checkbox:checked').each(function (index, item) {
+        vals.push($(this).val());
+    });
+    $.ajax({
+        url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/user/promoteUser',
+        data: JSON.stringify({
+            "userIdList": vals,
+            "commonRequest": {
+                "token": localStorage.getItem('token'),
+                "userId": localStorage.getItem('userId')
+            }
+        }),
+        contentType: 'application/json',
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            if(data.code==0){
+                alert("分配成功！"),
+                //刷新
+                location.reload([true])
+            }else{
+                alert(data.msg)
+            }
+        }
+    })
+
+}
+
+//分页条功能
+  function Func(){
+  var num=0;
+   $("#yustb2 tr:not(:first)").remove();//清空
+      $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/user/searchTeacher',
+                data: JSON.stringify({
+                checkRequest:{
+                        "commonRequest": {
+                            "token": localStorage.getItem('token'),
+                            "userId": localStorage.getItem('userId')
+                        },
+                        "pageRequest": {
+                            "currentPage": Pagination.page,
+                            "pageSize": 9
+                        }},
+                        "institute": "",
+                         "teacherId": "",
+                         "teacherName": "",
+                         "userType": "4"
+                        }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+          //总页数设置
+    Pagination.Init(document.getElementById('pagination'), {
+        size: data.data.pages, // pages size
+        page:  Pagination.page,  // selected page
+        step: 3   // pages before and after current
+    });
+                    for (i in data.data.records) {
+                            var tk;
+                            var state="";
+                            if(data.data.records[i].isPromote==1)
+                            state="已分配";
+                            else
+                            state="未分配";
+                            var num=parseInt(i)+1;
+                             input='<input type="checkbox" name="ck" value="'+data.data.records[i].userId+'">',
+                            tk = '<td>' + input + '</td>' +'<td>' + num + '</td>' + '<td>' + data.data.records[i].userId + '</td>' + '<td>' + data.data.records[i].userName + '</td>' + '<td>' + data.data.records[i].institute + '</td>'   + '<td>' + data.data.records[i].email+ '</td>' + '<td>' + state+ '</td>'
+                            $("#yustb2").append('<tr>' + tk + '</tr>')
+
+                    }
+                }
+            })
+  }
+
+</script>
+</body>
+
+</html>
+<script>
+    //body初始化事件
+    //body标签加οnlοad='方法名()'
+    //function 方法名(){
+    //   初始化操作
+    //   }
+    function init(){
+        //获取显示器宽度
+        var widths=window.screen.width;
+        //body的宽与显示器一致(浏览器最大化的时候可以用)
+        document.body.style.width=widths+'px';
+    }
+    //监听浏览器的宽度变化
+    window.onresize=function(){
+        //获取浏览器当前的宽度
+        var innerwidths =window.innerWidth;
+        //获取当前显示器的宽度(一般情况下显示器的宽度是不会变得的)
+        var widths=window.screen.width;
+
+        //如果显示器宽度等于浏览器宽度那么这个情况大多数是最大化的时候
+        if(innerwidths==widths){
+            //所以直接把显示器的宽度赋给body
+            document.body.style.width=widths+'px';
+        }
+
+        //如果浏览器的宽度不等于显示器的宽度时有两种情况
+        // 第一种就是 缩小
+        // 第二种就是 放大
+        if(innerwidths!=widths){
+            //先处理缩小的，因为浏览器在缩小的时候它的宽度会一直累加，这个时候浏览器宽度就大于显示器宽度了
+            if (innerwidths>widths) {
+                //这里给body赋值是模拟缩小页面的操作，幅度不能太大，要不然有点奇怪
+                document.body.style.width=innerwidths*10%-widths*10%+'px';
+                return;
+            }
+
+            //放大的操作就重新给body宽度赋显示器的宽度
+            document.body.style.width=widths+'px';
+        }
+    }
+
+</script>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>::My-Task::Attendance</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<!-- Favicon--><!-- project css file -->
+<link rel="stylesheet" href="assets/css/my-task.style.css">
+<link rel="stylesheet" href="assets/css/jquery.mloading.css">
+
+</head>
+<body>
+<div id="mytask-layout" class="theme-indigo"><!-- sidebar -->
+<!--  左侧导航栏-->
+  <div class="sidebar px-4 py-4 py-md-5 me-0">
+    <div class="d-flex flex-column h-100"><a href="index.html" class="mb-0 brand-icon"><span class="logo-text">匠心训练营</span></a><!-- Menu:main ul -->
+      <ul class="menu-list flex-grow-1 mt-3">
+        <li><a class="m-link" href="html/Audit.html" target="iframe"><i class="icofont-paint"></i><span>审核项目</span></a></li>
+        <li><a class="m-link" href="html/Reply.html" target="iframe"><i class="icofont-paint"></i><span>答辩成绩</span></a></li>
+      </ul>
+      <!-- Menu:menu collepce btn -->
+      <button type="button" class="btn btn-link sidebar-mini-btn text-light"><span class="ms-2"><i class="icofont-bubble-right"></i></span></button>
+    </div>
+  </div>
+  <!-- main body area -->
+  <div class="main px-lg-4 px-md-4">
+    <!-- Body:Header  右侧头部-->
+    <div class="header">
+      <nav class="navbar py-4">
+        <div class="container-xxl"><!-- header rightbar icon -->
+          <div class="h-right d-flex align-items-center mr-5 mr-lg-0 order-1">
+<!--消息提示-->
+              <div class="dropdown notifications zindex-popover"><a class="nav-link dropdown-toggle pulse" style="color:red" role="button" data-bs-toggle="dropdown" href="javascript:void(0);" onclick="load_news()"><i class="icofont-alarm fs-5"></i><i id="new_num"></i><span class="pulse-ring"></span></a>
+                  <div id="NotificationsDiv" class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-sm-end p-0 m-0">
+                      <div class="card border-0 w380">
+                          <div class="card-header border-0 p-3">
+                              <h5 class="mb-0 font-weight-light d-flex justify-content-between"><span>我的消息</span><span class="badge text-white"></span><i id="new-num"></i></h5>
+                          </div>
+                          <div class="tab-content card-body">
+                              <div class="tab-pane fade show active">
+                                  <ul class="list-unstyled list mb-0" id="new_list">
+                                  </ul>
+                              </div>
+                          </div>
+                          <a class="card-footer text-center border-top-0" href="javascript:void(0);" onclick="ViewAll()">已读所有消息</a></div>
+                  </div>
+              </div>
+<!--              个人信息预览-->
+            <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
+              <div class="u-info me-2">
+                <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold" id="name">姓名</span></p>
+                <small id="usertype">用户角色</small></div>
+                <!--点击头像-->
+              <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
+                  <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/profile_av.png" alt="profile"></a>
+              <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
+                <div class="card border-0 w280">
+                  <div class="card-body pb-0">
+                    <div class="d-flex py-1"><img class="avatar rounded-circle" src="assets/images/profile_av.png" alt="profile">
+                      <div class="flex-fill ms-3">
+                        <p class="mb-0"><span class="font-weight-bold" id="userName">我的姓名</span></p>
+                          <small id="email">我的邮箱</small>
+                      </div>
+                    </div>
+                    <div>
+                      <hr class="dropdown-divider border-dark">
+                    </div>
+                  </div>
+                  <div class="list-group m-2 ">
+                      <a href="" data-bs-toggle="modal" data-bs-target="#myinf" class="list-group-item list-group-item-action border-0 "><i class="icofont-tasks fs-5 me-3"></i>我的信息</a>
+                      <a href="" data-bs-toggle="modal" data-bs-target="#reinf" class="list-group-item list-group-item-action border-0 "><i class="icofont-contact-add fs-5 me-3"></i>修改信息</a>
+                      <a href="" data-bs-toggle="modal" data-bs-target="#depadd" class="list-group-item list-group-item-action border-0 "><i class="icofont-ui-edit fs-6 me-3"></i>&nbsp修改密码</a>
+                      <div>
+                      <hr class="dropdown-divider border-dark">
+                    </div>
+                      <button onclick="Exit()" class="list-group-item list-group-item-action border-0 "><i class="icofont-logout fs-6 me-3"></i>退出登陆</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- menu toggler -->
+          <button class="navbar-toggler p-0 border-0 menu-toggle order-3" type="button" data-bs-toggle="collapse" data-bs-target="#mainHeader"><span class="fa fa-bars"></span></button>
+        </div>
+      </nav>
+    </div>
+      <!-- 我的消息 -->
+      <div class="modal fade" id="my_inform" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title  fw-bold">我的消息</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" baria-lael="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="mb-3">
+                          <label for="title" class="form-label">标题：</label>
+                          <a type="text" class="form-control" id="title" style="font:normal bold 26px Microsoft YaHei"></a>
+                          <br>
+                          <label for="content" class="form-label">正文：</label>
+                          <a type="text" class="form-control" id="content"></a>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button class="btn btn-primary" data-bs-dismiss="modal">关闭</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- 个人信息 -->
+      <div class="modal fade" id="myinf" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title  fw-bold" id="">个人信息</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="mb-3">
+                          <label for="pw" class="form-label">姓名：</label>
+                          <a type="text" class="form-control" id="User_Name"></a>
+                          <label for="newpw" class="form-label">账号：</label>
+                          <a type="text" class="form-control" id="User_Num"></a>
+                          <label for="repw" class="form-label">学院：</label>
+                          <a type="text" class="form-control" id="User_Institute"></a>
+                          <label for="repw" class="form-label">邮箱：</label>
+                          <a type="text" class="form-control" id="User_Email"></a>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button class="btn btn-primary" data-bs-dismiss="modal">关闭</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- 修改个人信息 -->
+      <div class="modal fade" id="reinf" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title  fw-bold">修改个人信息</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="mb-3">
+                          <label for="repw" class="form-label">学院：</label>
+                          <select  class="form-control" id="User-Institute" onclick="getIntype()">
+                              <option value="" disabled selected hidden>请选择您的学院</option>
+                              <option value="1">理学院</option>
+                              <option value="2">机械工程学院</option>
+                              <option value="3">能源与环境工程学院</option>
+                              <option value="4">电气工程学院</option>
+                              <option value="5">化工学院</option>
+                              <option value="6">土木与交通学院</option>
+                              <option value="7">经济管理学院</option>
+                              <option value="8">材料科学与工程学院</option>
+                              <option value="9">电子信息工程学院</option>
+                              <option value="10">人文与法律学院</option>
+                              <option value="11">外国语学院</option>
+                              <option value="12">建筑与艺术设计学院</option>
+                              <option value="13">国际教育学院（芬兰校区）</option>
+                              <option value="14">马克思主义学院</option>
+                              <option value="15">人工智能与数据科学学院 </option>
+                              <option value="16">生命科学与健康工程学院</option>
+                              <option value="17">亚利桑那工业学院</option>
+                          </select>
+                          <label for="repw" class="form-label">邮箱：</label>
+                          <input type="text" class="form-control" id="User-Email">
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                      <button class="btn btn-primary" onclick="reinf()">修改</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- 修改密码 -->
+      <div class="modal fade" id="depadd" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title  fw-bold" id="depaddLabel">修改密码</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="mb-3">
+                          <label for="pw" class="form-label">请输入原密码</label>
+                          <input type="text" class="form-control" id="pw">
+                      </div>
+                      <div class="deadline-form">
+                          <form>
+                              <div class="row g-3 mb-3">
+                                  <div class="col-sm-6">
+                                      <label for="newpw" class="form-label">请输入新密码</label>
+                                      <input type="text" class="form-control" id="newpw">
+                                  </div>
+                                  <div class="col-sm-6">
+                                      <label for="repw" class="form-label">重复新密码</label>
+                                      <input type="text" class="form-control" id="repw">
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                      <button class="btn btn-primary" onclick="revise()">完成</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+    <!-- Body:Body -->
+    <div class="body d-flex py-lg-3 py-md-2" style="width: 100%">
+      <div class="container-xxl">
+
+        <!-- Row end -->
+                <div class="row clearfix g-3">
+                  <iframe id="iframe" name="iframe" style="height: 1000px" frameborder="0" src="html/expert.html"></iframe>
+        </div>
+        <!-- Row End --></div>
+    </div>
+  </div>
+</div>
+<!-- 防止文字乱码 -->
+<script src="../../lib/Plugins/datepicker_lang_zh_CN.js" charset="utf-8" type="text/javascript"></script>
+<!-- Jquery Core Js -->
+<script src="assets/bundles/libscripts.bundle.js"></script>
+<!-- Jquery Page Js -->
+<script src="assets/js/template.js"></script>
+<script src="assets/js/jquery.mloading.js"></script>
+
+<script>
+    $("body").bind('showLoading',function (){
+        $("body").mLoading("show");
+    })
+    $("body").bind('hideLoading',function (){
+        $("body").mLoading("hide");
+    })
+    function Exit(){
+        localStorage.clear()
+        window.location="../login v2.0/Home.html"
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>::My-Task::Holidays</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<!-- Favicon--><!-- plugin css file -->
+<link rel="stylesheet" href="../assets/plugin/datatables/responsive.dataTables.min.css">
+<link rel="stylesheet" href="../assets/plugin/datatables/dataTables.bootstrap5.min.css">
+<!-- project css file -->
+<link rel="stylesheet" href="../assets/css/my-task.style.css">
+
+  <script type="text/javascript" src="../assets/js/jquery-3.2.1.js"></script>
+</head>
+<body>
+<div id="mytask-layout" class="theme-indigo"><!-- sidebar -->
+
+  <!-- main body area -->
+
+    <!-- Body:Body -->
+    <div class="body d-flex py-lg-3 py-md-2" style="width: 100%">
+      <div class="container-xxl">
+        <div class="row align-items-center">
+          <div class="border-0 mb-4">
+            <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+              <h3 class="fw-bold mb-0" id="title">教评详情</h3>
+              <div class="col-auto py-2 w-sm-100">
+                <ul class="nav nav-tabs tab-body-header rounded invoice-set" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#Invoice-list" role="tab">教评1</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Invoice-Simple" role="tab">教评2</a></li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Invoice-Email" role="tab">教评3</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12">
+            <div class="tab-content">
+<!--              教评1-->
+              <div class="tab-pane fade show active" id="Invoice-list">
+                <div class="row justify-content-center">
+                  <div class="col-lg-8 col-md-12">
+                    <div class="d-flex justify-content-center">
+                      <table class="card p-5">
+                        <tr>
+                          <td></td>
+                          <td class="text-center"><table>
+                            <tr>
+                              <td class="text-center"><h2 id="total1">总分：</h2></td>
+                            </tr>
+                            <tr>
+                              <td class="pt-2 pb-4"><table>
+                                <tr>
+                                  <td class="pt-2"><table class="table table-bordered" id="teachingEvaluationOne">
+                                    <tr>
+                                      <td class="text-start">1.指导教师指导质量：</td>
+                                      <td class="text gradeOne" ></td>
+                                      <td class="text-end suggestion1" ></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-start">2.指导老师指导状态：</td>
+                                      <td class="text gradeTwo" ></td>
+                                      <td class="text-end suggestion2" ></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-start">3.指导内容充实程度：</td>
+                                      <td class="text gradeThree" ></td>
+                                      <td class="text-end suggestion3" ></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-start">4.项目收获以及效果：</td>
+                                      <td class="text gradeFour" ></td>
+                                      <td class="text-end suggestion4" ></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-start">建议：</td>
+                                      <td class="text-end suggestion"  colspan="2"></td>
+                                    </tr>
+                                  </table></td>
+                                </tr>
+                              </table></td>
+                            </tr>
+                          </table>
+                            <table class="mt-3 text-center w-100">
+                            </table></td>
+                          <td></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <!-- Row end --></div>
+<!--              教评2-->
+              <div class="tab-pane fade" id="Invoice-Simple">
+                <div class="row justify-content-center">
+                  <div class="col-lg-8 col-md-12">
+                    <div class="d-flex justify-content-center">
+                      <table class="card p-5">
+                        <tr>
+                          <td></td>
+                          <td class="text-center"><table>
+                            <tr>
+                              <td class="text-center"><h2 id="total2">总分：</h2></td>
+                            </tr>
+                            <tr>
+                              <td class="pt-2 pb-4"><table>
+                                <tr>
+                                  <td class="pt-2"><table class="table table-bordered" id="teachingEvaluationTwo">
+                                    <tr>
+                                      <td class="text-start">1.指导教师指导质量：</td>
+                                      <td class="text gradeOne" ></td>
+                                      <td class="text-end suggestion1" ></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-start">2.指导老师指导状态：</td>
+                                      <td class="text gradeTwo" ></td>
+                                      <td class="text-end suggestion2" ></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-start">3.指导内容充实程度：</td>
+                                      <td class="text gradeThree" ></td>
+                                      <td class="text-end suggestion3" ></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-start">4.项目收获以及效果：</td>
+                                      <td class="text gradeFour" ></td>
+                                      <td class="text-end suggestion4" ></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-start">建议：</td>
+                                      <td class="text-end suggestion"  colspan="2"></td>
+                                    </tr>
+                                  </table></td>
+                                </tr>
+                              </table></td>
+                            </tr>
+                          </table>
+                            <table class="mt-3 text-center w-100">
+                            </table></td>
+                          <td></td>
+                        </tr>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+                <!-- Row end --></div>
+<!--              教评3-->
+              <div class="tab-pane fade" id="Invoice-Email">
+                <div class="row justify-content-center">
+                  <div class="col-lg-8 col-md-12">
+                    <div class="d-flex justify-content-center">
+                      <table class="card p-5">
+                        <tr>
+                          <td></td>
+                          <td class="text-center"><table>
+                            <tr>
+                              <td class="text-center"><h2 id="total3">总分：</h2></td>
+                            </tr>
+                            <tr>
+                              <td class="pt-2 pb-4"><table>
+                                <tr>
+                                  <td class="pt-2"><table class="table table-bordered" id="teachingEvaluationThree">
+                                    <tr>
+                                      <td class="text-start">1.指导教师指导质量：</td>
+                                      <td class="text gradeOne" ></td>
+                                      <td class="text-end suggestion1" ></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-start">2.指导老师指导状态：</td>
+                                      <td class="text gradeTwo" ></td>
+                                      <td class="text-end suggestion2" ></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-start">3.指导内容充实程度：</td>
+                                      <td class="text gradeThree" ></td>
+                                      <td class="text-end suggestion3" ></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-start">4.项目收获以及效果：</td>
+                                      <td class="text gradeFour" ></td>
+                                      <td class="text-end suggestion4" ></td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-start">建议：</td>
+                                      <td class="text-end suggestion"  colspan="2"></td>
+                                    </tr>
+                                  </table></td>
+                                </tr>
+                              </table></td>
+                            </tr>
+                          </table>
+                            <table class="mt-3 text-center w-100">
+                            </table></td>
+                          <td></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <!-- Row end --></div>
+              <!-- tab end --></div>
+          </div>
+        </div>
+        <!-- Row End --></div>
+    </div>
+  </div>
+</div>
+<!-- Jquery Core Js -->
+<script src="../assets/bundles/libscripts.bundle.js"></script>
+<!-- Plugin Js-->
+<script src="../assets/bundles/dataTables.bundle.js"></script>
+<!-- Jquery Page Js --><script src="../assets/js/template.js"></script>
+
+
+<script>
+  $(document).ready(function(){$('#myProjectTable') .addClass('nowrap') .dataTable({responsive:true,columnDefs:[{targets:[-1,-3],className:'dt-body-right'}]});$('.deleterow').on('click',function(){var tablename = $(this).closest('table').DataTable();tablename .row($(this) .parents('tr')) .remove() .draw()})});
+</script>
+<script>
+  $(document).ready(
+          // $("body").mLoading({
+          //   html:false,//设置加载内容是否是html格式，默认值是false
+          //   content:"",//忽略icon和text的值，直接在加载框中显示此值
+          //   mask:true//是否显示遮罩效果，默认显示
+          // }),
+          $('#title').append('（'+localStorage.getItem('batchNameOther')+'）'),
+
+          //查询老师指导的项目
+          $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project-user-relation/searchGuideProject',
+            data: JSON.stringify({
+              "projectType" :1,
+              "teacherId": localStorage.getItem('teacherIdOther'),
+              batchId: localStorage.getItem('batchIdOther'),
+              checkRequest:{
+                "commonRequest": {
+                  "token": localStorage.getItem('token'),
+                  "userId": localStorage.getItem('userId')
+                },
+                "pageRequest": {
+                  "currentPage": 1,
+                  "pageSize": 5
+                }
+              }
+            }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+
+              localStorage.setItem('projectId', data.data.records[0].projectId);
+            }
+          }),
+
+              $(function () {
+                $.ajax({
+                  url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/evaluation/checkAdvice',
+                  async:true,
+                  data: JSON.stringify({
+                    "projectId" :localStorage.getItem('projectId'),
+                    "teacherId": localStorage.getItem('teacherIdOther'),
+                    "checkRequest": {
+                      "commonRequest": {
+                        token: localStorage.getItem('token'),
+                        userId: localStorage.getItem('userId'),
+                      },
+                      "pageRequest": {
+                        "currentPage": 1,
+                        "pageSize": 999
+                      },
+                    }
+                  }),
+                  contentType: 'application/json',
+                  type: 'post',
+                  dataType: 'json',
+                  beforeSend:function(){
+                    parent.$("body").trigger('showLoading');
+
+                  },
+                  complete:function () {
+                    parent.$("body").trigger('hideLoading');
+                  },
+                  success: function (data) {
+                    document.getElementById('total1').append(data.data.records[0].scoreTotal)
+                    $("#teachingEvaluationOne").find('.gradeOne').append(data.data.records[0].scoreOne);
+                    $("#teachingEvaluationOne").find('.gradeTwo').append(data.data.records[0].scoreTwo);
+                    $("#teachingEvaluationOne").find('.gradeThree').append(data.data.records[0].scoreThree);
+                    $("#teachingEvaluationOne").find('.gradeFour').append(data.data.records[0].scoreFour);
+                    $("#teachingEvaluationOne").find('.suggestion1').append(data.data.records[0].adviceOne);
+                    $("#teachingEvaluationOne").find('.suggestion2').append(data.data.records[0].adviceTwo);
+                    $("#teachingEvaluationOne").find('.suggestion3').append(data.data.records[0].adviceThree);
+                    $("#teachingEvaluationOne").find('.suggestion4').append(data.data.records[0].adviceFour);
+                    $("#teachingEvaluationOne").find('.suggestion').append(data.data.records[0].adviceTotal);
+
+                    document.getElementById('total2').append(data.data.records[1].scoreTotal)
+                    $("#teachingEvaluationOne").find('.gradeOne').append(data.data.records[1].scoreOne);
+                    $("#teachingEvaluationOne").find('.gradeTwo').append(data.data.records[1].scoreTwo);
+                    $("#teachingEvaluationOne").find('.gradeThree').append(data.data.records[1].scoreThree);
+                    $("#teachingEvaluationOne").find('.gradeFour').append(data.data.records[1].scoreFour);
+                    $("#teachingEvaluationOne").find('.suggestion1').append(data.data.records[1].adviceOne);
+                    $("#teachingEvaluationOne").find('.suggestion2').append(data.data.records[1].adviceTwo);
+                    $("#teachingEvaluationOne").find('.suggestion3').append(data.data.records[1].adviceThree);
+                    $("#teachingEvaluationOne").find('.suggestion4').append(data.data.records[1].adviceFour);
+                    $("#teachingEvaluationOne").find('.suggestion').append(data.data.records[1].adviceTotal);
+
+                    document.getElementById('total3').append(data.data.records[2].scoreTotal)
+                    $("#teachingEvaluationOne").find('.gradeOne').append(data.data.records[2].scoreOne);
+                    $("#teachingEvaluationOne").find('.gradeTwo').append(data.data.records[2].scoreTwo);
+                    $("#teachingEvaluationOne").find('.gradeThree').append(data.data.records[2].scoreThree);
+                    $("#teachingEvaluationOne").find('.gradeFour').append(data.data.records[2].scoreFour);
+                    $("#teachingEvaluationOne").find('.suggestion2').append(data.data.records[2].adviceOne);
+                    $("#teachingEvaluationOne").find('.suggestion2').append(data.data.records[2].adviceTwo);
+                    $("#teachingEvaluationOne").find('.suggestion3').append(data.data.records[2].adviceThree);
+                    $("#teachingEvaluationOne").find('.suggestion4').append(data.data.records[2].adviceFour);
+                    $("#teachingEvaluationOne").find('.suggestion').append(data.data.records[2].adviceTotal);
+                  }
+                })
+              })
+
+  )
+
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>::My-Task::Holidays</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<!-- Favicon--><!-- plugin css file -->
+<link rel="stylesheet" href="../assets/plugin/datatables/responsive.dataTables.min.css">
+<link rel="stylesheet" href="../assets/plugin/datatables/dataTables.bootstrap5.min.css">
+<!-- project css file -->
+<link rel="stylesheet" href="../assets/css/my-task.style.css">
+  <script type="text/javascript" src="../assets/js/jquery-3.2.1.js"></script>
+</head>
+<body>
+<div id="mytask-layout" class="theme-indigo"><!-- sidebar -->
+
+  <!-- main body area -->
+
+    <!-- Body:Body -->
+    <div class="body d-flex py-lg-3 py-md-2" style="width: 100%">
+      <div class="container-xxl">
+        <div class="row align-items-center">
+          <div class="border-0 mb-4">
+            <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+              <h3 class="fw-bold mb-0" id="title">资料管理</h3>
+<!--              <div class="col-auto d-flex w-sm-100">-->
+<!--                <button onclick="pre()" type="button" class="btn btn-dark btn-set-task w-sm-100">往期记录</button>-->
+<!--              </div>-->
+            </div>
+          </div>
+        </div>
+        <!-- Row end -->
+        <div class="row clearfix g-3">
+          <div class="col-sm-12">
+            <div class="card mb-4">
+              <div class="card-body">
+                <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th width="1600">文件名</th>
+                      <th width="300">报告下载</th>
+                      <th width="800">审核阶段</th>
+                      <th width="600">审核</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Row End --></div>
+    </div>
+  </div>
+</div>
+<!-- Jquery Core Js -->
+<script src="../assets/bundles/libscripts.bundle.js"></script>
+<!-- Plugin Js-->
+<script src="../assets/bundles/dataTables.bundle.js"></script>
+<!-- Jquery Page Js --><script src="../assets/js/template.js"></script>
+
+<script>
+  $(document).ready(function(){$('#myProjectTable') .addClass('nowrap') .dataTable({responsive:true,columnDefs:[{targets:[-1,-3],className:'dt-body-right'}]});$('.deleterow').on('click',function(){var tablename = $(this).closest('table').DataTable();tablename .row($(this) .parents('tr')) .remove() .draw()})});
+</script>
+<script>
+  $(document).ready(
+          $("#title").append('('+localStorage.getItem('projectName')+')'),
+  //查询当前期
+          $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/batch/nowBatch',
+            data: JSON.stringify({
+              "commonRequest": {
+                token: localStorage.getItem('token'),
+                userId: localStorage.getItem('userId'),
+              }
+            }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+              localStorage.setItem('batchId',data.data.batchId);
+              // 查询到当前届数之后进行数据绑定
+              $(function () {
+                $.ajax({
+                  url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/certificate-relation/checkAllMaterial',
+                  data: JSON.stringify({
+                    checkRequest: {
+                      "commonRequest": {
+                        "token": localStorage.getItem('token'),
+                        "userId": localStorage.getItem('userId')
+                      },
+                      "pageRequest": {
+                        "currentPage": 1,
+                        "pageSize": 999
+                      }
+                    },
+                    "projectId": localStorage.getItem('projectId')
+                  }),
+                  contentType: 'application/json',
+                  type: 'post',
+                  dataType: 'json',
+                  async:true,
+                  beforeSend:function(){
+                    parent.$("body").trigger('showLoading');
+
+                  },
+                  complete:function () {
+                    parent.$("body").trigger('hideLoading');
+                  },
+                  success: function (data) {
+                    var tableData = [];
+                    var num=1;
+
+                    $.each(data.data.checkMaterialResponsePage.records, function(idx, obj) {
+                      lookcontent= '<div class="btn-group" id="projectId" role="group" aria-label="Basic outlined example"><button onclick="downLoad(this)" type="button" class="btn bg-lightgreen text-end load" id="projectId" value="'+obj.projectMaterialId+'">下载</button></div>';
+                      PassStr='<button onclick="isPass(this)" class="isPass btn btn-outline-secondary" value="'+obj.projectMaterialId+'"><i class="icofont-check-circled text-success"></i></button>'+'<button onclick="NotPass(this)" class="NotPass btn btn-outline-secondary deleterow" value="'+obj.projectMaterialId+'"><i class="icofont-close-circled text-danger"></i></button>'
+                      Status='<span class="badge bg-warning">Pending</span>'
+                      tableData.push([num++,obj.fileName,lookcontent,obj.auditStage,PassStr]);
+                    });
+                    //所有数据添加到表格中
+                    $("#myProjectTable").dataTable().fnClearTable(false);
+                    if(data.data.checkMaterialResponsePage.records.length!=0)
+                      $("#myProjectTable").dataTable().fnAddData(tableData);
+                  }
+                })
+              })
+
+            }
+          }),
+  )
+  //下载项目内容
+  function downLoad(btn){
+    localStorage.setItem("stage",$(btn).parents("tr").find(".load").val())
+    $.ajax({
+      url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/certificate-relation/downloadMaterial',
+      data: JSON.stringify({
+        "commonRequest": {
+          "token": localStorage.getItem('token'),
+          "userId": localStorage.getItem('userId')
+        },
+        "materialId":$(btn).parents(".btn-group").find(".load").val()
+      }),
+      contentType: 'application/json',
+      type: 'post',
+      dataType: 'json',
+      success: function (data) {
+        $.dynamicSubmit('http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/file/download',{fileName:data.data.fileName,filePath:data.data.filePath});
+      }
+    })
+    $.dynamicSubmit = function (url, datas) {
+
+      var form = $('#dynamicForm');
+
+      if (form.length <= 0) {
+        form = $("<form>");
+        form.attr('id', 'dynamicForm');
+        form.attr('style', 'display:none');
+        form.attr('target', '');
+        form.attr('method', 'post');
+
+        $('body').append(form);
+      }
+
+      form = $('#dynamicForm');
+      form.attr('action', url);
+      form.empty();
+
+      if (datas && typeof (datas) == 'object') {
+        for (var item in datas) {
+          var $_input = $('<input>');
+          $_input.attr('type', 'hidden');
+          $_input.attr('name', item);
+          $_input.val(datas[item]);
+
+          $_input.appendTo(form);
+        }
+      }
+
+      form.submit();
+    }
+  }
+ //文件通过审核或未通过审核
+  function isPass(btn){
+    localStorage.setItem("projectMaterialId",$(btn).parents("tr").find(".isPass").val())
+    $.ajax({
+      url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/certificate-relation/auditMaterial',
+      data: JSON.stringify({
+        "commonRequest": {
+          "token": localStorage.getItem('token'),
+          "userId": localStorage.getItem('userId')
+        },
+        "materialId": localStorage.getItem('projectMaterialId'),
+        "isPass":1
+      }),
+      contentType: 'application/json',
+      type: 'post',
+      dataType: 'json',
+      success: function (data) {
+        if(data.code==0)
+          alert('已通过!');
+      else
+          alert(data.msg);
+        window.location.reload();
+      }
+    })
+  }
+  function NotPass(btn){
+    localStorage.setItem("projectMaterialId",$(btn).parents("tr").find(".NotPass").val())
+    $.ajax({
+      url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/certificate-relation/auditMaterial',
+      data: JSON.stringify({
+        "commonRequest": {
+          "token": localStorage.getItem('token'),
+          "userId": localStorage.getItem('userId')
+        },
+        "materialId": localStorage.getItem('projectMaterialId'),
+        "isPass":0
+      }),
+      contentType: 'application/json',
+      type: 'post',
+      dataType: 'json',
+      success: function (data) {
+        if(data.code==0)
+          alert('已拒绝!');
+        else
+          alert(data.msg);
+        window.location.reload();
+      }
+    })
+  }
+
+</script>
+</body>
+</html>

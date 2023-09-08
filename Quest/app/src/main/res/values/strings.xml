@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">QuestApplication</string>
+    <string name="login_name">开始游戏</string>
+    <string name="app_name_ch">每日任务</string>
+    <string name="app_name_en">Quest</string>
+    <string name="login_id">账号</string>
+    <string name="phone_id">手机号</string>
+    <string name="email_id">绑定邮箱</string>
+    <string name="password">密码</string>
+    <string name="verify_code">6位验证码</string>
+    <string name="forget_paw">忘记密码？</string>
+    <string name="remember_paw">记住密码</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dungeon">副本</string>
+    <string name="daily">每日任务</string>
+    <string name="weekly">每周任务</string>
+    <string name="success">成就任务</string>
+    <string name="knapsack">背包</string>
+    <string name="quest_hall">任务大厅</string>
+    <string name="develop_quest">制定任务</string>
+    <string name="questname">任务名称：</string>
+    <string name="questtype">任务类型：</string>
+    <string name="award">金币奖励：</string>
+    <string name="selfaward">自定义奖励：</string>
+    <string name="add">确认添加</string>
+    <string name="change">确认修改</string>
+    <!--注册部分-->
+    <string name="password_verify">确认密码</string>
+    <string name="email">邮箱</string>
+    <string name="register_name">开启冒险</string>
+    <string name="app_name_register">冒险家登记</string>
+    <string name="dungeon_quest">副本探险</string>
+    <string name="village">小村庄</string>
+    <string name="collect">领取</string>
+    <!--*****-->
+    <!--背包部分-->
+    <string name="adventurer_package">冒险者的背包</string>
+    <string name="adventurer_information">勇者信息</string>
+    <string name="adventurer_account">勇者账户</string>
+    <string name="equipment_settings">装备设置</string>
+    <string name="adventurer_achievement">里程碑</string>
+    <string name="adventurer_date">时间之旅</string>
+    <string name="adventurer_like">勇者的偏爱</string>
+    <string name="adventurer_note">勇者的日记</string>
+    <string name="quit_login">荣归故里</string>
+    <string name="friends">好友</string>
+    <string name="today_new">今日要闻</string>
+    <!--背包之个人信息部分-->
+    <string name="person_phone_detail">手机号:</string>
+    <string name="person_password_detail">密码:</string>
+    <string name="person_account_detail">账户名:</string>
+    <string name="person_coinNum_detail">金币数:</string>
+    <string name="person_achievementNum_detail">成就数:</string>
+    <string name="person_goToChangePassword">修改密码</string>
+    <string name="today_record">今日战绩</string>
+    <string name="weekly_record">本周战绩</string>
+    <string name="weekly_coin_record">近七天金币获取情况</string>
+    <string name="quest_record">任务完成情况</string>
+    <string name="hero_record">英雄史诗</string>
+    <!--*******-->
+</resources>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>匠心训练营</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<!--    兼容浏览器、整体布局-->
+    <link rel="stylesheet" href="./css/content.css">
+<!--    头部导航栏-->
+    <link rel="stylesheet" href="./css/headNav.css">
+<!--    左侧导航栏样式-->
+    <link rel="stylesheet" href="./css/leftNav.css">
+<!--    右侧导航栏-->
+    <link rel="stylesheet" href="./css/rightNav.css">
+<!--    右侧菜单-->
+    <link rel="stylesheet" href="./css/rightMenu.css">
+    <!--    左侧导航栏js-->
+    <script type="text/javascript" src="js/leftNav.js"></script>
+<!--    消息提醒红点-->
+    <script type="text/javascript" src="js/news.js"></script>
+    <!--    放缩格式-->
+    <script type="text/javascript" src="js/scale.js"></script>
+    <!--    分页条-->
+    <link type="text/css" rel="stylesheet" href="css/page.css" >
+    <script type="text/javascript" src="js/page.js"></script>
+
+</head>
+<body>
+<ul>
+    <li><a class="active" href="headmaster.html">匠心训练营</a></li>
+    <li style="float:right"><a class="active" href="myInformation.html"><img src="图片/我的头像.png" height="33px" width="33px"></a></li>
+    <li style="float:right"><a class="active" href="myNews.html"><img src="图片/消息.png" id="XiaoXi" width="33px" height="33px"></a></li>
+</ul>
+
+<div class="content">
+    <div class="content-left">
+        <!--菜单栏导航-->
+        <div class="nav">
+            <!--每一个菜单项-->
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="headmaster.html"> <img src="图片/主页.png" width="17px" height="17px" style="position:relative;left:-40px;top:3px">主页</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="studentRegistrationReview.html"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">报名审核</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/学生管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">学生管理</div>
+                <div class="nav-content">
+                    <a href="studentPersonalInformation.html">学生信息</a>
+                </div>
+            </div>
+
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/过程管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">过程管理</a></div>
+                <div class="nav-content">
+                    <a href="stageOne.html">中期阶段</a>
+                    <a href="stageTwo.html">答辩阶段</a>
+                    <a href="stageThree.html">后期成果</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/成绩管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">成绩管理</div>
+                <div class="nav-content">
+                    <a href="scoreEvaluation.html">成绩评定</a>
+                    <a href="lookScore.html">查看成绩</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="./图片/报销审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">报销管理</div>
+                <div class="nav-content">
+                    <a href="reimBursementReview_Project.html">查看报销</a>
+                    <a href="reimBursementReviewLook.html">审核报销</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="teachingEvaluation.html"><img src="./图片/教评管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">教评管理</a></div>
+            </div>
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="./图片/通知管理图标.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">通知管理</div>
+                <div class="nav-content">
+                    <a href="publishNews.html">发布通知</a>
+                    <a href="manageNews.html">查看通知</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-titlet"><a href="batch.html"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">往届匠心班</a></div>
+            </div>
+
+        </div>
+    </div>
+<!--    右侧导航栏-->
+    <div id="firstpaneDiv" class="menu_list">
+        <h3 class="menu_head current">教评</h3>
+    </div>
+    <!--右侧内容区-->
+    <div class="content-right">
+        <div style="display:block" class="menu_nva">
+            <a>
+                <form method="post">
+                    1.指导教师指导质量：<input style="font-size:15px;border: 0px;outline:none;cursor: pointer;" readonly=“readonly”  type="text" id="gradeOne" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>
+                    <p style="display:inline" id="suggestion1">&nbsp&nbsp&nbsp&nbsp 评分低于20，具体原因为：<input type="text" id="suggestionOne" style="font-size:15px;border: 0px;outline:none;cursor: pointer;" readonly=“readonly” style="width:300px;"/></p>
+                </form>
+            </a>
+            <a>
+                <form method="post">
+                    2.指导老师指导状态：<input style="font-size:15px;border: 0px;outline:none;cursor: pointer;" readonly=“readonly” type="text" id="gradeTwo" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>
+                    <p style="display:inline" id="suggestion2">&nbsp&nbsp&nbsp&nbsp 评分低于20，具体原因为：<input type="text" id="suggestionTwo" style="font-size:15px; border: 0px;outline:none;cursor: pointer;" readonly=“readonly” style="width:300px;"/></p>
+                </form>
+            </a>
+            <a>
+                <form method="post">
+                    3.指导内容充实程度：<input style="font-size:15px;border: 0px;outline:none;cursor: pointer;" readonly=“readonly” type="text" id="gradeThree" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>
+                    <p style="display:inline" id="suggestion3">&nbsp&nbsp&nbsp&nbsp 评分低于20，具体原因为：<input type="text" id="suggestionThree" style="font-size:15px;border: 0px;outline:none;cursor: pointer;" readonly=“readonly” style="width:300px;"/></p>
+                </form>
+            </a>
+            <a>
+                <form method="post">
+                    4.项目收获以及效果：<input style="font-size:15px;border: 0px;outline:none;cursor: pointer;" readonly=“readonly” type="text" id="gradeFour" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>
+                    <p style="display:inline" id="suggestion4">&nbsp&nbsp&nbsp&nbsp 评分低于20，具体原因为：<input type="text" id="suggestionFour" style="font-size:15px;border: 0px;outline:none;cursor: pointer;" readonly=“readonly” style="width:300px;"/></p>
+                </form>
+            </a>
+            <a>
+                <form method="post">
+                    5.总分：<input style="font-size:15px;border: 0px;outline:none;cursor: pointer;" readonly=“readonly” type="text" id="grade" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>
+                </form>
+            </a>
+            <a>
+                <form method="post">
+                    建议(选填)：<br />
+                    <textarea style="font-size:15px;" readonly=“readonly” rows="5" cols="140" id="suggestion"></textarea>
+                </form>
+            </a>
+            <br /><br /><br />
+        </div>
+
+
+    </div>
+
+</div>
+
+</body>
+<div id="pagination" style="position:relative;left:771px;bottom:99px;"></div>
+
+</html>
+<script>
+    var flag=0;
+
+    $(function () {
+ $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project-user-relation/searchGuideProject',
+               data: JSON.stringify({
+                        "projectType" :1,
+                        "teacherId": localStorage.getItem('teacherId'),
+                        batchId: localStorage.getItem('batchIdOther'),
+                        checkRequest:{
+                        "commonRequest": {
+                            "token": localStorage.getItem('token'),
+                            "userId": localStorage.getItem('userId')
+                        },
+                        "pageRequest": {
+                            "currentPage": 1,
+                            "pageSize": 5
+                        }}
+                        }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+
+                         localStorage.setItem('projectId', data.data.records[0].projectId);
+                }
+})
+            $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/evaluation/checkAdvice',
+               data: JSON.stringify({
+                        "projectId" :localStorage.getItem('projectId'),
+                        "teacherId": localStorage.getItem('teacherId'),
+                        "checkRequest":{
+                        "commonRequest": {
+                            "token": localStorage.getItem('token'),
+                            "userId": localStorage.getItem('userId')
+                        },
+                        "pageRequest": {
+                            "currentPage": 1,
+                            "pageSize": 1
+                        }}
+                        }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+                    //总页数设置
+                    Pagination.Init(document.getElementById('pagination'), {
+                        size: data.data.pages, // pages size
+                        page:1,// selected page
+                        step: 3   // pages before and after current
+                    });
+
+                for (i in data.data.records) {
+                document.getElementById('gradeOne').value=data.data.records[i].scoreOne;
+                document.getElementById("gradeTwo").value = data.data.records[i].scoreTwo;
+                document.getElementById("gradeThree").value = data.data.records[i].scoreThree;
+                document.getElementById("gradeFour").value = data.data.records[i].scoreFour;
+                document.getElementById("grade").value = data.data.records[i].scoreTotal;
+                document.getElementById("suggestionOne").value = data.data.records[i].adviceOne;
+                document.getElementById("suggestionTwo").value = data.data.records[i].adviceTwo;
+                document.getElementById("suggestionThree").value = data.data.records[i].adviceThree;
+                document.getElementById("suggestionFour").value = data.data.records[i].adviceFour;
+                document.getElementById("suggestion").innerText = data.data.records[i].adviceTotal;
+               if(data.data.records[i].scoreOne>=20)
+                document.getElementById("suggestion1").style.display="none";
+                else
+                 document.getElementById("suggestion1").style.display="inline";
+                if(data.data.records[i].scoreTwo>=20)
+                document.getElementById("suggestion2").style.display="none";
+                 else
+                 document.getElementById("suggestion2").style.display="inline";
+                if(data.data.records[i].scoreThree>=20)
+                document.getElementById("suggestion3").style.display="none";
+                 else
+                 document.getElementById("suggestion3").style.display="inline";
+                if(data.data.records[i].scoreFour>=20)
+                document.getElementById("suggestion4").style.display="none";
+                 else
+                 document.getElementById("suggestion4").style.display="inline";
+                }
+                }
+            })
+        })
+    function Func() {
+        $("#yustb2 tr:not(:first)").remove();//清空
+        $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/evaluation/checkAdvice',
+            data: JSON.stringify({
+                "projectId" :localStorage.getItem('projectId'),
+                "teacherId": localStorage.getItem('teacherId'),
+                "checkRequest":{
+                    "commonRequest": {
+                        "token": localStorage.getItem('token'),
+                        "userId": localStorage.getItem('userId')
+                    },
+                    "pageRequest": {
+                        "currentPage": Pagination.page,
+                        "pageSize": 1
+                    }}
+            }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                //总页数设置
+                Pagination.Init(document.getElementById('pagination'), {
+                    size: data.data.pages, // pages size
+                    page:Pagination.page,// selected page
+                    step: 3   // pages before and after current
+                });
+                var num=1;
+                for (i in data.data.records) {
+                    document.getElementById('gradeOne').value=data.data.records[i].scoreOne;
+                    document.getElementById("gradeTwo").value = data.data.records[i].scoreTwo;
+                    document.getElementById("gradeThree").value = data.data.records[i].scoreThree;
+                    document.getElementById("gradeFour").value = data.data.records[i].scoreFour;
+                    document.getElementById("grade").value = data.data.records[i].scoreTotal;
+                    document.getElementById("suggestionOne").value = data.data.records[i].adviceOne;
+                    document.getElementById("suggestionTwo").value = data.data.records[i].adviceTwo;
+                    document.getElementById("suggestionThree").value = data.data.records[i].adviceThree;
+                    document.getElementById("suggestionFour").value = data.data.records[i].adviceFour;
+                    document.getElementById("suggestion").innerText = data.data.records[i].adviceTotal;
+                    if(data.data.records[i].scoreOne>=20)
+                        document.getElementById("suggestion1").style.display="none";
+                    else
+                        document.getElementById("suggestion1").style.display="inline";
+                    if(data.data.records[i].scoreTwo>=20)
+                        document.getElementById("suggestion2").style.display="none";
+                    else
+                        document.getElementById("suggestion2").style.display="inline";
+                    if(data.data.records[i].scoreThree>=20)
+                        document.getElementById("suggestion3").style.display="none";
+                    else
+                        document.getElementById("suggestion3").style.display="inline";
+                    if(data.data.records[i].scoreFour>=20)
+                        document.getElementById("suggestion4").style.display="none";
+                    else
+                        document.getElementById("suggestion4").style.display="inline";
+                }
+
+            }
+        })
+    }
+
+</script>

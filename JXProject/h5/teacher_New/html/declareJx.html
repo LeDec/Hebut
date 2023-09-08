@@ -1,0 +1,392 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>::My-Task::Holidays</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+  <!-- Favicon--><!-- plugin css file -->
+<link rel="stylesheet" href="../assets/plugin/datatables/responsive.dataTables.min.css">
+<link rel="stylesheet" href="../assets/plugin/datatables/dataTables.bootstrap5.min.css">
+<!-- project css file -->
+<link rel="stylesheet" href="../assets/css/my-task.style.css">
+<!--上传模块的样式表-->
+<!--  <link rel="stylesheet" type="text/css" href="../assets/css/reset.css">-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/jquery.filer.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/jquery.filer-dragdropbox-theme.css">
+<!--  <link rel="stylesheet" type="text/css" href="../assets/css/tomorrow.css">-->
+<!--  <link rel="stylesheet" type="text/css" href="../assets/css/custom.css">-->
+</head>
+<body>
+<div id="mytask-layout" class="theme-indigo"><!-- sidebar -->
+
+  <!-- main body area -->
+
+    <!-- Body:Body -->
+    <div class="body d-flex py-lg-3 py-md-2" style="width: 100%">
+      <div class="container-xxl">
+        <div class="row align-items-center">
+          <div class="border-0 mb-4">
+            <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+              <h3 class="fw-bold mb-0">申报匠心项目</h3>
+<!--              <div class="col-auto d-flex w-sm-100">-->
+<!--                <button type="button" class="btn btn-dark btn-set-task w-sm-100" data-bs-toggle="modal" data-bs-target="#addholiday"><i class="icofont-plus-circle me-2 fs-6"></i>添加活动</button>-->
+<!--              </div>-->
+            </div>
+          </div>
+        </div>
+        <!-- Row end -->
+        <div class="mb-3">
+          <label for="projectName" class="form-label">项目名称</label>
+          <input type="text" class="form-control" id="projectName" style="width:500px">
+        </div>
+        <div class="mb-3">
+          <label for="projectTeacher1" class="form-label" style="display: block">指导教师工号(1-3个)</label>
+          <input type="text" class="form-control" id="projectTeacher1" style="width:200px;display:inline-block">
+          <input type="text" class="form-control" id="projectTeacher2" style="width:200px;display:inline-block">
+          <input type="text" class="form-control" id="projectTeacher3" style="width:200px;display:inline-block">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" style="display: block">需求专业</label>
+            <select class="form-select" id="majorId1" style="width:200px;display:inline-block">
+              <option value="" disabled selected hidden>请选择所需专业1</option>
+            </select>
+            <select class="form-select" id="majorId2" style="width:200px;display:inline-block">
+              <option value="" disabled selected hidden>请选择所需专业2</option>
+            </select>
+            <select class="form-select" id="majorId3" style="width:200px;display:inline-block">
+              <option value="" disabled selected hidden>请选择所需专业3</option>
+            </select>
+        </div>
+        <div class="mb-3">
+          <label for="needPeople" class="form-label">需求人数</label>
+          <input type="text" class="form-control" id="needPeople" style="width:100px">
+        </div>
+        <div class="mb-3">
+          <label for="projectOrigin" class="form-label">项目来源</label>
+          <select class="form-select" id="projectOrigin" style="width:166px">
+            <option value="" disabled selected hidden>请选择项目来源</option>
+            <option value="教师">教师</option>
+            <option value="学校">学校</option>
+            <option value="企业">企业</option>
+            <option value="其他">其他</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="amount" class="form-label">可报销金额</label>
+          <input type="text" class="form-control" id="amount" style="width:166px">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">项目计划书</label>
+          <span class="card-hover-show"><a class="btn btn-sm btn-white border lift" onclick="downLoad(this)">下载模板</a></span>
+          <form action="../assets/php/upload.php" method="post" enctype="multipart/form-data" id="uploadForm">
+            <input type="file" name="files[]" id="filer_input" multiple="multiple">
+          </form>
+        </div>
+        <button class="btn btn-primary" id="upLoad">提交</button>
+        <!-- Row End --></div>
+    </div>
+  </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+<!-- Jquery Core Js -->
+<script src="../assets/bundles/libscripts.bundle.js"></script>
+<!-- Plugin Js-->
+<script src="../assets/bundles/dataTables.bundle.js"></script>
+<!-- Jquery Page Js -->
+<script src="../assets/js/template.js"></script>
+<!--富文本框-->
+<script src="../../tinymce/tinymce.min.js"></script>
+<!--上传-->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+  //初始化上传模块
+  $(document).ready(function() {
+    $('#filer_input').filer({
+      limit:1,
+      showThumbs: true,
+      templates: {
+        box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
+        item: '<li class="jFiler-item">\
+                    <div class="jFiler-item-container">\
+                        <div class="jFiler-item-inner">\
+                            <div class="jFiler-item-thumb">\
+                                <div class="jFiler-item-status"></div>\
+                                <div class="jFiler-item-info">\
+                                    <span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+                                    <span class="jFiler-item-others">{{fi-size2}}</span>\
+                                </div>\
+                                {{fi-image}}\
+                            </div>\
+                            <div class="jFiler-item-assets jFiler-row">\
+                                <ul class="list-inline pull-left">\
+                                    <li>{{fi-progressBar}}</li>\
+                                </ul>\
+                                <ul class="list-inline pull-right">\
+                                    <li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+                                </ul>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </li>',
+        itemAppend: '<li class="jFiler-item">\
+                        <div class="jFiler-item-container">\
+                            <div class="jFiler-item-inner">\
+                                <div class="jFiler-item-thumb">\
+                                    <div class="jFiler-item-status"></div>\
+                                    <div class="jFiler-item-info">\
+                                        <span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+                                        <span class="jFiler-item-others">{{fi-size2}}</span>\
+                                    </div>\
+                                    {{fi-image}}\
+                                </div>\
+                                <div class="jFiler-item-assets jFiler-row">\
+                                    <ul class="list-inline pull-left">\
+                                        <li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
+                                    </ul>\
+                                    <ul class="list-inline pull-right">\
+                                        <li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+                                    </ul>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </li>',
+        progressBar: '<div class="bar"></div>',
+        itemAppendToEnd: false,
+        removeConfirmation: true,
+        _selectors: {
+          list: '.jFiler-items-list',
+          item: '.jFiler-item',
+          progressBar: '.bar',
+          remove: '.jFiler-item-trash-action'
+        }
+      },
+
+      captions:{
+        button: "选择文件",
+        feedback: "选择需要上传的文件",
+        feedback2: "个文件已上传",
+        drop: "将文件拖动至此以上传",
+        removeConfirmation: "确定要移除这个文件",
+        errors: {
+          filesLimit: "最多只能上传 {{fi-limit}} 个文件.",
+          filesType: "不支持上传该文件类型.",
+          filesSize: "{{fi-name}} 超过文件大小限制! 请上传 {{fi-maxSize}} MB以内的文件.",
+          filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB."
+        }
+      }
+    });
+  });
+</script>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+<script src="../assets/js/jquery.filer.min.js" type="text/javascript"></script>
+<script src="../assets/js/prettify.js" type="text/javascript"></script>
+<script src="../assets/js/scripts.js" type="text/javascript"></script>
+<script src="../assets/js/custom.js" type="text/javascript"></script>
+
+
+
+<script>
+  $(document).ready(function(){$('#myProjectTable') .addClass('nowrap') .dataTable({responsive:true,columnDefs:[{targets:[-1,-3],className:'dt-body-right'}]});$('.deleterow').on('click',function(){var tablename = $(this).closest('table').DataTable();tablename .row($(this) .parents('tr')) .remove() .draw()})});
+</script>
+<script>
+  //查询当前期
+  $.ajax({
+    url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/batch/nowBatch',
+    data: JSON.stringify({
+      "commonRequest": {
+        token: localStorage.getItem('token'),
+        userId: localStorage.getItem('userId'),
+      }
+    }),
+    contentType: 'application/json',
+    type: 'post',
+    dataType: 'json',
+    success: function (data) {
+      localStorage.setItem('batchId',data.data.batchId);
+    }
+  });
+  //后台加载所有专业列表
+  $.ajax({
+    url:'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/major/showAllMajor',
+    data: JSON.stringify({
+      checkRequest:{
+        "commonRequest": {
+          "token": localStorage.getItem('token'),
+          "userId": localStorage.getItem('userId')
+        },
+        "pageRequest": {
+          "currentPage": 1,
+          "pageSize": 1000
+        }}
+    }),
+    contentType: 'application/json',
+    type: 'post',
+    dataType: 'json',
+    success:function(data){
+      for (i in data.data.records){
+        var option=document.createElement("option");
+        $("#majorId1").append(('<option value='+data.data.records[i].majorId+'>'+data.data.records[i].majorName+'</option>'));
+        $("#majorId2").append(('<option value='+data.data.records[i].majorId+'>'+data.data.records[i].majorName+'</option>'));
+        $("#majorId3").append(('<option value='+data.data.records[i].majorId+'>'+data.data.records[i].majorName+'</option>'));
+
+      }
+    },
+    error:function(data){
+      console.log(data);
+    }
+  });
+  //上传
+  function IsNull1(val) {
+
+    var str = val.replace(/(^\s*)|(\s*$)/g, '');//去除空格;
+
+    if (str == '' || str == undefined || str == null) {
+      alert("请输入完整信息")
+      return true;
+    } else { return false; }
+  }
+  function IsNull2(val) {
+
+    var str = val.replace(/(^\s*)|(\s*$)/g, '');//去除空格;
+
+    if (str == '' || str == undefined || str == null) {
+      alert("请输入完整信息");
+      return true
+    } else {
+      if(isNaN(str)){
+        alert("请输入数字")
+        return true
+      }
+      return false
+    }
+  }
+  var oEmpty2 = document.getElementById('projectName');
+  var oEmpty3 = document.getElementById('needPeople');
+  var oEmpty4 = document.getElementById('majorId1');
+  var oEmpty5 = document.getElementById('projectOrigin');
+  var oEmpty6 = document.getElementById('projectTeacher1');
+  var oEmpty7 = document.getElementById('amount');
+  $('#upLoad').on('click', function () {
+    // 使用FormData进行文件上传
+    var fd = new FormData();
+    files = $("#filer_input").get(0).files;
+    fd.append("file", files[0]);
+    fd.append("file", files[1]);
+    if($("#filer_input").get(0).files.length!=0||IsNull1(oEmpty2.value)||IsNull2(oEmpty3.value)||IsNull1(oEmpty4.value)||IsNull1(oEmpty5.value)||IsNull1(oEmpty6.value)||IsNull2(oEmpty7.value)){
+      $.ajax({
+        type: 'post',
+        url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project/fileProspectus',
+        cache: false,
+        processData: false,
+        contentType: false,
+        dataType:"JSON",
+        data: fd, // form数据
+        success: function () {
+          tijiao();
+        }
+      });
+
+    }
+
+
+  });
+  // 提交项目申请方法
+  function tijiao(){
+    var projectNeedMajor=[];
+    var projectTeacher=[];
+    projectNeedMajor.push($("#majorId1").find("option:selected").val());
+    projectNeedMajor.push($("#majorId2").find("option:selected").val());
+    projectNeedMajor.push($("#majorId3").find("option:selected").val());
+    if($("#projectTeacher1").val())
+      projectTeacher.push($("#projectTeacher1").val());
+    if($("#projectTeacher2").val())
+      projectTeacher.push($("#projectTeacher2").val());
+    if($("#projectTeacher3").val())
+      projectTeacher.push($("#projectTeacher3").val());
+    $.ajax({
+      url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project/addProject',
+      data: JSON.stringify({
+        "amount": $("#amount").val(),
+        "batchId": localStorage.getItem('batchId'),
+        "commonRequest": {
+          "token": localStorage.getItem('token'),
+          "userId": localStorage.getItem('userId')
+        },
+        "projectIntroduction": localStorage.getItem('certificate'),
+        "projectName": $("#projectName").val(),
+        "projectNeedMajor": projectNeedMajor,
+        "projectNeedPeople": $("#needPeople").val(),
+        "projectOrigin": $("#projectOrigin").find("option:selected").val(),
+        "projectTeacher": projectTeacher,
+        "projectType": 1
+      }),
+      contentType: 'application/json',
+      type: 'post',
+      dataType: 'json',
+      success: function (data) {
+        if(data.code==0)
+          alert("申报成功");
+        else
+          alert(data.msg);
+        location.reload()
+      }
+    })
+
+  }
+  //下载报名表
+  function downLoad(btn){
+    $.ajax({
+      url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project/downloadProspectusTemplate',
+      data: JSON.stringify({
+        "commonRequest": {
+          "token": localStorage.getItem('token'),
+          "userId": localStorage.getItem('userId')
+        }
+      }),
+      contentType: 'application/json',
+      type: 'post',
+      dataType: 'json',
+      success: function (data) {
+        $.dynamicSubmit('http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/file/download',{fileName:data.data.fileName,filePath:data.data.filePath});
+      }
+    })
+  }
+  $.dynamicSubmit = function (url, datas) {
+
+    var form = $('#dynamicForm');
+
+    if (form.length <= 0) {
+      form = $("<form>");
+      form.attr('id', 'dynamicForm');
+      form.attr('style', 'display:none');
+      form.attr('target', '');
+      form.attr('method', 'post');
+
+      $('body').append(form);
+    }
+
+    form = $('#dynamicForm');
+    form.attr('action', url);
+    form.empty();
+
+    if (datas && typeof (datas) == 'object') {
+      for (var item in datas) {
+        var $_input = $('<input>');
+        $_input.attr('type', 'hidden');
+        $_input.attr('name', item);
+        $_input.val(datas[item]);
+
+        $_input.appendTo(form);
+      }
+    }
+
+    form.submit();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+    <link type="text/css" rel="stylesheet" href="skin/jedate.css">
+    <script type="text/javascript" src="src/jedate.js"></script>
+</head>
+<body>
+<input type="text" id="test04" placeholder="YYYY-MM-DDThh:mm:ss">
+<button onclick="a()"></button>
+</script>
+<script>
+ jeDate("#test04",{
+        festival:true,
+        minDate:"1900-01-01",              //最小日期
+        maxDate:"2099-12-31",              //最大日期
+        method:{
+            choose:function (params) {
+
+            }
+        },
+        format: "YYYY-MM-DDThh:mm:ss"
+    });
+function a(){
+alert(document.getElementById("test04").value);
+$.ajax({
+url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/batch/setTime',
+data: JSON.stringify({
+ "batchId":"batch-18b994d5-d904-45ba-9fa7-09ca46b7944c",
+  "batchStage": "2",
+  "beginning": document.getElementById("test04").value,
+  "commonRequest": {
+    token: localStorage.getItem('token'),
+          userId: localStorage.getItem('userId')
+  },
+  "deadline": document.getElementById("test04").value
+  }),
+contentType: 'application/json',
+type: 'post',
+dataType: 'json',
+success: function (data) {
+ alert(document.getElementById("test04").value);
+}
+})
+
+    }
+</script>
+</body>
+</html>

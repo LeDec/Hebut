@@ -1,0 +1,189 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>::My-Task::Holidays</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<!-- Favicon--><!-- plugin css file -->
+<link rel="stylesheet" href="../assets/plugin/datatables/responsive.dataTables.min.css">
+<link rel="stylesheet" href="../assets/plugin/datatables/dataTables.bootstrap5.min.css">
+<!-- project css file -->
+<link rel="stylesheet" href="../assets/css/my-task.style.css">
+
+  <script type="text/javascript" src="../assets/js/jquery-3.2.1.js"></script>
+</head>
+<body>
+<div id="mytask-layout" class="theme-indigo"><!-- sidebar -->
+
+  <!-- main body area -->
+
+    <!-- Body:Body -->
+    <div class="body d-flex py-lg-3 py-md-2" style="width:100%">
+      <div class="container-xxl">
+        <div class="row align-items-center">
+          <div class="border-0 mb-4">
+            <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+              <h3 class="fw-bold mb-0">教评详情</h3>
+              <div class="col-auto py-2 w-sm-100">
+                <ul class="nav nav-tabs tab-body-header rounded invoice-set" role="tablist" id="titleList">
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-12 col-md-12">
+            <div class="tab-content" id="demoList">
+              <!-- tab end --></div>
+          </div>
+        </div>
+        <!-- Row End --></div>
+    </div>
+  </div>
+</div>
+<!-- Jquery Core Js -->
+<script src="../assets/bundles/libscripts.bundle.js"></script>
+<!-- Plugin Js-->
+<script src="../assets/bundles/dataTables.bundle.js"></script>
+<!-- Jquery Page Js --><script src="../assets/js/template.js"></script>
+
+
+<script>
+  $(document).ready(function(){$('#myProjectTable') .addClass('nowrap') .dataTable({responsive:true,columnDefs:[{targets:[-1,-3],className:'dt-body-right'}]});$('.deleterow').on('click',function(){var tablename = $(this).closest('table').DataTable();tablename .row($(this) .parents('tr')) .remove() .draw()})});
+</script>
+<script>
+  $(document).ready(
+          // $("body").mLoading({
+          //   html:false,//设置加载内容是否是html格式，默认值是false
+          //   content:"",//忽略icon和text的值，直接在加载框中显示此值
+          //   mask:true//是否显示遮罩效果，默认显示
+          // }),
+
+  //查询当前期
+          $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/batch/nowBatch',
+            data: JSON.stringify({
+              "commonRequest": {
+                token: localStorage.getItem('token'),
+                userId: localStorage.getItem('userId'),
+              }
+            }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+              localStorage.setItem('batchId',data.data.batchId);
+              //查询到当前届数之后进行数据绑定
+              $(function () {
+                $.ajax({
+                  url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/evaluation/checkAdvice',
+                  async:true,
+                  data: JSON.stringify({
+                    // "projectId" :'project-595fa5ee-f7f6-4af1-8015-bc902fa63ea2',
+                    "teacherId": localStorage.getItem('teacherId'),
+                    "checkRequest": {
+                      "commonRequest": {
+                        token: localStorage.getItem('token'),
+                        userId: localStorage.getItem('userId'),
+                      },
+                      "pageRequest": {
+                        "currentPage": 1,
+                        "pageSize": 999
+                      },
+                    }
+                  }),
+                  contentType: 'application/json',
+                  type: 'post',
+                  dataType: 'json',
+                  beforeSend:function(){
+                    parent.$("body").trigger('showLoading');
+
+                  },
+                  complete:function () {
+                    parent.$("body").trigger('hideLoading');
+                  },
+                  success: function (data) {
+                    var num=1;
+                    for(i in data.data.records) {
+
+                      var title = '<li class="nav-item"><a class="nav-link '+ (i == 0 ? 'active' : '')+'" data-bs-toggle="tab" href="#demo' + i + '" role="tab">教评' + num + '</a></li>\n';
+                      var demo = '              <div class="tab-pane fade ' + (i == 0 ? 'show active' : '') + '" id="demo' + i + '">\n' +
+                              '                <div class="row justify-content-center">\n' +
+                              '                  <div class="col-lg-8 col-md-12">\n' +
+                              '                    <div class="d-flex justify-content-center">\n' +
+                              '                      <table class="card p-5">\n' +
+                              '                        <tr>\n' +
+                              '                          <td></td>\n' +
+                              '                          <td class="text-center"><table>\n' +
+                              '                            <tr>\n' +
+                              '                              <td class="text-center"><h2 id="total' + i + '">总分：</h2></td>\n' +
+                              '                            </tr>\n' +
+                              '                            <tr>\n' +
+                              '                              <td class="pt-2 pb-4"><table>\n' +
+                              '                                <tr>\n' +
+                              '                                  <td class="pt-2"><table class="table table-bordered" >\n' +
+                              '                                    <tr>\n' +
+                              '                                      <td class="text-start">1.指导教师指导质量：</td>\n' +
+                              '                                      <td class="text" id="teachingEvaluation'+i+'_gradeOne"></td>\n' +
+                              '                                      <td class="text-end" id="teachingEvaluation'+i+'_suggestion1"></td>\n' +
+                              '                                    </tr>\n' +
+                              '                                    <tr>\n' +
+                              '                                      <td class="text-start">2.指导老师指导状态：</td>\n' +
+                              '                                      <td class="text" id="teachingEvaluation'+i+'_gradeTwo"></td>\n' +
+                              '                                      <td class="text-end" id="teachingEvaluation'+i+'_suggestion2"></td>\n' +
+                              '                                    </tr>\n' +
+                              '                                    <tr>\n' +
+                              '                                      <td class="text-start">3.指导内容充实程度：</td>\n' +
+                              '                                      <td class="text" id="teachingEvaluation'+i+'_gradeThree"></td>\n' +
+                              '                                      <td class="text-end" id="teachingEvaluation'+i+'_suggestion3"></td>\n' +
+                              '                                    </tr>\n' +
+                              '                                    <tr>\n' +
+                              '                                      <td class="text-start">4.项目收获以及效果：</td>\n' +
+                              '                                      <td class="text" id="teachingEvaluation'+i+'_gradeFour"></td>\n' +
+                              '                                      <td class="text-end" id="teachingEvaluation'+i+'_suggestion4"></td>\n' +
+                              '                                    </tr>\n' +
+                              '                                    <tr>\n' +
+                              '                                      <td class="text-start">建议：</td>\n' +
+                              '                                      <td class="text-end" id="teachingEvaluation'+i+'_suggestion" colspan="2"></td>\n' +
+                              '                                    </tr>\n' +
+                              '                                  </table></td>\n' +
+                              '                                </tr>\n' +
+                              '                              </table></td>\n' +
+                              '                            </tr>\n' +
+                              '                          </table>\n' +
+                              '                            <table class="mt-3 text-center w-100">\n' +
+                              '                            </table></td>\n' +
+                              '                          <td></td>\n' +
+                              '                        </tr>\n' +
+                              '                      </table>\n' +
+                              '                    </div>\n' +
+                              '                  </div>\n' +
+                              '                </div>\n' +
+                              '                <!-- Row end --></div>\n';
+                      num++;
+                      document.getElementById("titleList").innerHTML+=title;
+                      document.getElementById("demoList").innerHTML+=demo;
+                      document.getElementById('total'+i).append(data.data.records[i].scoreTotal);
+                      document.getElementById('teachingEvaluation'+i+'_gradeOne').append(data.data.records[i].scoreOne);
+                      document.getElementById('teachingEvaluation'+i+'_gradeTwo').append(data.data.records[i].scoreTwo);
+                      document.getElementById('teachingEvaluation'+i+'_gradeThree').append(data.data.records[i].scoreThree);
+                      document.getElementById('teachingEvaluation'+i+'_gradeFour').append(data.data.records[i].scoreFour);
+                      document.getElementById('teachingEvaluation'+i+'_suggestion1').append(data.data.records[i].adviceOne);
+                      document.getElementById('teachingEvaluation'+i+'_suggestion2').append(data.data.records[i].adviceTwo);
+                      document.getElementById('teachingEvaluation'+i+'_suggestion3').append(data.data.records[i].adviceThree);
+                      document.getElementById('teachingEvaluation'+i+'_suggestion4').append(data.data.records[i].adviceFour);
+                      document.getElementById('teachingEvaluation'+i+'_suggestion').append(data.data.records[i].adviceTotal);
+                    }
+                  }
+                })
+              })
+
+            }
+          }),
+  )
+
+</script>
+</body>
+</html>

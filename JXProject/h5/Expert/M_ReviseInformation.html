@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <title>修改邮箱信息</title>
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <style type="text/css">
+
+    /* 按钮样式 */
+    .login-form button {
+      width: 20%;
+      height: 15%;
+      margin-top: 24px;
+      background: cornflowerblue;
+      border-style: none;
+      font-size: 18px;
+      border-radius: 0.7rem;
+    }
+
+    /* 按钮鼠标悬浮样式 */
+    .login-form button:hover {
+      background-color: #427fed;
+    }
+
+    /* 超链接的按钮 */
+    .button {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    /*兼容浏览器*/
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .content {
+      width: 100%;
+      height: 100%;
+    }
+
+   .content-left {
+       width: 15%;
+       height: 888px;
+       background-color: #F0F8FF;
+       /*左浮动*/
+       float: left;
+       box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+   }
+
+   .content-right {
+       width: 80%;
+       height: 520px;
+       background-color: white;
+       margin-right: 30px;
+       margin-top: 15px;
+       box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+       /*右浮动*/
+       float: right;
+   }
+
+    .left-title {
+      height: 100px;
+    }
+
+    /*a标签变成块状元素并居中*/
+    .left-title>a {
+      display: block;
+      width: 100%;
+      height: 50px;
+      font-size: 20px;
+      /*垂直居中*/
+      line-height: 100px;
+      /*内联元素及块状元素，水平居中*/
+      text-align: center;
+      /*字体颜色*/
+      color: black;
+      /*去掉a标签默认下划线*/
+      text-decoration: none;
+    }
+
+    /*分割线*/
+    .seg {
+      height: 2px;
+      width: 100%;
+      background-color: white;
+    }
+
+    .nav {
+      margin: 2px 0;
+    }
+
+    /*菜单项主标题*/
+    .nav-title {
+      height: 40px;
+      width: 100%;
+      color: black;
+      /*水平居中*/
+      text-align: center;
+      /*垂直居中*/
+      line-height: 40px;
+      /*鼠标移到该处变小手*/
+      cursor: pointer;
+    }
+
+    .nav-title>a {
+      display: block;
+      height: 30px;
+      width: 100%;
+      color: black;
+
+      text-decoration: none;
+      text-align: center;
+
+    }
+
+
+    /*子标题内容区*/
+    .nav-content {
+      width: 100%;
+      height: 100%;
+      background-color: #6495ED;
+    }
+
+    .nav-content>a {
+      display: block;
+      height: 30px;
+      width: 100%;
+      color: #F0F8FF;
+      background-color: #ADD8E6;
+      text-decoration: none;
+      text-align: center;
+      line-height: 30px;
+      font-size: 14px;
+    }
+
+    /*设置鼠标划过特效*/
+    .nav-content>a:hover {
+      display: block;
+      height: 30px;
+      width: 100%;
+      color: #F0F8FF;
+      text-decoration: none;
+      text-align: center;
+      line-height: 30px;
+      background-color: #87CEFA;
+    }
+
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid #e7e7e7;
+      background-color: #6495ED;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: #666;
+      text-align: center;
+      padding: 4px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+      background-color: #6495ED;
+    }
+
+    li a.active {
+      color: white;
+      background-color: #6495ED;
+      font-size: 18px;
+    }
+
+
+    /*表格设置*/
+
+
+
+   .menu_list {
+       width: 85%;
+       margin: 0;
+       float: right;
+   }
+
+    .menu_head {
+      height: 47px;
+      line-height: 47px;
+      padding-left: 38px;
+      font-size: 14px;
+      color: #525252;
+      cursor: pointer;
+      border: 1px solid #f1f1f1;
+      position: relative;
+      margin: 0px;
+      font-weight: bold;
+      background: #51a9f18c;
+    }
+
+    .menu_list .current {
+      background: #51a9f18c;
+    }
+
+    .menu_nva {
+        line-height: 38px;
+        border-left: 1px solid #51a9f18c;
+        backguound: #fff;
+        border-right: 1px solid #51a9f18c;
+        border-top: 1px solid #51a9f18c;
+        border-bottom: 1px solid #51a9f18c;
+        margin: 10px;
+    }
+
+    .menu_nva a {
+      display: block;
+      height: 38px;
+      line-height: 38px;
+      padding-left: 38px;
+      color: #777777;
+      background: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid #51a9f18c;
+    }
+
+    .menu_nva a:hover {
+      text-decoration: none;
+    }
+      /* 按钮样式 */
+        .login-form button {
+            width: 10%;
+            height: 18%;
+            margin-top: 24px;
+            background: cornflowerblue;
+            border-style: none;
+            font-size: 18px;
+            border-radius: 0.7rem;
+            color:#fff;
+            cursor: pointer;
+        }
+
+        /* 按钮鼠标悬浮样式 */
+        .login-form button:hover {
+            background-color: #427fed;
+        }
+
+        /* 超链接的按钮 */
+        .button {
+            text-decoration: none;
+            color: #fff;
+
+        }
+  </style>
+
+    <!--表格的script-->
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function () {
+      $("#firstpaneDiv .menu_nva:eq(0)").show();
+      $("#firstpaneDiv h3.menu_head").click(function () {
+        $(this).addClass("current").next("div.menu_nva").slideToggle(200).siblings("div.menu_nva").slideUp("slow");
+        $(this).siblings().removeClass("current");
+      });
+      $("#secondpane .menu_nva:eq(0)").show();
+      $("#secondpane h3.menu_head").mouseover(function () {
+        $(this).addClass("current").next("div.menu_nva").slideDown(400).siblings("div.menu_nva").slideUp("slow");
+        $(this).siblings().removeClass("current");
+      });
+    });
+  </script>
+
+    <!--垂直导航栏的script-->
+    <script type="text/javascript">
+    /*当整个html文档加载完成之后再执行此函数*/
+    $(function () {
+      /*隐藏所有子标题*/
+      $(".nav-menu").each(function () {
+        $(this).children(".nav-content").hide();
+      });
+      /*给所有的菜单项主标题绑定事件*/
+      $(".nav-title").each(function () {
+        $(this).click(function () {
+          //当我点击主标题时，其子标题区展示出来
+          //获取当前点击主标题下的子标题内容区
+
+          var conEle = $(this).parents(".nav-menu").children(".nav-content");
+          //判断conEle对象的display属性值是否为none
+          if (conEle.css("display") != "none") {
+            //隐藏
+            conEle.hide(500);//延时隐藏500毫秒
+          }
+          else {
+            //当要展开某一个子标题列表时需要其他所有子标题列表关闭
+            var navEle = conEle.parents(".nav-menu");
+            //找到除自己之外的其他所有兄弟节点
+            var menuEle = navEle.siblings();
+            menuEle.each(function () {
+              $(this).children(".nav-content").hide(500);
+            });
+
+            //展示
+            conEle.show(500);//延时展示500毫秒
+          }
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+<ul>
+    <li><a class="active" href="student.html">匠心训练营</a></li>
+    <li style="float:right"><a class="active" href="M_MyInformation.html"><img src="图片/我的头像.png" height="33px" width="33px"></a></li>
+    <li style="float:right"><a class="active" href="M_MyNews.html"><img src="图片/消息.png" id="XiaoXi" width="33px" height="33px"></a></li>
+</ul>
+
+<div class="content">
+    <div class="content-left">
+        <!--菜单栏导航-->
+        <div class="nav">
+            <!--每一个菜单项-->
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="Expert.html"> <img src="图片/主页.png" width="17px" height="17px" style="position:relative;left:-38px;top:3px">主页</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="Audit.html"><img src="图片/审核项目.png" width="17px" height="17px" style="position:relative;left:-24px;top:3px">审核项目</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="Reply.html"><img src="图片/答辩成绩.png" width="17px" height="17px" style="position:relative;left:-22px;top:3px">答辩成绩</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+        </div>
+    </div>
+    <!--    右侧导航栏-->
+    <div id="firstpaneDiv" class="menu_list">
+        <h3 class="menu_head current">修改个人信息</h3>
+    </div>
+    <!--右侧内容区-->
+    <div class="content-right">
+
+            <div style="display:block" class="menu_nva">
+                <select id="instituteId" style="width:250px" onmousedown="if(options.length>6){size=5}" onchange="size=0" onclick="getIntype()">
+                    <option value="" disabled selected hidden>请选择您的学院</option>
+                    <option value="1">理学院</option>
+                    <option value="2">机械工程学院</option>
+                    <option value="3">能源与环境工程学院</option>
+                    <option value="4">电气工程学院</option>
+                    <option value="5">化工学院</option>
+                    <option value="6">土木与交通学院</option>
+                    <option value="7">经济管理学院</option>
+                    <option value="8">材料科学与工程学院</option>
+                    <option value="9">电子信息工程学院</option>
+                    <option value="10">人文与法律学院</option>
+                    <option value="11">外国语学院</option>
+                    <option value="12">建筑与艺术设计学院</option>
+                    <option value="13">国际教育学院（芬兰校区）</option>
+                    <option value="14">马克思主义学院</option>
+                    <option value="15">人工智能与数据科学学院 </option>
+                    <option value="16">生命科学与健康工程学院</option>
+                    <option value="17">亚利桑那工业学院</option>
+                </select>
+                </br>
+                <input type="text" id="adress" placeholder="请输入您的新邮箱" style="height:15px;width:248px"><br/>
+                <div  class="login-form">
+                    <button onclick="revise()">完成</button>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+<script type="text/javascript">
+    function revise() {
+
+      $.ajax({
+        url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/user/changeInformation',
+        data: JSON.stringify({
+          commonRequest:{
+          token: localStorage.getItem('token'),
+          userId: localStorage.getItem('userId'),
+          },
+          newInformation:$("#adress").val(),
+          "newInstitute":$("#instituteId").find("option:selected").val()
+        }),
+        contentType: 'application/json',
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+        alert("修改成功！");
+         window.location.href = "M_MyInformation.html";
+        },
+        error: function (e) {
+        }
+      });
+    }
+
+$(function () {
+            $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/inform/checkInform',
+                data: JSON.stringify({
+                 "commonRequest": {
+                                token: localStorage.getItem('token'),
+                                userId: localStorage.getItem('userId'),
+                                  },
+                   "pageRequest": {
+                                "currentPage": 1,
+                                "pageSize": 5
+                                   },
+                }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+               if(data.data.records[0].isRead==0){
+                var element = document.getElementById('XiaoXi');
+                element.src = "图片/消息2.png";
+                }
+                }
+            })
+        })
+
+  </script>
+</body>
+
+</html>
+<script>
+    //body初始化事件
+    //body标签加οnlοad='方法名()'
+    //function 方法名(){
+    //   初始化操作
+    //   }
+    function init(){
+        //获取显示器宽度
+        var widths=window.screen.width;
+        //body的宽与显示器一致(浏览器最大化的时候可以用)
+        document.body.style.width=widths+'px';
+    }
+    //监听浏览器的宽度变化
+    window.onresize=function(){
+        //获取浏览器当前的宽度
+        var innerwidths =window.innerWidth;
+        //获取当前显示器的宽度(一般情况下显示器的宽度是不会变得的)
+        var widths=window.screen.width;
+
+        //如果显示器宽度等于浏览器宽度那么这个情况大多数是最大化的时候
+        if(innerwidths==widths){
+            //所以直接把显示器的宽度赋给body
+            document.body.style.width=widths+'px';
+        }
+
+        //如果浏览器的宽度不等于显示器的宽度时有两种情况
+        // 第一种就是 缩小
+        // 第二种就是 放大
+        if(innerwidths!=widths){
+            //先处理缩小的，因为浏览器在缩小的时候它的宽度会一直累加，这个时候浏览器宽度就大于显示器宽度了
+            if (innerwidths>widths) {
+                //这里给body赋值是模拟缩小页面的操作，幅度不能太大，要不然有点奇怪
+                document.body.style.width=innerwidths*10%-widths*10%+'px';
+                return;
+            }
+
+            //放大的操作就重新给body宽度赋显示器的宽度
+            document.body.style.width=widths+'px';
+        }
+    }
+
+</script>

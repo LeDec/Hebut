@@ -1,0 +1,255 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>::My-Task::Holidays</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<!-- Favicon--><!-- plugin css file -->
+<link rel="stylesheet" href="../assets/plugin/datatables/responsive.dataTables.min.css">
+<link rel="stylesheet" href="../assets/plugin/datatables/dataTables.bootstrap5.min.css">
+<!-- project css file -->
+<link rel="stylesheet" href="../assets/css/my-task.style.css">
+  <script type="text/javascript" src="../assets/js/jquery-3.2.1.js"></script>
+</head>
+<body>
+<div id="mytask-layout" class="theme-indigo"><!-- sidebar -->
+
+  <!-- main body area -->
+
+    <!-- Body:Body -->
+    <div class="body d-flex py-lg-3 py-md-2" style="width: 100%">
+      <div class="container-xxl">
+        <div class="row align-items-center">
+          <div class="border-0 mb-4">
+            <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+              <h3 class="fw-bold mb-0">报名审核</h3>
+            </div>
+          </div>
+        </div>
+        <!-- Row end -->
+        <div class="row clearfix g-3">
+          <div class="col-sm-12">
+            <div class="card mb-4">
+              <div class="card-body">
+                <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th width="400">项目编号</th>
+                      <th width="2400">申请项目名称</th>
+                      <th width="700">申请人姓名</th>
+                      <th width="900">申请人学号</th>
+                      <th width="400">报名表</th>
+                      <th width="1700">学院</th>
+                      <th width="800">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Row End --></div>
+    </div>
+  </div>
+</div>
+<!-- Jquery Core Js -->
+<script src="../assets/bundles/libscripts.bundle.js"></script>
+<!-- Plugin Js-->
+<script src="../assets/bundles/dataTables.bundle.js"></script>
+<!-- Jquery Page Js --><script src="../assets/js/template.js"></script>
+
+<script>
+  $(document).ready(function(){$('#myProjectTable') .addClass('nowrap') .dataTable({responsive:true,columnDefs:[{targets:[-1,-3],className:'dt-body-right'}]});$('.deleterow').on('click',function(){var tablename = $(this).closest('table').DataTable();tablename .row($(this) .parents('tr')) .remove() .draw()})});
+</script>
+<script>
+  $(document).ready(
+          //查询当前期
+          $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/batch/nowBatch',
+            data: JSON.stringify({
+              "commonRequest": {
+                token: localStorage.getItem('token'),
+                userId: localStorage.getItem('userId'),
+              }
+            }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+              localStorage.setItem('batchId',data.data.batchId);
+              //查询到当前届数之后进行数据绑定
+              $(function () {
+                $.ajax({
+                  url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/application/checkAuditEnroll',
+                  data: JSON.stringify({
+                    batchId: localStorage.getItem('batchId'),
+                    checkRequest: {
+                      "commonRequest": {
+                        "token": localStorage.getItem('token'),
+                        "userId": localStorage.getItem('userId')
+                      },
+                      "pageRequest": {
+                        "currentPage": 1,
+                        "pageSize": 999
+                      }
+                    }
+                  }),
+                  contentType: 'application/json',
+                  type: 'post',
+                  dataType: 'json',
+                  async:true,
+                  beforeSend:function(){
+                    parent.$("body").trigger('showLoading');
+
+                  },
+                  complete:function () {
+                    parent.$("body").trigger('hideLoading');
+                  },
+                  success: function (data) {
+                    var tableData = [];
+                    var num=1;
+
+                    $.each(data.data.records, function(idx, obj) {
+                      lookcontent= '<div class="btn-group" role="group" aria-label="Basic outlined example"><button onclick="lookContent(this)" type="button" class="btn bg-lightgreen text-end" value="'+obj.projectId+'">下载</button></div>',
+                      PassStr='<button onclick="isPass(this)" class="isPass btn btn-outline-secondary" value="'+obj.enrollId+'"><i class="icofont-check-circled text-success"></button>'+'<button onclick="noPass(this)" class="isPass btn btn-outline-secondary deleterow" value="'+obj.enrollId+'"><i class="icofont-close-circled text-danger"></button>'
+                      if(obj.isPass==1){
+                        tableData.push([num++,obj.projectSymbol,obj.projectName,obj.userName,obj.userId,lookcontent,obj.institute,"已通过"]);
+                      }else if(obj.enrollStage=="已申请"){
+                        tableData.push([num++,obj.projectSymbol,obj.projectName,obj.userName,obj.userId,lookcontent,obj.institute,PassStr]);
+                      }else if(obj.enrollStage=="初试未通过")
+                      tableData.push([num++,obj.projectSymbol,obj.projectName,obj.userName,obj.userId,lookcontent,obj.institute,"初试未通过"]);
+                    });
+                    //所有数据添加到表格中
+                    $("#myProjectTable").dataTable().fnClearTable(false);
+                    if(data.data.records.length!=0)
+                      $("#myProjectTable").dataTable().fnAddData(tableData);
+                  }
+                })
+              })
+
+            }
+          }),
+  )
+  //下载项目内容
+  function lookContent(btn) {
+    var projectId=$(btn).parents(".btn-group").find(".btn").val();
+    localStorage.setItem('projectId', projectId);
+    $.ajax({
+      url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project/downloadProspectus',
+      data: JSON.stringify({
+        commonRequest: {
+          token: localStorage.getItem('token'),
+          userId: localStorage.getItem('userId'),
+        },
+        projectId: localStorage.getItem('projectId')
+      }),
+      contentType: 'application/json',
+      type: 'post',
+      dataType: 'json',
+      success: function (data) {
+        $.dynamicSubmit('http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/file/download',{fileName:data.data.fileName,filePath:data.data.filePath});
+      }
+    })
+
+    /*
+     * 动态构建一个Form 并且提交
+    */
+    $.dynamicSubmit = function (url, datas) {
+
+      var form = $('#dynamicForm');
+
+      if (form.length <= 0) {
+        form = $("<form>");
+        form.attr('id', 'dynamicForm');
+        form.attr('style', 'display:none');
+        form.attr('target', '');
+        form.attr('method', 'post');
+
+        $('body').append(form);
+      }
+
+      form = $('#dynamicForm');
+      form.attr('action', url);
+      form.empty();
+
+      if (datas && typeof (datas) == 'object') {
+        for (var item in datas) {
+          var $_input = $('<input>');
+          $_input.attr('type', 'hidden');
+          $_input.attr('name', item);
+          $_input.val(datas[item]);
+
+          $_input.appendTo(form);
+        }
+      }
+
+      form.submit();
+    }
+  }
+
+  //通过/不通过方法
+  function  isPass(btn){
+    var vals = [];
+    vals.push($(btn).val());
+    $.ajax({
+      url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/application/auditApplication',
+      data: JSON.stringify({
+        "applicantId": vals,
+        "commonRequest": {
+          "token": localStorage.getItem('token'),
+          "userId": localStorage.getItem('userId')
+        },
+        "isPass":1
+      }),
+      contentType: 'application/json',
+      type: 'post',
+      dataType: 'json',
+      success: function (data) {
+        if(data.code==0){
+          alert("操作成功"),
+                  //刷新
+                  location.reload()
+        }else{
+          alert(data.msg)
+        }
+      }
+    })
+
+  }
+  function  noPass(btn){
+    var vals = [];
+    vals.push($(btn).val());
+    $.ajax({
+      url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/application/auditApplication',
+      data: JSON.stringify({
+        "applicantId": vals,
+        "commonRequest": {
+          "token": localStorage.getItem('token'),
+          "userId": localStorage.getItem('userId')
+        },
+        "isPass":0
+      }),
+      contentType: 'application/json',
+      type: 'post',
+      dataType: 'json',
+      success: function (data) {
+        if(data.code==0){
+          alert("操作成功"),
+                  //刷新
+                  location.reload()
+        }else{
+          alert(data.msg)
+        }
+      }
+    })
+
+  }
+</script>
+</body>
+</html>

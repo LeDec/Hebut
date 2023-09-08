@@ -1,0 +1,73 @@
+server:
+  port: 8081
+#  ssl:
+#    key-store : server.keystore
+#    key-alias : tomcat
+#    enabled : true
+#    key-store-password : lidong123
+#    key-store-type : JKS
+spring:
+  mvc:
+    path match:
+      matching-strategy: ant-path-matcher
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+  datasource:
+    druid:
+      driver-class-Name: com.mysql.cj.jdbc.Driver
+      username: quest_admin
+      password: Ji201202!
+      url: jdbc:mysql://140.210.204.183:3306/quest?useUnicode=true&characterEncoding=utf-8&SSL=true&serverTimezone=Asia/Shanghai
+      type: com.alibaba.druid.pool.DruidDataSource
+      initialSize: 35
+      minIdle: 1
+      maxActive: 5000
+      maxWait: 2000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filter:
+        stat:
+          enabled: true
+          dbType: mysql
+          logSlowSql: true
+          slowSqlMillis: 2000
+      webStatFilter:
+        enabled: true
+        urlPattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      statViewServlet:
+        enabled: true
+        urlPattern: /druid/*
+        resetEnable: true
+        allow: 106.47.147.81
+        loginUsername: admin
+        loginPassword: 123456
+  mail:
+    host: smtp.163.com
+    username: lidong001213@163.com
+    password: WFJEJZKSXEKYWSSB
+    port:
+    default-encoding: UTF-8
+    protocol: smtp
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.socketFactory.port: 465
+      mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+      mail.smtp.socketFactory.fallback: false
+
+aliyun:
+  sms:
+    accessKeyId: LTAI5tHKL2JdJjL9e1GGiCzu
+    accessKeySecret: j2d8dfbSK9HMGWzVsXcWdmBzUH4AFm
+    templateCode: SMS_276440900

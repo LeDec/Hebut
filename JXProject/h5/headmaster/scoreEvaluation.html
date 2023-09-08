@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>成绩评定</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<!--    兼容浏览器、整体布局-->
+    <link rel="stylesheet" href="./css/content.css">
+<!--    头部导航栏-->
+    <link rel="stylesheet" href="./css/headNav.css">
+<!--    按钮-->
+    <link rel="stylesheet" href="./css/button.css">
+<!--    左侧导航栏样式-->
+    <link rel="stylesheet" href="./css/leftNav.css">
+<!--    右侧图片居中-->
+    <link rel="stylesheet" href="./css/welcome.css">
+<!--    右侧导航栏-->
+    <link rel="stylesheet" href="./css/rightNav.css">
+<!--    右侧表格-->
+    <link rel="stylesheet" href="./css/rightForm.css">
+    <!--    分页条-->
+    <link type="text/css" rel="stylesheet" href="css/page.css" >
+    <script type="text/javascript" src="js/page.js"></script>
+    <style>
+        #giveOther{
+            margin-left: 450px;
+            margin-top:20px ;
+        }
+    </style>
+<!--    左侧导航栏js-->
+    <script type="text/javascript" src="js/leftNav.js"></script>
+    <!--    消息提醒红点-->
+    <script type="text/javascript" src="js/news.js"></script>
+<!--    成绩评定js-->
+    <script type="text/javascript" src="js/scoreEvaluation.js"></script>
+    <!--    放缩格式-->
+    <script type="text/javascript" src="js/scale.js"></script>
+</head>
+<body>
+<ul>
+    <li><a class="active" href="headmaster.html">匠心训练营</a></li>
+    <li style="float:right"><a class="active" href="myInformation.html"><img src="图片/我的头像.png" height="33px" width="33px"></a></li>
+    <li style="float:right"><a class="active" href="myNews.html"><img src="图片/消息.png" id="XiaoXi" width="33px" height="33px"></a></li>
+</ul>
+
+
+<div class="content">
+    <div class="content-left">
+        <!--菜单栏导航-->
+        <div class="nav">
+            <!--每一个菜单项-->
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="headmaster.html"> <img src="图片/主页.png" width="17px" height="17px" style="position:relative;left:-40px;top:3px">主页</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="studentRegistrationReview.html"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">报名审核</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/学生管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">学生管理</div>
+                <div class="nav-content">
+                    <a href="studentPersonalInformation.html">学生信息</a>
+                </div>
+            </div>
+
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/过程管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">过程管理</a></div>
+                <div class="nav-content">
+                    <a href="stageOne.html">中期阶段</a>
+                    <a href="stageTwo.html">答辩阶段</a>
+                    <a href="stageThree.html">后期成果</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/成绩管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">成绩管理</div>
+                <div class="nav-contentt">
+                    <a href="scoreEvaluation.html" style="background:#87CEFA">成绩评定</a>
+                    <a href="lookScore.html">查看成绩</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="./图片/报销审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">报销管理</div>
+                <div class="nav-content">
+                    <a href="reimBursementReview_Project.html">查看报销</a>
+                    <a href="reimBursementReviewLook.html">审核报销</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="teachingEvaluation.html"><img src="./图片/教评管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">教评管理</a></div>
+            </div>
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="./图片/通知管理图标.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">通知管理</div>
+                <div class="nav-content">
+                    <a href="publishNews.html">发布通知</a>
+                    <a href="manageNews.html">查看通知</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="batch.html"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">往届匠心班</a></div>
+            </div>
+        </div>
+    </div>
+    <div id="firstpaneDiv" class="menu_list">
+        <h3 class="menu_head current">成绩评定</h3>
+    </div>
+    <!--右侧内容区-->
+    <div class="content-right">
+        <table id="yustb2">
+            <tr>
+                <th width="150">序号</th>
+                <th width="800">项目编号</th>
+                <th width="2400">项目名称</th>
+                <th width="700">学号</th>
+                <th width="900">姓名</th>
+                <th width="600">签到次数</th>
+                <th width="600">成绩</th>
+                <th width="0.00001px"></th>
+            </tr>
+        </table>
+        <span style="margin-left: 20px;font-size: 10px;color: red;">
+            注：1.各项成绩均为百分制，自动根据权重计算总成绩2.当前页评分完毕后，请您先暂存所有项目成绩，确认所有项目成绩均已暂存后，提交所有已暂存成绩。(提交后不可再更改成绩)。暂存和提交均是以页为单位进行。
+        </span>
+        </br></br>
+        <button onclick="save()" style="width:100px">暂存本页</button>
+        <button onclick="complete()" style="background-color:#FFA500;float:right;width:88px;">提交</button>
+    </div>
+</div>
+<div id="pagination" style="position:relative;left:771px;bottom:99px;"></div>
+
+</body>
+
+</html>
+<script>
+var flag=0;
+   //暂存本页成绩
+    function save(){
+        var count=document.getElementById("yustb2").rows.length;
+        var score = [];
+        var userId=[];
+        var projectId=[];
+        var i=1;
+        for (i;i<count;i++) {
+            score.push(yustb2.rows[i].cells[6].childNodes[0].value);
+            userId.push(document.getElementById("yustb2").rows[i].cells[3].innerHTML);
+            projectId.push(yustb2.rows[i].cells[7].childNodes[0].value);
+        }
+        $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/score/giveScore',
+            data: JSON.stringify({
+                commonRequest: {
+                    token: localStorage.getItem('token'),
+                    userId: localStorage.getItem('userId'),
+                },
+                projectId: projectId,
+                userId: userId,
+                score:score
+            }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+
+                if(data.code==0)
+                    alert('本页成绩已暂存!');
+                else
+                    alert(data.msg);
+            }
+        })
+    }
+
+    //审核完毕，提交
+    function complete(){
+     var count=document.getElementById("yustb2").rows.length;
+        var score = [];
+        var userId=[];
+        var projectId=[];
+        var i=1;
+        for (i;i<count;i++) {
+            score.push(yustb2.rows[i].cells[6].childNodes[0].value);
+            userId.push(document.getElementById("yustb2").rows[i].cells[3].innerHTML);
+            projectId.push(yustb2.rows[i].cells[7].childNodes[0].value);
+        }
+        $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/score/submitScore',
+            data: JSON.stringify({
+                commonRequest: {
+                    token: localStorage.getItem('token'),
+                    userId: localStorage.getItem('userId'),
+                },
+                projectId: projectId,
+                userId: userId,
+                score:score
+            }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                if(data.code==0)
+                    alert('本页成绩已提交!');
+                else
+                    alert(data.msg);
+            }
+        })
+    }
+    //获取当前批次
+     $(function () {
+            $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/batch/nowBatch',
+                data: JSON.stringify({
+                 "commonRequest": {
+                                token: localStorage.getItem('token'),
+                                userId: localStorage.getItem('userId'),
+                                  }
+                }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+               localStorage.setItem('batchId',data.data.batchId);
+                }
+            })
+        })
+
+</script>

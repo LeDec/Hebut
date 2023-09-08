@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>匠心训练营</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<!--    兼容浏览器、整体布局-->
+    <link rel="stylesheet" href="./css/content.css">
+<!--    头部导航栏-->
+    <link rel="stylesheet" href="./css/headNav.css">
+<!--    左侧导航栏样式-->
+    <link rel="stylesheet" href="./css/leftNav.css">
+    <!--    右侧菜单-->
+    <link rel="stylesheet" href="./css/rightMenu.css">
+    <!--    右侧导航栏-->
+    <link rel="stylesheet" href="./css/rightNav.css">
+    <!--    按钮样式-->
+    <link rel="stylesheet" href="./css/button.css">
+<!--    左侧导航栏js-->
+    <script type="text/javascript" src="js/leftNav.js"></script>
+<!--    消息提醒红点-->
+    <script type="text/javascript" src="js/news.js"></script>
+    <!--    放缩格式-->
+    <script type="text/javascript" src="js/scale.js"></script>
+    <style>
+        .right{
+            margin-left: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<ul>
+    <li><a class="active" href="student.html">匠心训练营</a></li>
+    <li style="float:right"><a class="active" href="myInformation.html"><img src="图片/我的头像.png" height="33px" width="33px"></a></li>
+    <li style="float:right"><a class="active" href="myNews.html"><img src="图片/消息.png" id="XiaoXi" width="33px" height="33px"></a></li>
+</ul>
+
+<div class="content">
+    <div class="content-left">
+        <!--菜单栏导航-->
+        <div class="nav">
+            <!--每一个菜单项-->
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="teacher.html"> <img src="图片/主页.png" width="17px" height="17px" style="position:relative;left:-40px;top:3px">主页</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a><img src="./图片/项目申报.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">项目申报</a></div>
+                <div class="nav-contentt">
+                    <a href="declareJx.html" style="background:#87CEFA">申报匠心项目</a>
+                    <a href="declareOther.html">申报其他项目</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">报名审核</div>
+                <div class="nav-content">
+                    <a href="retextJx.html">匠心复试</a>
+                    <a href="otherProject.html">其他项目</a>
+                </div>
+            </div>
+
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="stageManage.html"><img src="图片/过程管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">过程管理</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/成绩管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">成绩评定</div>
+                <div class="nav-content">
+                    <a href="scoreEvaluation.html">评定平时成绩</a>
+                    <a href="lookScore.html">查看成绩</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="teachingEvaluation.html"><img src="./图片/教评管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">查看教评</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="batch.html"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">往届匠心班</a></div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <!--右侧导航栏-->
+    <div id="firstpaneDiv" class="menu_list">
+        <h3 class="menu_head current">申报匠心项目</h3>
+    </div>
+    <!--右侧内容区-->
+    <div class="content-right">
+        <div style="display:block" class="menu_nva">
+            <a>
+                <span>项目名称:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="projectName" style="width:300px"></span>
+            </a>
+            <a>
+                <span>
+                指导教师工号:<input type="text" id="projectTeacher1">
+                    <input type="text" id="projectTeacher2">
+                    <input type="text" id="projectTeacher3">(最多3个最少1个)</span>
+            </a>
+            <a>
+                <span>需求专业:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                 <select id="majorId1" style="width:166px">
+                 <option value="" disabled selected hidden>请选择所需专业1</option>
+                 </select>
+                <select id="majorId2" style="width:166px">
+                 <option value="" disabled selected hidden>请选择所需专业2</option>
+                 </select>
+                <select id="majorId3" style="width:166px">
+                 <option value="" disabled selected hidden>请选择所需专业3</option>
+                 </select>
+               </span>
+            </a>
+            <a>
+                <span>需求人数:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="needPeople"></span>
+            </a>
+            <a><span>项目来源:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<select id="projectOrigin" style="width:166px">
+                 <option value="" disabled selected hidden>请选择项目来源</option>
+                 <option value="教师">教师</option>
+                <option value="学校">学校</option>
+                <option value="企业">企业</option>
+                <option value="其他">其他</option>
+                 </select></span>
+            </a>
+            <a>
+            <span>
+                可报销金额:&nbsp&nbsp&nbsp<input type="text" id="amount">(这里填1500)</span>
+            </a>
+            <a>
+                <form id="uploadForm" enctype="multipart/form-data" >
+                    项目计划书： <input type="file" name="file" id="certificate">
+                    <button onclick="downLoad(this)" style="position: relative;left:-60px">模板下载</button>
+                </form>
+
+            </a>
+            <a></a>
+            <a>
+                <button onclick="addProject()">申报</button>
+            </a>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>
+<script>
+//下载报名表
+ function downLoad(btn){
+            $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project/downloadTemplate',
+                data: JSON.stringify({
+                    "commonRequest": {
+                        "token": localStorage.getItem('token'),
+                        "userId": localStorage.getItem('userId')
+                    }
+                }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+                    $.dynamicSubmit('http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/file/download',{fileName:data.data.fileName,filePath:data.data.filePath});
+                }
+            })
+        }
+        $.dynamicSubmit = function (url, datas) {
+
+            var form = $('#dynamicForm');
+
+            if (form.length <= 0) {
+                form = $("<form>");
+                form.attr('id', 'dynamicForm');
+                form.attr('style', 'display:none');
+                form.attr('target', '');
+                form.attr('method', 'post');
+
+                $('body').append(form);
+            }
+
+            form = $('#dynamicForm');
+            form.attr('action', url);
+            form.empty();
+
+            if (datas && typeof (datas) == 'object') {
+                for (var item in datas) {
+                    var $_input = $('<input>');
+                    $_input.attr('type', 'hidden');
+                    $_input.attr('name', item);
+                    $_input.val(datas[item]);
+
+                    $_input.appendTo(form);
+                }
+            }
+
+            form.submit();
+        }
+//后台加载所有专业列表
+  $.ajax({
+        url:'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/major/showAllMajor',
+         data: JSON.stringify({
+         checkRequest:{
+                         "commonRequest": {
+                            "token": localStorage.getItem('token'),
+                            "userId": localStorage.getItem('userId')
+                        },
+                        "pageRequest": {
+                            "currentPage": 1,
+                            "pageSize": 1000
+                        }}
+}),
+  contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+        success:function(data){
+             for (i in data.data.records){
+                var option=document.createElement("option");
+                $("#majorId1").append(('<option value='+data.data.records[i].majorId+'>'+data.data.records[i].majorName+'</option>'));
+                $("#majorId2").append(('<option value='+data.data.records[i].majorId+'>'+data.data.records[i].majorName+'</option>'));
+                $("#majorId3").append(('<option value='+data.data.records[i].majorId+'>'+data.data.records[i].majorName+'</option>'));
+
+            }
+        },
+        error:function(data){
+            console.log(data);
+        }
+    });
+
+//获取当前批次
+$(function () {
+            $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/batch/nowBatch',
+                data: JSON.stringify({
+                 "commonRequest": {
+                                token: localStorage.getItem('token'),
+                                userId: localStorage.getItem('userId'),
+                                  }
+                }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+               localStorage.setItem('batchId',data.data.batchId);
+                }
+            })
+        })
+
+
+    var fileIsNull = true;
+
+    var oEmpty2 = document.getElementById('projectName');
+    var oEmpty3 = document.getElementById('needPeople');
+    var oEmpty4 = document.getElementById('majorId1');
+    var oEmpty5 = document.getElementById('projectOrigin');
+    var oEmpty6 = document.getElementById('projectTeacher1');
+    var oEmpty7 = document.getElementById('amount');
+    function IsNull1(val) {
+
+        var str = val.replace(/(^\s*)|(\s*$)/g, '');//去除空格;
+
+        if (str == '' || str == undefined || str == null) {
+            alert("请输入完整信息")
+            return true;
+        } else { return false; }
+    }
+    function IsNull2(val) {
+
+        var str = val.replace(/(^\s*)|(\s*$)/g, '');//去除空格;
+
+        if (str == '' || str == undefined || str == null) {
+            alert("请输入完整信息");
+            return true
+        } else {
+            if(isNaN(str)){
+                alert("请输入数字")
+                return true
+            }
+            return false
+        }
+    }
+    // 判断用户是否选中了文件
+    $('#certificate').on('change', function () {
+
+        if (this.value != "") {
+            fileIsNull = false;
+        } else {
+            alert("请选择文件")
+        }
+    })
+
+
+
+    function addProject() {
+        if(IsNull1(oEmpty2.value)||IsNull2(oEmpty3.value)||IsNull1(oEmpty4.value)||IsNull1(oEmpty5.value)||IsNull1(oEmpty6.value)||IsNull2(oEmpty7.value)){
+
+        }
+        else {
+            if(fileIsNull){
+                alert("请选择文件")
+            }else{
+                var formData = new FormData($('#uploadForm')[0]);
+                $.ajax({
+                    type: 'post',
+                    url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project/fileProspectus',
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    dataType:"JSON",
+                    success:function (data) {
+                        if(data.code==0){
+                            localStorage.setItem('certificate', data.msg);
+                            tijiao();
+                        }
+                        else if(data.code==1)
+                            alert('文件为空');
+                    },
+                    error:function () {
+                        alert("上传失败");
+                    }
+            })
+            }
+        }
+    }
+    function tijiao(){
+        var projectNeedMajor=[];
+        var projectTeacher=[];
+        projectNeedMajor.push($("#majorId1").find("option:selected").val());
+        projectNeedMajor.push($("#majorId2").find("option:selected").val());
+        projectNeedMajor.push($("#majorId3").find("option:selected").val());
+        if($("#projectTeacher1").val())
+        projectTeacher.push($("#projectTeacher1").val());
+        if($("#projectTeacher2").val())
+        projectTeacher.push($("#projectTeacher2").val());
+        if($("#projectTeacher3").val())
+        projectTeacher.push($("#projectTeacher3").val());
+        $.ajax({
+            url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project/addProject',
+            data: JSON.stringify({
+                "amount": $("#amount").val(),
+                "batchId": localStorage.getItem('batchId'),
+                "commonRequest": {
+                    "token": localStorage.getItem('token'),
+                    "userId": localStorage.getItem('userId')
+                },
+                "projectIntroduction": localStorage.getItem('certificate'),
+                "projectName": $("#projectName").val(),
+                "projectNeedMajor": projectNeedMajor,
+                "projectNeedPeople": $("#needPeople").val(),
+                "projectOrigin": $("#projectOrigin").find("option:selected").val(),
+                "projectTeacher": projectTeacher,
+                "projectType": 1
+            }),
+            contentType: 'application/json',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+            if(data.code==0)
+                alert("申报成功");
+                else
+                alert(data.msg);
+                location.reload()
+            }
+        })
+
+    }
+
+</script>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="./tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: '#tinydemo',
+            language:"zh_CN",
+            plugins: 'image link', //使用image插件
+            toolbar: 'image link' , //工具栏显示
+            images_upload_url: '127.0.0.1:8081/project/inform-attachment/fileAttachment', //用于指定一个接收上传文件的后端处理程序地址
+        });
+
+
+    </script>
+
+</head>
+<body>
+<div id = "tinydemo"></div>
+
+</body>
+</html>

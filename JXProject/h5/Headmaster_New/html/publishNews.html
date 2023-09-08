@@ -1,0 +1,133 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>::My-Task::Holidays</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+  <!-- Favicon--><!-- plugin css file -->
+<link rel="stylesheet" href="../assets/plugin/datatables/responsive.dataTables.min.css">
+<link rel="stylesheet" href="../assets/plugin/datatables/dataTables.bootstrap5.min.css">
+<!-- project css file -->
+<link rel="stylesheet" href="../assets/css/my-task.style.css">
+  <script src="../../tinymce/tinymce.min.js"></script>
+  <script >
+    tinymce.init({
+      selector: '#tinydemo',
+      language:'zh_CN',
+      toolbar: 'image',
+      width:'100%',
+      height:'700px',
+      resize:false,
+      plugins: 'image',
+      images_upload_url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/inform-attachment/fileAttachment', //用于指定一个接收上传文件的后端处理程序地址
+      images_upload_base_path: 'D://',
+      file_browser_callback_types: 'file image media',//这个根据个人需要配置
+      // file_picker_callback: function(callback, value, meta) {
+      //     //文件分类
+      //     var filetype = '.pdf, .txt, .zip, .rar, .7z, .doc, .docx, .xls, .xlsx, .ppt, .pptx, .mp3, .mp4';
+      //     var upurl = 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/inform-attachment/fileAttachment';
+      //     //为不同插件指定文件类型及后端地址
+      //     switch (meta.filetype) {
+      //         case 'image':
+      //             filetype = '.jpg, .jpeg, .png, .gif';
+      //             break;
+      //         case 'media':
+      //             filetype = '.mp3, .mp4';
+      //             break;
+      //         case 'file':
+      //             break;
+      //     };
+      //     //模拟出一个input用于添加本地文件
+      //     var input = document.createElement('input');
+      //     input.setAttribute('type', 'file');
+      //     input.setAttribute('accept', filetype);
+      //     input.click();
+      //     input.onchange = function() {
+      //         var file = this.files[0];
+      //
+      //         var xhr, formData;
+      //         console.log(file.name);
+      //         xhr = new XMLHttpRequest();
+      //         xhr.withCredentials = false;
+      //         xhr.open('POST', upurl);
+      //         xhr.onload = function() {
+      //             var json;
+      //             if (xhr.status != 200) {
+      //                 failure('HTTP Error: ' + xhr.status);
+      //                 return;
+      //             }
+      //             json = JSON.parse(xhr.responseText);
+      //             if (!json || typeof json.location != 'string') {
+      //                 failure('Invalid JSON: ' + xhr.responseText);
+      //                 return;
+      //             }
+      //             callback(json.location);
+      //         };
+      //         formData = new FormData();
+      //         formData.append('file', file, file.name );
+      //         xhr.send(formData)
+      //     };
+      // },
+    });
+  </script>
+
+</head>
+<body>
+<div id="mytask-layout" class="theme-indigo"><!-- sidebar -->
+
+  <!-- main body area -->
+
+    <!-- Body:Body -->
+    <div class="body d-flex py-lg-3 py-md-2" style="width: 100%">
+      <div class="container-xxl">
+        <div class="row align-items-center">
+          <div class="border-0 mb-4">
+            <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+              <h3 class="fw-bold mb-0">报销查看</h3>
+              <!--              <div class="col-auto d-flex w-sm-100">-->
+              <!--                <button onclick="pre()" type="button" class="btn btn-dark btn-set-task w-sm-100">往期记录</button>-->
+              <!--              </div>-->
+            </div>
+          </div>
+        </div>
+
+        <!-- Row end -->
+        <div class="mb-3" style="width:30%">
+          <label class="form-label">接受用户</label>
+          <select class="form-select" aria-label="Default select Project Category">
+            <option value="" disabled selected hidden>请选择发送到的用户类型</option>
+            <option value="2">班主任</option>
+            <option value="3">指导教师</option>
+            <option value="4">专家评委</option>
+            <option value="5">学生</option>
+            <option value="6">企业</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput77" class="form-label">通知标题</label>
+          <input type="text" class="form-control" id="exampleFormControlInput77">
+        </div>
+        <div id = "tinydemo"></div>
+
+
+        <!-- Row End --></div>
+    </div>
+  </div>
+</div>
+<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+<!-- Jquery Core Js -->
+<script src="../assets/bundles/libscripts.bundle.js"></script>
+<!-- Plugin Js-->
+<script src="../assets/bundles/dataTables.bundle.js"></script>
+<!-- Jquery Page Js --><script src="../assets/js/template.js"></script>
+
+
+<script>
+  $(document).ready(function(){$('#myProjectTable') .addClass('nowrap') .dataTable({responsive:true,columnDefs:[{targets:[-1,-3],className:'dt-body-right'}]});$('.deleterow').on('click',function(){var tablename = $(this).closest('table').DataTable();tablename .row($(this) .parents('tr')) .remove() .draw()})});
+</script>
+
+</body>
+</html>

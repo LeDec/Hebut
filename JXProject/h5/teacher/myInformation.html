@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>个人信息</title>
+  <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+  <!--    兼容浏览器、整体布局-->
+  <link rel="stylesheet" href="./css/content.css">
+  <!--    头部导航栏-->
+  <link rel="stylesheet" href="./css/headNav.css">
+  <!--    左侧导航栏样式-->
+  <link rel="stylesheet" href="./css/leftNav.css">
+  <!--    右侧导航栏-->
+  <link rel="stylesheet" href="./css/rightNav.css">
+<!--右侧菜单-->
+  <link rel="stylesheet" href="./css/rightMenu.css">
+  <!--    消息提醒红点-->
+  <script type="text/javascript" src="js/news.js"></script>
+  <!--    放缩格式-->
+  <script type="text/javascript" src="js/scale.js"></script>
+  <style>
+    .login-form button {
+      width: 20%;
+      height: 15%;
+      margin-top: 24px;
+      background: cornflowerblue;
+      border-style: none;
+      font-size: 18px;
+      border-radius: 0.7rem;
+    }
+
+    /* 按钮鼠标悬浮样式 */
+    .login-form button:hover {
+      background-color: #427fed;
+    }
+    .login-form button {
+      width: 10%;
+      height: 18%;
+      margin-top: 24px;
+      background: cornflowerblue;
+      border-style: none;
+      font-size: 18px;
+      border-radius: 0.7rem;
+      color:#fff;
+    }
+
+    /* 按钮鼠标悬浮样式 */
+    .login-form button:hover {
+      background-color: #427fed;
+    }
+  </style>
+  <!--    左侧导航栏js-->
+  <script type="text/javascript" src="js/leftNav.js"></script>
+
+</head>
+
+<body>
+
+  <ul>
+    <li><a class="active" href="student.html">匠心训练营</a></li>
+    <li style="float:right"><a class="active" href="myInformation.html"><img src="图片/我的头像.png" height="33px" width="33px"></a></li><a href="myNews.html"><img src="图片/未读红点.png" id="RedPoint" style="display:none;width:26px;height:26px;position:relative;top:16px;left:1198px;"/></a>
+    <li style="float:right"><a class="active" href="myNews.html"><img src="图片/消息.png" id="XiaoXi" width="33px" height="33px"></a></li>
+  </ul>
+
+
+  <div class="content">
+    <div class="content-left">
+      <!--菜单栏导航-->
+      <div class="nav">
+        <!--每一个菜单项-->
+        <div class="nav-menu">
+          <!--主标题-->
+          <div class="nav-titlet"><a href="teacher.html"> <img src="图片/主页.png" width="17px" height="17px" style="position:relative;left:-40px;top:3px">主页</a></div>
+        </div>
+        <!--分割线-->
+        <div class="seg"></div>
+
+        <div class="nav-menu">
+          <!--主标题-->
+          <div class="nav-title"><a><img src="./图片/项目申报.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">项目申报</a></div>
+          <div class="nav-content">
+            <a href="declareJx.html">申报匠心项目</a>
+            <a href="declareOther.html">申报其他项目</a>
+          </div>
+        </div>
+        <!--分割线-->
+        <div class="seg"></div>
+
+        <div class="nav-menu">
+          <!--主标题-->
+          <div class="nav-title"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">报名审核</div>
+          <div class="nav-content">
+            <a href="retextJx.html">匠心复试</a>
+            <a href="otherProject.html">其他项目</a>
+          </div>
+        </div>
+
+        <!--分割线-->
+        <div class="seg"></div>
+
+        <div class="nav-menu">
+          <!--主标题-->
+          <div class="nav-title"><a href="stageManage.html"><img src="图片/过程管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">过程管理</a></div>
+        </div>
+        <!--分割线-->
+        <div class="seg"></div>
+
+        <div class="nav-menu">
+          <!--主标题-->
+          <div class="nav-title"><img src="图片/成绩管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">成绩评定</div>
+          <div class="nav-content">
+            <a href="scoreEvaluation.html">评定平时成绩</a>
+            <a href="lookScore.html">查看成绩</a>
+          </div>
+        </div>
+        <!--分割线-->
+        <div class="seg"></div>
+
+        <div class="nav-menu">
+          <!--主标题-->
+          <div class="nav-title"><a href="teachingEvaluation.html"><img src="./图片/教评管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">查看教评</a></div>
+        </div>
+        <!--分割线-->
+        <div class="seg"></div>
+
+        <div class="nav-menu">
+          <!--主标题-->
+          <div class="nav-title"><a href="batch.html"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">往届匠心班</a></div>
+        </div>
+
+      </div>
+    </div>
+
+<!--    右侧导航栏-->
+    <div id="firstpaneDiv" class="menu_list">
+      <h3 class="menu_head current">我的信息</h3>
+    </div>
+    <!--右侧内容区-->
+    <div class="content-right">
+        <div style="display:block" class="menu_nva">
+          <a id="userName"></a>
+          <a id="userTypeId"></a>
+          <a id="userId"></a>
+          <a id="institute"></a>
+          <a id="major"></a>
+          <a id="email"></a>
+        </div>
+      <div  class="login-form">
+        &nbsp&nbsp&nbsp&nbsp
+        <button onclick="reviseinformation()">修改信息</button>
+         <button onclick="revisepassword()">修改密码</button>
+        <button onclick="returnlogin()">退出账号</button>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(function () {
+
+      $.ajax({
+        url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/user/Information',
+        data: JSON.stringify({
+          token: localStorage.getItem('token'),
+          userId: localStorage.getItem('userId'),
+        }),
+        contentType: 'application/json',
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+          if (data.code == 0) {
+            console.log(data.data.email)
+            document.getElementById("userName").innerText = "姓名：" + data.data.userName;
+            if(data.data.userTypeId=="0")
+            document.getElementById("userTypeId").innerText = "身份：系统管理员";
+             else if(data.data.userTypeId=="1")
+            document.getElementById("userTypeId").innerText = "身份：管理员";
+            else if(data.data.userTypeId=="2")
+            document.getElementById("userTypeId").innerText = "身份：班主任";
+            else if(data.data.userTypeId=="3")
+            document.getElementById("userTypeId").innerText = "身份：指导老师";
+            else if(data.data.userTypeId=="4")
+            document.getElementById("userTypeId").innerText = "身份：专家";
+            else if(data.data.userTypeId=="5")
+            document.getElementById("userTypeId").innerText = "身份：学生";
+            else if(data.data.userTypeId=="6")
+            document.getElementById("userTypeId").innerText = "身份：企业";
+            if(data.data.userTypeId==5){
+              document.getElementById("userId").innerText = "学号：" + data.data.userId;
+            }else{
+              document.getElementById("userId").innerText = "工号：" + data.data.userId;
+            }
+            document.getElementById("institute").innerText = "学院：" + data.data.institute;
+            document.getElementById("major").innerText = "专业：" + data.data.major;
+            document.getElementById("email").innerText = "邮箱：" + data.data.email;
+          } else {
+
+            return false;
+          }
+        },
+        error: function (e) {
+        }
+      });
+    })
+
+  </script>
+<script>
+function reviseinformation(){
+window.location.href = "reviseinformation.html";
+}
+function revisepassword(){
+window.location.href = "revisepassword.html";
+}
+function returnlogin(){
+window.location.href = "../login.html";
+}
+function joinjx(){
+$.ajax({
+url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project-user-relation/searchMyProject',
+data: JSON.stringify({
+"commonRequest": {
+"token": localStorage.getItem('token'),
+"userId": localStorage.getItem('userId')
+},
+"pageRequest": {
+"currentPage": 1,
+"pageSize": 5
+},
+"projectType": "1"
+}),
+contentType: 'application/json',
+type: 'post',
+dataType: 'json',
+success: function (data) {
+if(data.data.records[0].stage==0)
+window.location.href = "joinjxproject.html";
+else
+alert('当前非报名阶段');
+}
+})
+
+}
+$(function () {
+            $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/inform/checkInform',
+                data: JSON.stringify({
+                 "commonRequest": {
+                                token: localStorage.getItem('token'),
+                                userId: localStorage.getItem('userId'),
+                                  },
+                   "pageRequest": {
+                                "currentPage": 1,
+                                "pageSize": 5
+                                   },
+                }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+                if(data.data.records[0].isRead==0){
+                var element = document.getElementById('XiaoXi');
+                element.src = "图片/消息2.png";
+                }
+                }
+            })
+        })
+
+</script>
+</body>
+
+</html>

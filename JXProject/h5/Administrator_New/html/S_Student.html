@@ -1,0 +1,234 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>::My-Task::Holidays</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Favicon--><!-- plugin css file -->
+  <link rel="stylesheet" href="../assets/plugin/datatables/responsive.dataTables.min.css">
+  <link rel="stylesheet" href="../assets/plugin/datatables/dataTables.bootstrap5.min.css">
+  <!-- project css file -->
+  <link rel="stylesheet" href="../assets/css/my-task.style.css">
+  <script type="text/javascript" src="../assets/js/jquery-3.2.1.js"></script>
+</head>
+<body>
+<div id="mytask-layout" class="theme-indigo"><!-- sidebar -->
+
+  <!-- main body area -->
+
+  <!-- Body:Body -->
+  <div class="body d-flex py-lg-3 py-md-2" style="width: 100%">
+    <div class="container-xxl">
+      <div class="row align-items-center">
+        <div class="border-0 mb-4">
+          <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+            <h3 class="fw-bold mb-0">学生管理</h3>
+          </div>
+        </div>
+      </div>
+      <!-- Row end -->
+      <div class="row clearfix g-3">
+        <div class="col-sm-12">
+          <div class="card mb-4">
+            <div class="card-body">
+              <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                <thead>
+                <tr>
+                  <th width="400">序号</th>
+                  <th width="2400">批次</th>
+                  <th width="700">学号</th>
+                  <th width="900">姓名</th>
+                  <th width="400">学院</th>
+                  <th width="1700">专业</th>
+                  <th width="800">联系方式</th>
+                  <th width="800">项目</th>
+                  <th width="800">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Row End --></div>
+    <!-- 修改学生信息 -->
+    <div class="modal fade" id="reinf" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title  fw-bold">编辑</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">姓名：</label>
+              <input type="text" class="form-control" id="User-Name">
+              <label class="form-label">学号：</label>
+              <input type="text" class="form-control" id="User-ID">
+              <label class="form-label">学院：</label>
+              <select  class="form-control" id="User-Institute" onclick="getIntype()">
+                <option value="" disabled selected hidden>请选择您的学院</option>
+                <option value="1">理学院</option>
+                <option value="2">机械工程学院</option>
+                <option value="3">能源与环境工程学院</option>
+                <option value="4">电气工程学院</option>
+                <option value="5">化工学院</option>
+                <option value="6">土木与交通学院</option>
+                <option value="7">经济管理学院</option>
+                <option value="8">材料科学与工程学院</option>
+                <option value="9">电子信息工程学院</option>
+                <option value="10">人文与法律学院</option>
+                <option value="11">外国语学院</option>
+                <option value="12">建筑与艺术设计学院</option>
+                <option value="13">国际教育学院（芬兰校区）</option>
+                <option value="14">马克思主义学院</option>
+                <option value="15">人工智能与数据科学学院 </option>
+                <option value="16">生命科学与健康工程学院</option>
+                <option value="17">亚利桑那工业学院</option>
+              </select>
+              <label class="form-label">学院：</label>
+              <select  class="form-control" id="User-Major">
+                <option value="" disabled selected hidden>请选择您的专业</option>
+              </select>
+              <label class="form-label">邮箱：</label>
+              <input type="text" class="form-control" id="User-Email">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+            <button class="btn btn-primary" onclick="Reinf()">修改</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Jquery Core Js -->
+<script src="../assets/bundles/libscripts.bundle.js"></script>
+<!-- Plugin Js-->
+<script src="../assets/bundles/dataTables.bundle.js"></script>
+<!-- Jquery Page Js --><script src="../assets/js/template.js"></script>
+
+<script>
+  $(document).ready(function(){$('#myProjectTable') .addClass('nowrap') .dataTable({responsive:true,columnDefs:[{targets:[-1,-3],className:'dt-body-right'}]});$('.deleterow').on('click',function(){var tablename = $(this).closest('table').DataTable();tablename .row($(this) .parents('tr')) .remove() .draw()})});
+</script>
+<script>
+ $(document).ready(
+ //显示所有学生列表
+           $.ajax({
+                url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/user/checkStudent',
+                data: JSON.stringify({
+                "checkRequest": {
+                        "commonRequest": {
+                            "token": localStorage.getItem('token'),
+                            "userId": localStorage.getItem('userId')
+                        },
+                        "pageRequest": {
+                            "currentPage": 1,
+                            "pageSize": 99999
+                        }
+                        }
+                        }),
+                contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+                async:true,
+                  beforeSend:function(){
+                    parent.$("body").trigger('showLoading');
+                  },
+                  complete:function () {
+                    parent.$("body").trigger('hideLoading');
+                  },
+                  success: function (data) {
+                  var tableData = [];
+                  var num=1;
+
+                    $.each(data.data.records, function(idx, obj) {
+                      manage= '<div data-bs-toggle="modal" data-bs-target="#reinf" class="btn-group" role="group" aria-label="Basic outlined example"><button onclick="Manage(this)" type="button" class="btn bg-lightgreen text-end" value="'+obj.userId+'">编辑</button></div>',
+                      del= '<div class="btn-group" role="group" aria-label="Basic outlined example"><button onclick="Dell(this)" type="button" class="btn bg-lightgreen text-end" value="'+obj.userId+'">删除</button></div>',
+                      news= '<div class="btn-group" role="group" aria-label="Basic outlined example"><button onclick="News(this)" type="button" class="btn bg-lightgreen text-end" value="'+obj.userId+'">发通知</button></div>',
+                      nbs= '<a>&nbsp&nbsp&nbsp</a>';
+                      look= '<div class="btn-group" role="group" aria-label="Basic outlined example"><button onclick="Look(this)" type="button" class="btn bg-lightgreen text-end" value="'+obj.userId+'">查看</button></div>';
+                      if(obj.batchName==null){
+                      obj.batchName="暂无";
+                      }
+                      tableData.push([num++,obj.batchName,obj.userId,obj.userName,obj.institute,obj.major,obj.email,look,del+nbs+manage+nbs+news]);
+
+                    });
+                    //所有数据添加到表格中
+                    $("#myProjectTable").dataTable().fnClearTable(false);
+                    if(data.data.records.length!=0)
+                      $("#myProjectTable").dataTable().fnAddData(tableData);
+                  }
+            })
+        )
+
+//删除学生用户
+   function Dell(btn) {
+    var StudentId=$(btn).parents(".btn-group").find(".btn").val();
+    localStorage.setItem('StudentId', StudentId);
+      $.ajax({
+        url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/user/deleteUser',
+        data: JSON.stringify({
+          commonRequest:{
+          token: localStorage.getItem('token'),
+          userId: localStorage.getItem('userId'),
+          },
+          userId:localStorage.getItem('StudentId')
+        }),
+        contentType: 'application/json',
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+        if(data.code==0)
+        alert("删除成功！");
+        else
+        alert(data.msg);
+         window.location.href = "S_Student.html";
+        },
+        error: function (e) {
+         alert("删除失败！");
+        }
+      })
+    }
+
+//加载学生个人信息
+
+
+//根据学院加载对应专业
+ function getIntype(){
+  $.ajax({
+          url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/institute/showAllInstitute',
+         data: JSON.stringify({
+         checkRequest:{
+                        "commonRequest": {
+                                token: localStorage.getItem('token'),
+                                userId: localStorage.getItem('userId'),
+                                  },
+                   "pageRequest": {
+                                "currentPage": 1,
+                                "pageSize": 500
+                                   }}
+}),
+  contentType: 'application/json',
+                type: 'post',
+                dataType: 'json',
+        success:function(data){
+             for (i in data.data.records){
+                var option=document.createElement("option");
+                $("#instituteId").append(('<option value='+data.data.records[i].instituteId+'>'+data.data.records[i].instituteName+'</option>'));
+            }
+        },
+        error:function(data){
+            console.log(data);
+        }
+    });
+</script>
+</body>
+</html>

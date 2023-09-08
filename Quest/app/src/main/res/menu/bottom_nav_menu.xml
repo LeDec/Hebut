@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dungeon"
+        android:icon="@drawable/dungeon"
+        android:title="@string/dungeon" />
+
+    <item
+        android:id="@+id/daily"
+        android:icon="@drawable/daily"
+        android:title="@string/daily" />
+
+    <item
+        android:id="@+id/village"
+        android:icon="@drawable/village"
+        android:title="@string/village" />
+
+    <item
+        android:id="@+id/knapsack"
+        android:icon="@drawable/knapsack"
+        android:title="@string/knapsack" />
+</menu>

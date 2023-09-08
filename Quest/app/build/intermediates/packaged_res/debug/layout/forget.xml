@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dip"
+        android:background="@drawable/radius_drawable_bg"
+        android:orientation="vertical"
+        android:padding="10dip">
+
+        <LinearLayout
+            android:id="@+id/input_layout_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/login_phone"
+                android:layout_weight="1" />
+
+            <EditText
+                android:id="@+id/et_phone_forget"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dip"
+                android:background="@color/white"
+                android:hint="@string/phone_id"
+                android:padding="5dip"
+                android:textSize="16sp"
+                android:layout_weight="9" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:background="#eeeeee" />
+
+        <LinearLayout
+            android:id="@+id/input_layout_psw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/iv_paw"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/verify_code"
+                android:layout_weight="1" />
+
+            <EditText
+                android:id="@+id/et_captcha_forget"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dip"
+                android:background="@color/white"
+                android:hint="@string/verify_code"
+                android:inputType="text"
+                android:padding="5dip"
+                android:textSize="16sp"
+                android:layout_weight="5" />
+
+            <Button
+                android:id="@+id/et_captcha"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:layout_marginEnd="20dip"
+                android:minHeight="1dp"
+                android:text="发送验证码"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="5dip"
+            android:layout_marginBottom="5dip"
+            android:background="#eeeeee" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/new_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置新密码"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <EditText
+                    android:id="@+id/new_paw"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dip"
+                    android:background="@color/white"
+                    android:hint="请输入"
+                    android:inputType="textPassword"
+                    android:padding="5dip"
+                    android:textSize="16sp"
+                    android:layout_weight="9" />
+
+                <ImageView
+                    android:id="@+id/fpaw_public"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/pawunpublic" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="5dip"
+                android:layout_marginBottom="5dip"
+                android:background="#eeeeee" />
+
+            <TextView
+                android:id="@+id/renew_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="确认新密码"
+                android:textSize="12sp"
+                tools:ignore="DuplicateIds" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <EditText
+                    android:id="@+id/renew_paw"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dip"
+                    android:background="@color/white"
+                    android:hint="请确认"
+                    android:inputType="textPassword"
+                    android:padding="5dip"
+                    android:textSize="16sp"
+                    android:layout_weight="9"
+                    tools:ignore="DuplicateIds" />
+
+                <ImageView
+                    android:id="@+id/repaw_public"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/pawunpublic" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/pineFlowerYellow">
+
+        <TextView
+            android:id="@+id/tv_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/text_bg"
+            android:gravity="center"
+            android:paddingLeft="15dip"
+            android:paddingTop="2dip"
+            android:clickable="true"
+            android:paddingRight="15dip"
+            android:paddingBottom="2dip"
+            android:fontFamily="@font/pixel"
+            android:text="@string/change"
+            android:textColor="@color/cheese"
+            android:textSize="20sp" />
+    </RelativeLayout>
+</LinearLayout>

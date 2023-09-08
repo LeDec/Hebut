@@ -1,0 +1,16 @@
+button {
+    width: 60px;
+    height: 25px;
+    color: #fff;
+    background-color: #6495ED;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px #27496d;
+}
+button:hover{
+    cursor: pointer;
+}
+/*搜索按钮*/
+#search {
+    cursor: pointer;
+}

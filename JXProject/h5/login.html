@@ -1,0 +1,337 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录页面</title>
+    <script src="js/yanzhengma.js"></script>
+    <script src="js/jquery-3.2.1.js"></script>
+    <style type="text/css">
+    #tixing{font-size:1px; margin-right: -40%;}
+        body,
+        html {
+            width: 100%;
+            text-align: center;
+        }
+
+        #picyzm {
+            width: 100px;
+            height: 40px;
+            display: inline-block;
+            margin: 0 30px;
+        }
+
+        #code_input {
+            width: 30%;
+            height: 45px;
+            margin-top: 0px;
+            margin-left: 28px;
+            border-radius: 0.5rem;
+            border-width: 3px;
+            padding-left: 30px;
+        }
+
+        #verifyCodeDemo {
+            width: 100%;
+            display: flex;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        #btn {
+            margin: 30px auto;
+            margin-top: 44px;
+            background-color: cornflowerblue;
+            color: #fff;
+            border-radius: 5px;
+            border: 0;
+            width: 200px;
+            height: 40px;
+        }
+/* 按钮鼠标悬浮样式 */
+         #btn:hover {
+          background-color: #427fed;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(225, 225, 225, 0.4);
+        }
+
+        .pic{
+            width: 25%;
+            height: 65%;
+            text-align: center;
+        }
+
+        .login-form {
+            width: 25%;
+            height:65%;
+            background: white;
+            text-align: center;
+        }
+
+        /* 标题 */
+        .title {
+            height: 35px;
+            line-height: 35px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+
+        /* 输入框 */
+        .login-form input {
+            width: 70%;
+            height: 10%;
+            margin-top: 15px;
+            border-radius: 0.5rem;
+            border-width: 1.5px;
+            padding-left: 10px;
+        }
+
+        /* 超链接 */
+        .forget {
+        font-size:12px;
+            color: royalblue;
+            text-decoration: none;
+           float: right;
+        }
+
+        .enroll {
+            display: block;
+            margin-top: 55px;
+            margin-left: 12px;
+            color: royalblue;
+            text-decoration: none;
+             float: left;
+        }
+        .Tenroll {
+            display: block;
+            margin-top: 55px;
+            margin-right: -166px;
+            color: royalblue;
+            text-decoration: none;
+        }
+
+        /* 按钮样式 */
+        .login-form button {
+            width: 70%;
+            height: 13%;
+            margin-top: 34px;
+            background: cornflowerblue;
+            border-style: none;
+            font-size: 18px;
+            border-radius: 0.7rem;
+        }
+
+        /* 按钮鼠标悬浮样式 */
+        .login-form button:hover {
+          background-color: #427fed;
+        }
+        /* 超链接的按钮 */
+        .button {
+            text-decoration: none;
+            color: #fff;
+        }
+
+    </style>
+</head>
+
+<body onkeydown="on_return();">
+    <div class="container">
+        <img class="pic" id="imgId" src="picture/login1.png" width="200px" height="600px">
+        <div class="login-form">
+            <h2 class="title" style="font-family:SimSun">用户登录</h2>
+            <input type="text" placeholder="工号/学号" id="m_userId" style="height:42px">
+            <input type="password" placeholder="密码" id="m_password" style="height:42px">
+            <br>
+            <div id="verifyCodeDemo">
+                <input type="text" id="code_input" placeholder="验证码">
+                <p id="picyzm"></p>
+
+            </div> <p id="tixing">点击刷新</p>
+            <input type="button" value="登录" id="btn">
+            <div>
+                <a class="forget" href="ForgetPassword.html" >忘记密码? &nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                <a class="enroll" href="S_enroll.html"  style="float: left">&nbsp学生注册&nbsp&nbsp</a>
+            </div>
+            <div>
+                <a class="Tenroll" href="T_enroll.html" >教师注册</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+     localStorage.setItem("IP","127.0.0.1");
+     // localStorage.setItem("IP","47.93.80.189");
+        localStorage.setItem("port","8081");
+        console.log(+':'+localStorage.getItem('port')+'/project/user/login')
+
+    $(function (){
+			//定时任务，每隔3s执行一次changeAd()
+			setInterval("changeAd()",6666
+			);
+		})
+
+		var index = 1;
+
+		function changeAd(){
+			var imgObj = document.getElementById("imgId");
+			if(index%4==0)
+			imgObj.src = "picture/login1.png";
+			else if(index%4==1)
+			imgObj.src = "picture/login2.jpg";
+			else if(index%4==2)
+			imgObj.src = "picture/login3.jpg";
+			else if(index%4==3)
+			imgObj.src = "picture/login4.jpg";
+			index++;
+		}
+
+
+     //回车时，默认是登陆
+ function on_return(){
+ if(window.event.keyCode == 13){
+   document.all('btn').click();
+ }
+ }
+
+        //初始化验证码
+        var verifyCode = new GVerify({
+            id: "picyzm",
+            type: "blend"
+        });
+        //点击按钮验证
+        var code = document.getElementById("code_input");
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            var res = verifyCode.validate(code.value);
+            if (res) {
+                formCheck();
+            } else {
+                alert("验证码错误");
+            }
+        }
+        function formCheck() {
+            var oEmpty1 = document.getElementById('m_userId');
+            var oEmpty2 = document.getElementById('m_password');
+
+            var oBtn = document.getElementById('btn');
+            function userIdIsNull(val) {
+
+                var str = val.replace(/(^\s*)|(\s*$)/g, '');//去除空格;
+
+                if (str == '' || str == undefined || str == null) {
+
+                    alert("请输入工号/学号");
+                    return true;
+                } else { return false; }
+            }
+            function passwordIsNull(val) {
+
+                var str = val.replace(/(^\s*)|(\s*$)/g, '');//去除空格;
+
+                if (str == '' || str == undefined || str == null) {
+
+                    alert("请输入密码");
+                    return true;
+                } else {
+                    return false
+                }
+            }
+
+            if (userIdIsNull(oEmpty1.value) || passwordIsNull(oEmpty2.value)) { }
+            else {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/user/login',
+                    data: JSON.stringify({
+                        password: $("#m_password").val(),
+                        userId: $("#m_userId").val(),
+                    }
+                    ),
+                    contentType: 'application/json;charset=UTF-8',
+                    dataType: 'json',
+                    success: function (data) {
+
+                        if (data.code == 0) {
+                            localStorage.setItem('userId', data.data.userId);
+                            localStorage.setItem('token', data.data.token);
+                            if(data.data.type==5)
+                                window.location.href = "student/student.html"
+                            else if(data.data.type==1)
+                                window.location.href = "Administrator/Administrator.html"
+                            else if(data.data.type==2)
+                                window.location.href = "headmaster/headmaster.html"
+                                 else if(data.data.type==4)
+                                window.location.href = "Expert/Expert.html"
+                            else if(data.data.type==3)
+                                window.location.href = "teacher/teacher.html"
+                        }
+                        else {
+                            alert("用户名或密码错误");
+                        }
+                    },
+                    error: function (e) {
+                    }
+                });
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
+<script>
+    //body初始化事件
+    //body标签加οnlοad='方法名()'
+    //function 方法名(){
+    //   初始化操作
+    //   }
+    function init(){
+        //获取显示器宽度
+        var widths=window.screen.width;
+        //body的宽与显示器一致(浏览器最大化的时候可以用)
+        document.body.style.width=widths+'px';
+    }
+    //监听浏览器的宽度变化
+    window.onresize=function(){
+        //获取浏览器当前的宽度
+        var innerwidths =window.innerWidth;
+        //获取当前显示器的宽度(一般情况下显示器的宽度是不会变得的)
+        var widths=window.screen.width;
+
+        //如果显示器宽度等于浏览器宽度那么这个情况大多数是最大化的时候
+        if(innerwidths==widths){
+            //所以直接把显示器的宽度赋给body
+            document.body.style.width=widths+'px';
+        }
+
+        //如果浏览器的宽度不等于显示器的宽度时有两种情况
+        // 第一种就是 缩小
+        // 第二种就是 放大
+        if(innerwidths!=widths){
+            //先处理缩小的，因为浏览器在缩小的时候它的宽度会一直累加，这个时候浏览器宽度就大于显示器宽度了
+            if (innerwidths>widths) {
+                //这里给body赋值是模拟缩小页面的操作，幅度不能太大，要不然有点奇怪
+                document.body.style.width=innerwidths*10%-widths*10%+'px';
+                return;
+            }
+
+            //放大的操作就重新给body宽度赋显示器的宽度
+            document.body.style.width=widths+'px';
+        }
+    }
+
+</script>

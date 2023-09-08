@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>中期阶段</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<!--    头部导航栏-->
+    <link rel="stylesheet" href="./css/headNav.css">
+    <!--    整体-->
+    <link rel="stylesheet" href="./css/content.css">
+<!--    左侧导航栏样式-->
+    <link rel="stylesheet" href="./css/leftNav.css">
+<!--    右侧导航栏样式-->
+    <link rel="stylesheet" href="./css/rightNav.css">
+<!--    右侧列表样式-->
+    <link rel="stylesheet" href="./css/rightForm.css">
+<!--    按钮样式-->
+    <link rel="stylesheet" href="./css/button.css">
+<!--    左侧导航栏js-->
+    <script type="text/javascript" src="js/leftNav.js"></script>
+    <!--    消息提醒红点-->
+    <script type="text/javascript" src="js/news.js"></script>
+    <!--    放缩格式-->
+    <script type="text/javascript" src="js/scale.js"></script>
+    <!--    分页条-->
+    <link type="text/css" rel="stylesheet" href="css/page.css" >
+    <script type="text/javascript" src="js/page.js"></script>
+    <style>
+        #add{
+            margin-left: 1000px;
+            margin-right: -20px;
+        }
+        /*右侧列表*/
+          /*右侧列表*/
+        #yustb2 {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #yustb2 td,
+        #yustb2 th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #yustb2 tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #yustb2 tr:hover {
+            background-color: #ddd;
+        }
+
+        #yustb2 th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #ADD8E6;
+            color: white;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .content-right {
+            width: 80%;
+            background-color: white;
+            margin-right: 30px;
+            margin-top: 15px;
+            /*右浮动*/
+            float: right;
+        }
+
+
+        #moreActivity{
+            color: blue;
+            text-decoration: underline;
+            float: right;
+        }
+        .activityTitle{
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a class="active" href="headmaster.html">匠心训练营</a></li>
+    <li style="float:right"><a class="active" href="myInformation.html"><img src="图片/我的头像.png" height="33px" width="33px"></a></li>
+    <li style="float:right"><a class="active" href="myNews.html"><img src="图片/消息.png" id="XiaoXi" width="33px" height="33px"></a></li>
+</ul>
+
+
+<div class="content">
+    <div class="content-left">
+        <!--菜单栏导航-->
+        <div class="nav">
+            <!--每一个菜单项-->
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="headmaster.html"> <img src="图片/主页.png" width="17px" height="17px" style="position:relative;left:-40px;top:3px">主页</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="studentRegistrationReview.html"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">报名审核</a></div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/学生管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">学生管理</div>
+                <div class="nav-content">
+                    <a href="studentPersonalInformation.html">学生信息</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/过程管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">过程管理</a></div>
+                <div class="nav-content">
+                    <a href="stageOne.html">中期阶段</a>
+                    <a href="stageTwo.html">答辩阶段</a>
+                    <a href="stageThree.html">后期成果</a>
+                </div>
+            </div>
+
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="图片/成绩管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">成绩管理</div>
+                <div class="nav-content">
+                    <a href="scoreEvaluation.html">成绩评定</a>
+                    <a href="lookScore.html">查看成绩</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="./图片/报销审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">报销管理</div>
+                <div class="nav-content">
+                    <a href="reimBursementReview_Project.html">查看报销</a>
+                    <a href="reimBursementReviewLook.html">审核报销</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><a href="teachingEvaluation.html"><img src="./图片/教评管理.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">教评管理</a></div>
+            </div>
+            <div class="seg"></div>
+
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-title"><img src="./图片/通知管理图标.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">通知管理</div>
+                <div class="nav-content">
+                    <a href="publishNews.html">发布通知</a>
+                    <a href="manageNews.html">查看通知</a>
+                </div>
+            </div>
+            <!--分割线-->
+            <div class="seg"></div>
+            <div class="nav-menu">
+                <!--主标题-->
+                <div class="nav-titlet"><a href="batch.html"><img src="./图片/报名审核.png" width="17px" height="17px" style="position:relative;left:-26px;top:3px">往届匠心班</a></div>
+            </div>
+        </div>
+    </div>
+    <!--右侧内容区-->
+    <div id="secondpaneDiv" class="menu_list">
+        <h3 class="menu_head current">往届批次—中期报告</h3>
+    </div>
+    <div class="content-right">
+        <table id="yustb2">
+            <tr>
+                <th width="200">序号</th>
+                <th width="400">项目编号</th>
+                <th width="1600">项目名称</th>
+                <th width="600">指导老师</th>
+                <th width="600">项目来源</th>
+                <th width="300">报告</th>
+            </tr>
+        </table>
+    </div>
+    <div id="pagination" style="position:relative;left:771px;bottom:99px;"></div>
+</div>
+</body>
+
+</html>
+<script>
+var flag=0;
+$(function () {
+    $.ajax({
+        url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project/showAllProject',
+        data: JSON.stringify({
+            "batchId": localStorage.getItem('batchIdOther'),
+            "commonRequest": {
+                "token": localStorage.getItem('token'),
+                "userId": localStorage.getItem('userId')
+            },
+            "pageRequest": {
+                "currentPage": 1,
+                "pageSize": 11
+            },
+            "projectType": "1",
+            projectStage: ""
+        }),
+        contentType: 'application/json',
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+         //总页数设置
+                                   Pagination.Init(document.getElementById('pagination'), {
+                                       size: data.data.pages, // pages size
+                                       page:1,// selected page
+                                       step: 3   // pages before and after current
+                                   });
+            var num=1;
+            if(data.code==0) {
+                for (i in data.data.showProjectResponsePage.records) {
+                    var tk;
+                    lookcontent = '<button onclick="lookContent(this)""  class="loookContent" value="' + data.data.showProjectResponsePage.records[i].projectId + '">项目详情</button>',
+                        tk ='<td>' + num + '</td>'+ '<td>' + data.data.showProjectResponsePage.records[i].projectSymbol + '</td>' + '<td>' + data.data.showProjectResponsePage.records[i].projectName + '</td>' + '<td>' + data.data.showProjectResponsePage.records[i].projectTeacher + '</td>' + '<td>' + data.data.showProjectResponsePage.records[i].projectOrigin + '</td>' + '<td>' + lookcontent + '</td>'
+                    $("#yustb2").append('<tr>' + tk + '</tr>')
+                    num++
+                }
+            }
+           }
+    })
+})
+ function Func() {
+        $("#yustb2 tr:not(:first)").remove();//清空
+   $.ajax({
+        url: 'http://'+localStorage.getItem('IP')+':'+localStorage.getItem('port')+'/project/project/showAllProject',
+        data: JSON.stringify({
+            "batchId": localStorage.getItem('batchIdOther'),
+            "commonRequest": {
+                "token": localStorage.getItem('token'),
+                "userId": localStorage.getItem('userId')
+            },
+            "pageRequest": {
+                "currentPage": Pagination.page,
+                "pageSize": 11
+            },
+            "projectType": "1",
+            projectStage: ""
+        }),
+        contentType: 'application/json',
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+         //总页数设置
+                                   Pagination.Init(document.getElementById('pagination'), {
+                                       size: data.data.pages, // pages size
+                                       page:Pagination.page,// selected page
+                                       step: 3   // pages before and after current
+                                   });
+            var num=1;
+            if(data.code==0) {
+                 for (i in data.data.showProjectResponsePage.records) {
+                    var tk;
+                    lookcontent = '<button onclick="lookContent(this)""  class="loookContent" value="' + data.data.showProjectResponsePage.records[i].projectId + '">项目详情</button>',
+                        tk ='<td>' + num + '</td>'+ '<td>' + data.data.showProjectResponsePage.records[i].projectSymbol + '</td>' + '<td>' + data.data.showProjectResponsePage.records[i].projectName + '</td>' + '<td>' + data.data.showProjectResponsePage.records[i].projectTeacher + '</td>' + '<td>' + data.data.showProjectResponsePage.records[i].projectOrigin + '</td>' + '<td>' + lookcontent + '</td>'
+                    $("#yustb2").append('<tr>' + tk + '</tr>')
+                    num++
+                }
+            }
+           }
+    })
+    }
+function lookContent(btn){
+
+    localStorage.setItem('projectId', $(btn).parents("tr").find(".loookContent").val());
+    window.location.href="checkMaterialOneOther.html"
+}
+
+</script>

@@ -1,0 +1,22 @@
+.menu_list {
+    width: 85%;
+    margin: 0;
+    float: right;
+}
+.menu_head {
+    height: 47px;
+    line-height: 47px;
+    padding-left: 38px;
+    font-size: 14px;
+    color: #525252;
+    cursor: pointer;
+    border: 1px solid #f1f1f1;
+    position: relative;
+    margin: 0px;
+    font-weight: bold;
+    background: #51a9f18c;
+}
+
+.menu_list .current {
+    background: #51a9f18c;
+}
